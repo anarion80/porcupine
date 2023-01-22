@@ -1,0 +1,91 @@
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'input/*'
+      - 'output/**/*.kicad_pcb'
+      - 'config.kibot.yaml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'input/*'
+      - 'config.kibot.yaml'
+      - 'output/**/*.kicad_pcb'
+  workflow_dispatch:
+
+jobs:
+  PCB:
+    runs-on: ubuntu-latest
+    name: Generate PCBs using Ergogen
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm install
+      - name: Generate unrouted PCBs
+        run: npm run gen_pcb
+      - name: Save the PCBs
+        uses: actions/upload-artifact@v3
+        with:
+          name: pcbs
+          path: output/
+
+  Images:
+    runs-on: ubuntu-latest
+    name: Generate PCB images
+    needs: PCB
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Download PCBs
+        uses: actions/download-artifact@v3
+        with:
+          name: pcbs
+          path: output/
+      - name: Generate images
+        run: npm run gen_images
+      - name: Retrieve results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Images
+          path: images/
+
+  Kibot:
+    runs-on: ubuntu-latest
+    name: Generate Gerber & Drill files, documentation, etc
+    needs: PCB
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Download PCBs
+        uses: actions/download-artifact@v3
+        with:
+          name: pcbs
+          path: output/
+      - name: Generate Kibot files
+        run: npm run gen_kibot
+      - name: Update permissions
+        run: sudo chmod -R a+r output/
+      - name: Retrieve results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Kibot_output
+          path: |
+            output/
+            !output/**/fp-info-cache

@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "gen_pcb": "./gen_pcb.sh",
+        "gen_images": "./gen_images.sh",
+        "gen_kibot": "./gen_kibot.sh"
+    },
+    "dependencies": {
+        "ergogen": "github:anarion80/ergogen"
+    }
+}

@@ -1,0 +1,5 @@
+node_modules
+/output/*/outlines/
+/output/*/pcbs/board-backups/
+/output/*/pcbs/fp-info-cache
+*.code-workspace

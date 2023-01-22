@@ -1,0 +1,545 @@
+kibot:
+  version: 1
+
+preflight:
+  run_erc: false
+  update_xml: false
+  run_drc: true
+  check_zone_fills: true
+  ignore_unconnected: true
+
+global:
+  filters:
+  - number: 1007
+  - number: 1015
+  - number: 58
+  # solder_mask_color: black
+  # silk_screen_color: white
+  # pcb_finish: ENIG
+  # aliases_for_3d_models:
+  # - name: Promicro
+  #   value: "../../../3dmodels/ergogen/ProMicro.stp"
+  environment:
+    third_party: "../../../"
+    models_3d: "../../../3dmodels/ergogen/"
+  field_3D_model: "model"
+
+
+# filters:
+# - name: only_jlc_parts
+#   comment: Only parts with JLC (LCSC) code
+#   type: generic
+#   include_only:
+#   - column: LCSC#
+#     regex: ^C\d+
+
+# variants:
+# - name: place_holder
+#   comment: Just a place holder for pre_transform filters
+#   type: kicost
+#   pre_transform:
+#   - _kicost_rename
+#   - _rot_footprint
+
+outputs:
+# - name: basic_boardview
+#   comment: Board View export
+#   type: boardview
+#   dir: Assembly
+# - name: basic_dxf
+#   comment: Individual layers in DXF format
+#   type: dxf
+#   dir: Individual_Layers/DXF
+#   layers:
+#   - layer: F.Cu
+#     suffix: F_Cu
+#     description: Front copper
+#   - layer: B.Cu
+#     suffix: B_Cu
+#     description: Bottom copper
+#   - layer: B.Paste
+#     suffix: B_Paste
+#     description: Bottom solder paste
+#   - layer: F.Paste
+#     suffix: F_Paste
+#     description: Front solder paste
+#   - layer: B.Silkscreen
+#     suffix: B_Silkscreen
+#     description: Bottom silkscreen (artwork)
+#   - layer: F.Silkscreen
+#     suffix: F_Silkscreen
+#     description: Front silkscreen (artwork)
+#   - layer: B.Mask
+#     suffix: B_Mask
+#     description: Bottom soldermask (negative)
+#   - layer: F.Mask
+#     suffix: F_Mask
+#     description: Front soldermask (negative)
+#   - layer: User.Drawings
+#     suffix: User_Drawings
+#     description: User drawings
+#   - layer: User.Comments
+#     suffix: User_Comments
+#     description: User comments
+#   - layer: User.Eco1
+#     suffix: User_Eco1
+#     description: For user usage 1
+#   - layer: User.Eco2
+#     suffix: User_Eco2
+#     description: For user usage 2
+#   - layer: Edge.Cuts
+#     suffix: Edge_Cuts
+#     description: Board shape
+#   - layer: B.Courtyard
+#     suffix: B_Courtyard
+#     description: Bottom courtyard area
+#   - layer: F.Courtyard
+#     suffix: F_Courtyard
+#     description: Front courtyard area
+#   - layer: B.Fab
+#     suffix: B_Fab
+#     description: Bottom documentation
+#   - layer: F.Fab
+#     suffix: F_Fab
+#     description: Front documentation
+# - name: basic_excellon
+#   comment: Drill files in EXCELLON format
+#   type: excellon
+#   dir: Gerbers_and_Drill
+#   options:
+#     map: pdf
+# - name: basic_gencad
+#   comment: PCB in GenCAD format
+#   type: gencad
+#   dir: Export
+# - name: basic_gerb_drill
+#   comment: Drill files in GERB_DRILL format
+#   type: gerb_drill
+#   dir: Gerbers_and_Drill
+#   options:
+#     map: gerber
+- name: gerber_modern
+  comment: Gerbers in modern format, recommended by the standard
+  type: gerber
+  dir: Gerbers_and_Drill
+  layers:
+  - layer: F.Cu
+    suffix: F_Cu
+    description: Front copper
+  - layer: B.Cu
+    suffix: B_Cu
+    description: Bottom copper
+  - layer: B.Paste
+    suffix: B_Paste
+    description: Bottom solder paste
+  - layer: F.Paste
+    suffix: F_Paste
+    description: Front solder paste
+  - layer: B.Silkscreen
+    suffix: B_Silkscreen
+    description: Bottom silkscreen (artwork)
+  - layer: F.Silkscreen
+    suffix: F_Silkscreen
+    description: Front silkscreen (artwork)
+  - layer: B.Mask
+    suffix: B_Mask
+    description: Bottom soldermask (negative)
+  - layer: F.Mask
+    suffix: F_Mask
+    description: Front soldermask (negative)
+  - layer: User.Drawings
+    suffix: User_Drawings
+    description: User drawings
+  - layer: User.Comments
+    suffix: User_Comments
+    description: User comments
+  - layer: User.Eco1
+    suffix: User_Eco1
+    description: For user usage 1
+  - layer: User.Eco2
+    suffix: User_Eco2
+    description: For user usage 2
+  - layer: Edge.Cuts
+    suffix: Edge_Cuts
+    description: Board shape
+  - layer: B.Courtyard
+    suffix: B_Courtyard
+    description: Bottom courtyard area
+  - layer: F.Courtyard
+    suffix: F_Courtyard
+    description: Front courtyard area
+  - layer: B.Fab
+    suffix: B_Fab
+    description: Bottom documentation
+  - layer: F.Fab
+    suffix: F_Fab
+    description: Front documentation
+- name: JLCPCB_gerbers
+  comment: Gerbers compatible with JLCPCB
+  type: gerber
+  dir: Manufacturers/JLCPCB
+  options:
+    exclude_edge_layer: true
+    exclude_pads_from_silkscreen: true
+    plot_sheet_reference: false
+    plot_footprint_refs: true
+    plot_footprint_values: false
+    force_plot_invisible_refs_vals: false
+    tent_vias: true
+    use_protel_extensions: true
+    create_gerber_job_file: false
+    disable_aperture_macros: true
+    gerber_precision: 4.6
+    use_gerber_x2_attributes: false
+    use_gerber_net_attributes: false
+    line_width: 0.1
+    subtract_mask_from_silk: true
+    inner_extension_pattern: .g%n
+  layers: &id001
+  - layer: F.Cu
+    suffix: F_Cu
+    description: Front copper
+  - layer: B.Cu
+    suffix: B_Cu
+    description: Bottom copper
+  - layer: B.Paste
+    suffix: B_Paste
+    description: Bottom solder paste
+  - layer: F.Paste
+    suffix: F_Paste
+    description: Front solder paste
+  - layer: B.Silkscreen
+    suffix: B_Silkscreen
+    description: Bottom silkscreen (artwork)
+  - layer: F.Silkscreen
+    suffix: F_Silkscreen
+    description: Front silkscreen (artwork)
+  - layer: B.Mask
+    suffix: B_Mask
+    description: Bottom soldermask (negative)
+  - layer: F.Mask
+    suffix: F_Mask
+    description: Front soldermask (negative)
+  - layer: Edge.Cuts
+    suffix: Edge_Cuts
+    description: Board shape
+- name: JLCPCB_drill
+  comment: Drill files compatible with JLCPCB
+  type: excellon
+  dir: Manufacturers/JLCPCB
+  options:
+    pth_and_npth_single_file: false
+    pth_id: -PTH
+    npth_id: -NPTH
+    metric_units: true
+    map: gerber
+    route_mode_for_oval_holes: false
+    output: '%f%i.%x'
+- name: JLCPCB
+  comment: ZIP file for JLCPCB
+  type: compress
+  dir: Manufacturers
+  options:
+    files:
+    - from_output: JLCPCB_gerbers
+      dest: /
+    - from_output: JLCPCB_drill
+      dest: /
+# - name: PCBWay_gerbers
+#   comment: Gerbers compatible with PCBWay
+#   type: gerber
+#   dir: Manufacturers/PCBWay
+#   options:
+#     exclude_edge_layer: true
+#     exclude_pads_from_silkscreen: true
+#     plot_sheet_reference: false
+#     plot_footprint_refs: true
+#     plot_footprint_values: true
+#     force_plot_invisible_refs_vals: false
+#     tent_vias: true
+#     use_protel_extensions: true
+#     create_gerber_job_file: false
+#     output: '%f.%x'
+#     gerber_precision: 4.6
+#     use_gerber_x2_attributes: false
+#     use_gerber_net_attributes: false
+#     disable_aperture_macros: true
+#     line_width: 0.1
+#     subtract_mask_from_silk: false
+#     inner_extension_pattern: .gl%N
+#   layers: *id001
+# - name: PCBWay_drill
+#   comment: Drill files compatible with PCBWay
+#   type: excellon
+#   dir: Manufacturers/PCBWay
+#   options:
+#     metric_units: false
+#     minimal_header: true
+#     zeros_format: SUPPRESS_LEADING
+#     left_digits: 2
+#     right_digits: 4
+#     pth_and_npth_single_file: false
+#     pth_id: ''
+#     npth_id: -NPTH
+#     output: '%f%i.drl'
+# - name: PCBWay
+#   comment: ZIP file for PCBWay
+#   type: compress
+#   dir: Manufacturers
+#   options:
+#     format: ZIP
+#     files:
+#     - from_output: PCBWay_gerbers
+#       dest: /
+#     - from_output: PCBWay_drill
+#       dest: /
+
+- name: basic_ibom
+  comment: Interactive HTML BoM
+  type: ibom
+  dir: Assembly
+- name: basic_info
+  comment: Information about the run
+  type: info
+  dir: .
+# - name: renderer_for_present
+#   comment: Renderer for the presentation
+#   type: pcbdraw
+#   options:
+#     style: "../../../style.json"
+#     format: png
+#     size_detection: 'svg_paths'
+#   dir: Render_for_presentation
+#   run_by_default: false
+# - name: gerbers_for_present
+#   comment: Gerbers for the presentation
+#   type: gerber
+#   dir: Gerber_for_presentation
+#   layers: copper
+#   run_by_default: false
+# - name: basic_kikit_present
+#   comment: Simple project presentation
+#   type: kikit_present
+#   dir: Presentation
+#   options:
+#     description: '# Porcupine keyboard
+
+#       Autogenerated, ergonomic, split, 36-42 key, wired/wireless, columnar-staggered keyboard'
+#     boards:
+#       mode: local
+#       comment: Resources included
+#       front_image: renderer_for_present
+#       back_image: renderer_for_present
+#       gerbers: gerbers_for_present
+
+- name: basic_navigate_results
+  comment: Web page to browse the results
+  type: navigate_results
+  dir: Browse
+  # options:
+  #   link_from_root: index.html
+
+- name: pcbdraw_with_style
+  comment: PCB 2D render in PNG format, using project style.json
+  type: pcbdraw
+  dir: PCB/2D_render/style
+  options:
+    style: "../../../style.json"
+    format: png
+    size_detection: 'svg_paths'
+- name: pcbdraw_with_style_bottom
+  comment: PCB 2D render in PNG format, using project style.json
+  type: pcbdraw
+  dir: PCB/2D_render/style
+  options:
+    style: "../../../style.json"
+    format: png
+    size_detection: 'svg_paths'
+    bottom: true
+
+# - name: basic_pcbdraw_svg_jlcpcb_green_enig_top
+#   comment: PCB 2D render in SVG format, using jlcpcb-green-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/jlcpcb_green_enig
+#   options:
+#     style: jlcpcb-green-enig
+#     format: svg
+# - name: basic_pcbdraw_png_jlcpcb_green_enig_top
+#   comment: PCB 2D render in PNG format, using jlcpcb-green-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/jlcpcb_green_enig
+#   options:
+#     style: jlcpcb-green-enig
+#     format: png
+# - name: basic_pcbdraw_jpg_jlcpcb_green_enig_top
+#   comment: PCB 2D render in JPG format, using jlcpcb-green-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/jlcpcb_green_enig
+#   options:
+#     style: jlcpcb-green-enig
+#     format: jpg
+# - name: basic_pcbdraw_svg_set_blue_enig_top
+#   comment: PCB 2D render in SVG format, using set-blue-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_blue_enig
+#   options:
+#     style: set-blue-enig
+#     format: svg
+# - name: basic_pcbdraw_png_set_blue_enig_top
+#   comment: PCB 2D render in PNG format, using set-blue-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_blue_enig
+#   options:
+#     style: set-blue-enig
+#     format: png
+# - name: basic_pcbdraw_jpg_set_blue_enig_top
+#   comment: PCB 2D render in JPG format, using set-blue-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_blue_enig
+#   options:
+#     style: set-blue-enig
+#     format: jpg
+# - name: basic_pcbdraw_svg_set_red_hasl_top
+#   comment: PCB 2D render in SVG format, using set-red-hasl style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_red_hasl
+#   options:
+#     style: set-red-hasl
+#     format: svg
+# - name: basic_pcbdraw_png_set_red_hasl_top
+#   comment: PCB 2D render in PNG format, using set-red-hasl style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_red_hasl
+#   options:
+#     style: set-red-hasl
+#     format: png
+# - name: basic_pcbdraw_jpg_set_red_hasl_top
+#   comment: PCB 2D render in JPG format, using set-red-hasl style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_red_hasl
+#   options:
+#     style: set-red-hasl
+#     format: jpg
+# - name: basic_pcbdraw_svg_jlcpcb_green_enig_bottom
+#   comment: PCB 2D render in SVG format, using jlcpcb-green-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/jlcpcb_green_enig
+#   options:
+#     style: jlcpcb-green-enig
+#     format: svg
+#     bottom: true
+# - name: basic_pcbdraw_png_jlcpcb_green_enig_bottom
+#   comment: PCB 2D render in PNG format, using jlcpcb-green-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/jlcpcb_green_enig
+#   options:
+#     style: jlcpcb-green-enig
+#     format: png
+#     bottom: true
+# - name: basic_pcbdraw_jpg_jlcpcb_green_enig_bottom
+#   comment: PCB 2D render in JPG format, using jlcpcb-green-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/jlcpcb_green_enig
+#   options:
+#     style: jlcpcb-green-enig
+#     format: jpg
+#     bottom: true
+# - name: basic_pcbdraw_svg_set_blue_enig_bottom
+#   comment: PCB 2D render in SVG format, using set-blue-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_blue_enig
+#   options:
+#     style: set-blue-enig
+#     format: svg
+#     bottom: true
+# - name: basic_pcbdraw_png_set_blue_enig_bottom
+#   comment: PCB 2D render in PNG format, using set-blue-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_blue_enig
+#   options:
+#     style: set-blue-enig
+#     format: png
+#     bottom: true
+# - name: basic_pcbdraw_jpg_set_blue_enig_bottom
+#   comment: PCB 2D render in JPG format, using set-blue-enig style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_blue_enig
+#   options:
+#     style: set-blue-enig
+#     format: jpg
+#     bottom: true
+# - name: basic_pcbdraw_svg_set_red_hasl_bottom
+#   comment: PCB 2D render in SVG format, using set-red-hasl style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_red_hasl
+#   options:
+#     style: set-red-hasl
+#     format: svg
+#     bottom: true
+# - name: basic_pcbdraw_png_set_red_hasl_bottom
+#   comment: PCB 2D render in PNG format, using set-red-hasl style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_red_hasl
+#   options:
+#     style: set-red-hasl
+#     format: png
+#     bottom: true
+# - name: basic_pcbdraw_jpg_set_red_hasl_bottom
+#   comment: PCB 2D render in JPG format, using set-red-hasl style
+#   type: pcbdraw
+#   dir: PCB/2D_render/set_red_hasl
+#   options:
+#     style: set-red-hasl
+#     format: jpg
+#     bottom: true
+- name: basic_render_3d_top
+  comment: 3D view from top
+  type: render_3d
+  dir: 3D
+  options:
+    ray_tracing: true
+    orthographic: true
+    auto_crop: true
+    height: 1080
+    width: 1920
+    zoom: 4
+- name: basic_render_3d_30deg
+  comment: 3D view from 30 degrees
+  type: render_3d
+  dir: 3D
+  output_id: 30deg
+  options:
+    ray_tracing: true
+    rotate_x: 3
+    rotate_z: -2
+    auto_crop: true
+    height: 1080
+    width: 1920
+    zoom: 4
+- name: basic_render_3d_bottom
+  comment: 3D view from bottom
+  type: render_3d
+  dir: 3D
+  options:
+    ray_tracing: true
+    orthographic: true
+    view: bottom
+    auto_crop: true
+    height: 1080
+    width: 1920
+    zoom: 4
+# - name: report_simple
+#   comment: Simple design report
+#   type: report
+#   output_id: _simple
+#   options:
+#     template: simple_ASCII
+# - name: report_full
+#   comment: Full design report
+#   type: report
+#   options:
+#     template: full_SVG
+# - name: basic_step
+#   comment: 3D model in STEP format
+#   type: step
+#   dir: 3D
