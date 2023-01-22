@@ -526,13 +526,11 @@ pcbs:
         what: bat2p0
         adjust:
           ref: matrix_inner_bottom
-          shift: [13, -3]
+          shift: [13.5, -3]
           rotate: 0
         params:
           front: true
           back: true
-          width: 1
-          height: 1
           neg: GND
           pos: Bplus
       pad_plus:
@@ -827,7 +825,7 @@ pcbs:
         what: simple_via
         adjust:
           ref: matrix_inner_bottom
-          shift: [10.5,-2]
+          shift: [9.5,-2]
         params:
           net: GND
       via_RST_1:
@@ -935,6 +933,20 @@ pcbs:
           shift: [0,8.5]
         params:
           net: ring_bottom
+      via_P19_4:
+        what: simple_via
+        adjust:
+          ref: thumbfan_inner_thumb
+          shift: [0,3]
+        params:
+          net: P19
+      via_inner_thumb:
+        what: simple_via
+        adjust:
+          ref: thumbfan_inner_thumb
+          shift: [0,8.5]
+        params:
+          net: inner_thumb
       via_P18_1:
         what: simple_via
         adjust:

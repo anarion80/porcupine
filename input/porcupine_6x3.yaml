@@ -528,13 +528,11 @@ pcbs:
         what: bat2p0
         adjust:
           ref: matrix_inner_bottom
-          shift: [13, -3]
+          shift: [13.5, -3]
           rotate: 0
         params:
           front: true
           back: true
-          width: 1
-          height: 1
           neg: GND
           pos: Bplus
       pad_plus:
@@ -794,7 +792,7 @@ pcbs:
         what: simple_via
         adjust:
           ref: matrix_middle_top
-          shift: [12,-1]
+          shift: [11,-1]
         params:
           net: GND
       via_GND_5:
@@ -829,7 +827,7 @@ pcbs:
         what: simple_via
         adjust:
           ref: matrix_inner_bottom
-          shift: [10.5,-2]
+          shift: [9.5,-2]
         params:
           net: GND
       via_RST_1:
@@ -888,6 +886,20 @@ pcbs:
           shift: [0,3]
         params:
           net: P20
+      via_P20_4:
+        what: simple_via
+        adjust:
+          ref: matrix_middle_top
+          shift: [9,-1]
+        params:
+          net: P20
+      via_P20_5:
+        what: simple_via
+        adjust:
+          ref: matrix_middle_top
+          shift: [6,-5]
+        params:
+          net: P20
       via_pinky_bottom:
         what: simple_via
         adjust:
@@ -923,13 +935,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: ring_home
-      via_P19_3:
+      via_P15_4:
         what: simple_via
         adjust:
           ref: matrix_ring_bottom
           shift: [0,3]
         params:
-          net: P19
+          net: P15
       via_ring_bottom:
         what: simple_via
         adjust:
@@ -1133,13 +1145,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: inner_thumb
-      via_14_5:
+      via_19_3:
         what: simple_via
         adjust:
           ref: thumbfan_near_thumb
           shift: [4,13]
         params:
-          net: P14
+          net: P19
       via_P16_1:
         what: simple_via
         adjust:
@@ -1147,13 +1159,13 @@ pcbs:
           shift: [0,3]
         params:
           net: P16
-      via_outer_top:
+      via_outer_bottom:
         what: simple_via
         adjust:
           ref: matrix_outer_bottom
           shift: [0,8.5]
         params:
-          net: outer_top
+          net: outer_bottom
       via_P16_2:
         what: simple_via
         adjust:

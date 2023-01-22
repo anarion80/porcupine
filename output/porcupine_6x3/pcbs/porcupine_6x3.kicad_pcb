@@ -143,7 +143,6 @@
 (net 42 "P8")
 (net 43 "P9")
 (net 44 "Bplus")
-(net 45 "outer_top")
             
   (net_class Default "This is the default net class."
     (clearance 0.2)
@@ -193,7 +192,6 @@
 (add_net "P3")
 (add_net "P8")
 (add_net "P9")
-(add_net "outer_top")
   )
 
             
@@ -2312,12 +2310,13 @@
         
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 151.4618585 154.7815238 17)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -2390,12 +2389,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 146.49153950000002 138.5243429 17)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -2468,12 +2468,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 174.6019678 165.4836423 17)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -2546,12 +2547,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 169.63164880000002 149.2264614 17)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -2624,12 +2626,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 164.66132980000003 132.9692805 17)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -2702,12 +2705,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 187.97744519999998 142.6654301 10)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -2780,12 +2784,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 185.02542619999997 125.92369830000001 10)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -2858,12 +2863,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 182.07340719999996 109.18196650000002 10)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -2936,12 +2942,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 206.203128 135.2002554 5)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3014,12 +3021,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 204.9207193 118.24751440000001 5)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3092,12 +3100,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 203.6383106 101.29477340000001 5)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3170,12 +3179,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 225.4751451 139.2483229 0)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3248,12 +3258,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 225.4751451 122.2483229 0)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3326,12 +3337,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 225.4751451 105.2483229 0)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3404,12 +3416,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 244.4751452 142.0816562 0)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3482,12 +3495,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 244.4751452 125.0816562 0)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3560,12 +3574,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 244.4751452 108.0816562 0)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3638,12 +3653,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 224.411981 162.7555517 -5)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3716,12 +3732,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 243.5473702 166.12963699999997 -15)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3794,12 +3811,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 268.5292068 171.8181943 60)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -3872,12 +3890,13 @@
             
 
             
-            (footprint "Diode_SMD:D_SOD-123" (layer "F.Cu")
+            (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
             (at 285.0615371 186.1491442 45)
             (descr "SOD-123")
             (tags "SOD-123")
+            (property "LCSC Part #" "C105503" )
             (attr smd)
 
             
@@ -5585,7 +5604,11 @@
 
             (module lib:bat2p0 (layer F.Cu) (tstamp 5BF2CC94)
 
-            (at 257.4751452 140.0816562 0)
+            (at 257.9751452 140.0816562 0)
+            (descr "JST PH series connector, S2B-PH-K (http://www.jst-mfg.com/product/pdf/eng/ePH.pdf)")
+            (tags "connector JST PH side entry")
+            (property "LCSC Part #" "C265016" )
+            (attr through_hole)
             (fp_text reference "_2" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
@@ -5600,12 +5623,11 @@
             (fp_line (start -2 -2) (end -2 -3) (layer "F.SilkS") (width 0.12))
 
 
+            (pad "1" thru_hole roundrect (at 0 -1 0) (size 1.75 1.2) (drill 0.75) (layers *.Cu F.SilkS F.Mask) (net 44 "Bplus") (roundrect_rratio 0.208333))
+            (fp_text user Bplus (at -3.6 -1 0) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) ))
+            (pad "2" thru_hole oval (at 0 1 0) (size 1.75 1.2) (drill 0.75) (layers *.Cu F.SilkS F.Mask) (net 33 "GND"))
+            (fp_text user GND (at -2.6 1 0) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) ))
 
-
-            (pad 1 thru_hole circle (at 0 -1.0 0) (size 1 1) (drill 0.8) (layers *.Cu F.SilkS F.Mask) (net 44 "Bplus"))
-            (fp_text user Bplus (at -3.5 -1 0) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) ))
-            (pad 2 thru_hole circle (at 0 1.0 0) (size 1 1) (drill 0.8) (layers *.Cu F.SilkS F.Mask) (net 33 "GND"))
-            (fp_text user GND (at -2.5 1 0) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) ))
             
             
 
@@ -5617,12 +5639,11 @@
             (fp_line (start -2 -2) (end -2 -3) (layer "B.SilkS") (width 0.12))
 
 
+            (pad "1" thru_hole roundrect (at 0 -1 0) (size 1.75 1.2) (drill 0.75) (layers *.Cu B.SilkS B.Mask) (net 44 "Bplus") (roundrect_rratio 0.208333))
+            (fp_text user Bplus (at -3.6 -1 0) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)))
+            (pad "2" thru_hole oval (at 0 1 0) (size 1.75 1.2) (drill 0.75) (layers *.Cu B.SilkS B.Mask) (net 33 "GND"))
+            (fp_text user GND (at -2.6 1 0) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)))
 
-
-            (pad 1 thru_hole circle (at 0 -1.0 0) (size 1 1) (drill 0.8) (layers *.Cu B.SilkS B.Mask) (net 44 "Bplus"))
-            (fp_text user Bplus (at -3.5 -1 0) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)))
-            (pad 2 thru_hole circle (at 0 1.0 0) (size 1 1) (drill 0.8) (layers *.Cu B.SilkS B.Mask) (net 33 "GND"))
-            (fp_text user GND (at -2.5 1 0) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)))
             
 
             (model "${KICAD6_3RD_PARTY}/3dmodels/ergogen/S2B-PH-K-S.step"
@@ -5767,34 +5788,104 @@
       )
         
 
-        (footprint "PCM12SMTR" (layer F.Cu) (tedit 5E1ADAC2)
+        (footprint "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" (layer "B.Cu")
         (at 269.4751452 143.0816562 270)
+        (descr "SMD Solder Jumper, 1x1.5mm Triangular Pads, 0.3mm gap, open")
+        (tags "solder jumper open")
+        (attr exclude_from_pos_files exclude_from_bom)
 
         
+
         (fp_text reference "J1" (at 0 0) (layer B.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         (fp_text value Jumper (at 0 -7.3) (layer B.Fab) (effects (font (size 1 1) (thickness 0.15))))
         (fp_text value Jumper (at 0 2 270) (layer B.SilkS) (effects (font (size 1 1) (thickness 0.15)) (justify mirror) ))
 
         
-        (pad 1 smd rect (at -0.50038 0 270) (size 0.635 1.143) (layers B.Cu B.Paste B.Mask)
-        (clearance 0.1905) (net 44 "Bplus"))
-        (pad 2 smd rect (at 0.50038 0 270) (size 0.635 1.143) (layers B.Cu B.Paste B.Mask)
-        (clearance 0.1905) (net 32 "RAW")))
+        (fp_line (start 1.4 1) (end -1.4 1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start 1.4 -1) (end 1.4 1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.4 1) (end -1.4 -1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.4 -1) (end 1.4 -1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.65 -1.25) (end 1.65 -1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end -1.65 1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end 1.65 -1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start -1.65 -1.25) (end -1.65 1.25) (layer "B.CrtYd") (width 0.05))
+
+        (pad "1" smd custom (at -0.725 0 270) (size 0.3 0.3) (layers "B.Cu" "B.Mask")
+          (net 44 "Bplus") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 1 0)
+                (xy 0.5 0.75)
+                (xy -0.5 0.75)
+                (xy -0.5 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+        (pad "2" smd custom (at 0.725 0 270) (size 0.3 0.3) (layers "B.Cu" "B.Mask")
+          (net 32 "RAW") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 0.5 0.75)
+                (xy -0.65 0.75)
+                (xy -0.15 0)
+                (xy -0.65 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+      )
+
     
 
-        (footprint "PCM12SMTR" (layer F.Cu) (tedit 5E1ADAC2)
+        (footprint "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" (layer "F.Cu")
         (at 269.4751452 143.0816562 270)
+        (descr "SMD Solder Jumper, 1x1.5mm Triangular Pads, 0.3mm gap, open")
+        (tags "solder jumper open")
+        (attr exclude_from_pos_files exclude_from_bom)
 
         
+
         (fp_text reference "J2" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         (fp_text value Jumper (at 0 -7.3) (layer F.Fab) (effects (font (size 1 1) (thickness 0.15))))
         (fp_text value Jumper (at 0 2 270) (layer F.SilkS) (effects (font (size 1 1) (thickness 0.15))  ))
 
         
-        (pad 1 smd rect (at -0.50038 0 270) (size 0.635 1.143) (layers F.Cu F.Paste F.Mask)
-        (clearance 0.1905) (net 44 "Bplus"))
-        (pad 2 smd rect (at 0.50038 0 270) (size 0.635 1.143) (layers F.Cu F.Paste F.Mask)
-        (clearance 0.1905) (net 32 "RAW")))
+        (fp_line (start 1.4 1) (end -1.4 1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start 1.4 -1) (end 1.4 1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.4 1) (end -1.4 -1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.4 -1) (end 1.4 -1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.65 -1.25) (end 1.65 -1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end -1.65 1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end 1.65 -1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start -1.65 -1.25) (end -1.65 1.25) (layer "F.CrtYd") (width 0.05))
+
+        (pad "1" smd custom (at -0.725 0 270) (size 0.3 0.3) (layers "F.Cu" "F.Mask")
+          (net 44 "Bplus") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 1 0)
+                (xy 0.5 0.75)
+                (xy -0.5 0.75)
+                (xy -0.5 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+        (pad "2" smd custom (at 0.725 0 270) (size 0.3 0.3) (layers "F.Cu" "F.Mask")
+          (net 32 "RAW") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 0.5 0.75)
+                (xy -0.65 0.75)
+                (xy -0.15 0)
+                (xy -0.65 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+      )
+
     
 
         
@@ -5802,6 +5893,7 @@
             (at 275.37514519999996 141.0816562 90)
       (descr "Ultraminiature Surface Mount Slide Switch, right-angle, https://www.ckswitches.com/media/1424/pcm.pdf")
       (fp_text reference "_3" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (property "LCSC Part #" "C221841" )
       (attr smd)
       (fp_line (start -4.4 2.1) (end -4.4 -2.45) (layer F.CrtYd) (width 0.05))
       (fp_line (start -1.65 2.1) (end -4.4 2.1) (layer F.CrtYd) (width 0.05))
@@ -5978,7 +6070,7 @@
 
     
     (descr "Porcupine Logo")
-
+    (attr exclude_from_pos_files exclude_from_bom)
     (fp_text reference "LOGO_F" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
     (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
@@ -6256,7 +6348,7 @@
 
     
     (descr "Porcupine Logo")
-
+    (attr exclude_from_pos_files exclude_from_bom)
     (fp_text reference "LOGO_B" (at 0 0) (layer B.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
     (fp_text value "" (at 0 0) (layer B.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
@@ -6694,6 +6786,7 @@
 
         
         (descr "Board side indicator")
+        (attr exclude_from_pos_files exclude_from_bom)
 
         (fp_text reference "Side_F" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
@@ -6725,6 +6818,7 @@
 
         
         (descr "Board side indicator")
+        (attr exclude_from_pos_files exclude_from_bom)
 
         (fp_text reference "Side_B" (at 0 0) (layer B.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         (fp_text value "" (at 0 0) (layer B.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
@@ -6810,7 +6904,7 @@
         (via (at 193.54380389999997 105.12857280000001) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 33) )
     
 
-        (via (at 215.24402400000002 96.26412570000001) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 33) )
+        (via (at 214.24782930000003 96.3512814) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 33) )
     
 
         (via (at 241.4751452 105.0816562) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 33) )
@@ -6825,7 +6919,7 @@
         (via (at 249.4751452 139.5816562) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 33) )
     
 
-        (via (at 254.9751452 139.0816562) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 33) )
+        (via (at 253.9751452 139.0816562) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 33) )
     
 
         (via (at 258.9751452 143.5816562) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 34) )
@@ -6852,6 +6946,12 @@
         (via (at 172.2629942 157.8332042) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 5) )
     
 
+        (via (at 212.25543990000003 96.5255929) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 5) )
+    
+
+        (via (at 209.61547880000003 100.7718389) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 5) )
+    
+
         (via (at 170.6549498 152.5735281) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 4) )
     
 
@@ -6867,7 +6967,7 @@
         (via (at 182.68117579999998 112.62879360000001) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 10) )
     
 
-        (via (at 186.58825979999997 134.786968) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 9) )
+        (via (at 186.58825979999997 134.786968) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 17) )
     
 
         (via (at 185.63319479999998 129.3705254) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 8) )
@@ -6957,13 +7057,13 @@
         (via (at 225.58858349999997 149.3069233) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 24) )
     
 
-        (via (at 252.06981629999999 149.77824829999997) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 21) )
+        (via (at 252.06981629999999 149.77824829999997) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 9) )
     
 
         (via (at 149.1228849 147.1310857) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 2) )
     
 
-        (via (at 147.5148405 141.8714096) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 45) )
+        (via (at 147.5148405 141.8714096) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 1) )
     
 
         (via (at 144.1525659 130.8739048) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (free) (net 2) )
@@ -7005,7 +7105,7 @@
         (module "Through Hole" (layer F.Cu) (tedit 591DBFB0)
         (at 260.4751452 133.0816562 0)
         
-        (fp_text reference _79 (at 0 1.4) (layer F.SilkS) hide (effects (font (size 1 1) (thickness 0.15))))
+        (fp_text reference _81 (at 0 1.4) (layer F.SilkS) hide (effects (font (size 1 1) (thickness 0.15))))
         (fp_text value hole (at 0 -1.4) (layer F.Fab) hide (effects (font (size 1 1) (thickness 0.15))))
         (pad 1 thru_hole circle (at 0 0 0) (size 4.4 4.4) (drill 2.2) (layers *.Cu *.Mask))
         )
@@ -7014,7 +7114,7 @@
         (module "Through Hole" (layer F.Cu) (tedit 591DBFB0)
         (at 270.9751452 133.0816562 0)
         
-        (fp_text reference _80 (at 0 1.4) (layer F.SilkS) hide (effects (font (size 1 1) (thickness 0.15))))
+        (fp_text reference _82 (at 0 1.4) (layer F.SilkS) hide (effects (font (size 1 1) (thickness 0.15))))
         (fp_text value hole (at 0 -1.4) (layer F.Fab) hide (effects (font (size 1 1) (thickness 0.15))))
         (pad 1 thru_hole circle (at 0 0 0) (size 4.4 4.4) (drill 2.2) (layers *.Cu *.Mask))
         )
