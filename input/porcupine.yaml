@@ -648,44 +648,22 @@ pcbs:
         what: text
         adjust:
           ref:
-            - thumbfan_near_thumb
-          shift: [-26, -14]
-          rotate: 9
+            - matrix_inner_bottom
+          shift: [-49, -24]
+          rotate: 0
         params:
-          layer: F.Cu
+          layer: F.SilkS
           text: "porcupine v0.1\\nby AnarioN"
           justify: left
       info_r:
         what: text
         adjust:
           ref:
-            - thumbfan_near_thumb
-          shift: [-16, -12.5]
-          rotate: 9
+            - matrix_inner_bottom
+          shift: [-39, -24]
+          rotate: 0
         params:
-          layer: B.Cu
-          text: "porcupine v0.1\\nby AnarioN"
-          justify: left mirror
-      info_l_mask:
-        what: text
-        adjust:
-          ref:
-            - thumbfan_near_thumb
-          shift: [-26, -14]
-          rotate: 9
-        params:
-          layer: F.Mask
-          text: "porcupine v0.1\\nby AnarioN"
-          justify: left
-      info_r_mask:
-        what: text
-        adjust:
-          ref:
-            - thumbfan_near_thumb
-          shift: [-16, -12.5]
-          rotate: 9
-        params:
-          layer: B.Mask
+          layer: B.SilkS
           text: "porcupine v0.1\\nby AnarioN"
           justify: left mirror
       tenting_puck:
@@ -714,21 +692,21 @@ pcbs:
         params:
           side: B
       porcupine_l:
-        what: porcupine
+        what: porcupine_new
         adjust:
           ref:
-            - thumbfan_near_thumb
-          shift: [-22, -4]
-          rotate: 9
+            - matrix_index_bottom
+          shift: [-22, -20]
+          rotate: 0
         params:
           side: F
       porcupine_r:
-        what: porcupine
+        what: porcupine_new
         adjust:
           ref:
-            - thumbfan_near_thumb
-          shift: [-22, -4]
-          rotate: 9
+            - matrix_index_bottom
+          shift: [-22, -20]
+          rotate: 0
         params:
           side: B
       mcu_solder_l:

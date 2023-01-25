@@ -619,65 +619,43 @@ pcbs:
           r1: RST
           r2: GND
       porcupine_l:
-        what: porcupine
+        what: porcupine_new
         adjust:
           ref:
-            - thumbfan_inner_thumb
-          shift: [-1.2 kx, 0.2ky]
-          rotate: 5
+            - matrix_index_bottom
+          shift: [-22, -20]
+          rotate: 0
         params:
           side: F
       porcupine_r:
-        what: porcupine
+        what: porcupine_new
         adjust:
           ref:
-            - thumbfan_inner_thumb
-          shift: [-1.2 kx, 0.2ky]
-          rotate: 5
+            - matrix_index_bottom
+          shift: [-22, -20]
+          rotate: 0
         params:
           side: B
       info_l:
         what: text
         adjust:
           ref:
-            - thumbfan_inner_thumb
-          shift: [-1.4kx, -0.35kx]
-          rotate: 5
+            - matrix_inner_bottom
+          shift: [-49, -24]
+          rotate: 0
         params:
-          layer: F.Cu
-          text: "porcupine v0.0.1\\nby AnarioN"
-          justify: left
-      info_l_mask:
-        what: text
-        adjust:
-          ref:
-            - thumbfan_inner_thumb
-          shift: [-1.4kx, -0.35kx]
-          rotate: 5
-        params:
-          layer: F.Mask
-          text: "porcupine v0.0.1\\nby AnarioN"
+          layer: F.SilkS
+          text: "porcupine v0.1\\nby AnarioN"
           justify: left
       info_r:
         what: text
         adjust:
           ref:
-            - thumbfan_inner_thumb
-          shift: [-0.78kx, -0.29kx]
-          rotate: 5
+            - matrix_inner_bottom
+          shift: [-39, -24]
+          rotate: 0
         params:
-          layer: B.Cu
-          text: "porcupine v0.1\\nby AnarioN"
-          justify: left mirror
-      info_r_mask:
-        what: text
-        adjust:
-          ref:
-            - thumbfan_inner_thumb
-          shift: [-0.78kx, -0.29kx]
-          rotate: 5
-        params:
-          layer: B.Mask
+          layer: B.SilkS
           text: "porcupine v0.1\\nby AnarioN"
           justify: left mirror
       tenting_puck:

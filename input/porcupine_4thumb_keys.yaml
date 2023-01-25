@@ -622,44 +622,22 @@ pcbs:
         what: text
         adjust:
           ref:
-            - thumbfan_inner_thumb
-          shift: [-1.35kx, -0.35kx]
-          rotate: 9
+            - matrix_inner_bottom
+          shift: [-49, -24]
+          rotate: 0
         params:
-          layer: F.Cu
+          layer: F.SilkS
           text: "porcupine v0.1\\nby AnarioN"
           justify: left
       info_r:
         what: text
         adjust:
           ref:
-            - thumbfan_inner_thumb
-          shift: [-0.75kx, -0.25kx]
-          rotate: 9
+            - matrix_inner_bottom
+          shift: [-39, -24]
+          rotate: 0
         params:
-          layer: B.Cu
-          text: "porcupine v0.1\\nby AnarioN"
-          justify: left mirror
-      info_l_mask:
-        what: text
-        adjust:
-          ref:
-            - thumbfan_inner_thumb
-          shift: [-1.35kx, -0.35kx]
-          rotate: 9
-        params:
-          layer: F.Mask
-          text: "porcupine v0.1\\nby AnarioN"
-          justify: left
-      info_r_mask:
-        what: text
-        adjust:
-          ref:
-            - thumbfan_inner_thumb
-          shift: [-0.75kx, -0.25kx]
-          rotate: 9
-        params:
-          layer: B.Mask
+          layer: B.SilkS
           text: "porcupine v0.1\\nby AnarioN"
           justify: left mirror
       tenting_puck:
@@ -688,21 +666,21 @@ pcbs:
         params:
           side: B
       porcupine_l:
-        what: porcupine
+        what: porcupine_new
         adjust:
           ref:
-            - thumbfan_inner_thumb
-          shift: [-1.2 kx, 0.2ky]
-          rotate: 9
+            - matrix_index_bottom
+          shift: [-22, -20]
+          rotate: 0
         params:
           side: F
       porcupine_r:
-        what: porcupine
+        what: porcupine_new
         adjust:
           ref:
-            - thumbfan_inner_thumb
-          shift: [-1.2 kx, 0.2ky]
-          rotate: 9
+            - matrix_index_bottom
+          shift: [-22, -20]
+          rotate: 0
         params:
           side: B
       mcu_solder_l:
