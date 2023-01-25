@@ -22,11 +22,10 @@ points:
             splay: 17
             column_net: P16
           rows:
-            top.skip: true
-            top.bind: 0
+            bottom.skip: true
+            bottom.bind: 0
         pinky:
           key:
-            stagger: -ky
             spread: 19
             splay: 0
             origin: [0,-ky]
@@ -55,7 +54,6 @@ points:
             splay: -5
             origin: [0,-ky]
             column_net: P18
-
             shift: [0.2, 0]
           rows:
             top:
@@ -935,13 +933,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: ring_home
-      via_P15_4:
+      via_P19_3:
         what: simple_via
         adjust:
           ref: matrix_ring_bottom
           shift: [0,3]
         params:
-          net: P15
+          net: P19
       via_ring_bottom:
         what: simple_via
         adjust:
@@ -1131,7 +1129,7 @@ pcbs:
           shift: [0,12]
         params:
           net: P15
-      via_19_1:
+      via_P19_4:
         what: simple_via
         adjust:
           ref: thumbfan_inner_thumb
@@ -1145,27 +1143,20 @@ pcbs:
           shift: [0,8.5]
         params:
           net: inner_thumb
-      via_19_3:
-        what: simple_via
-        adjust:
-          ref: thumbfan_near_thumb
-          shift: [4,13]
-        params:
-          net: P19
       via_P16_1:
         what: simple_via
         adjust:
-          ref: matrix_outer_bottom
+          ref: matrix_outer_top
           shift: [0,3]
         params:
           net: P16
       via_outer_bottom:
         what: simple_via
         adjust:
-          ref: matrix_outer_bottom
+          ref: matrix_outer_top
           shift: [0,8.5]
         params:
-          net: outer_bottom
+          net: outer_top
       via_P16_2:
         what: simple_via
         adjust:
@@ -1185,13 +1176,13 @@ pcbs:
         params:
           net: GND
           side: F
-          points: [[310, 202.5], [127.5, 202.5], [127.5, 70], [310, 70]]
+          points: [[310, 202], [103, 202], [103, 50], [310, 50]]
       zone_r:
         what: zone
         params:
           net: GND
           side: B
-          points: [[310, 202.5], [127.5, 202.5], [127.5, 70], [310, 70]]
+          points: [[310, 202], [103, 202], [103, 50], [310, 50]]
       hole_1:
         what: through_hole
         adjust:
