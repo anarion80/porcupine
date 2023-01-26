@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Generate unrouted PCBs
         run: npm run gen_pcb
       - name: Save the PCBs
