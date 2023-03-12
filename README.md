@@ -42,6 +42,8 @@ Porcupine 4 thumb keys
 ![Porcupine Front](images/porcupine_4thumb_keys-front.png) | ![Porcupine Back](images/porcupine_4thumb_keys-back.png)
 Porcupine 3x6
 ![Porcupine Front](images/porcupine_6x3-front.png) | ![Porcupine Back](images/porcupine_6x3-back.png)
+Prototype boards (generated using Ergogen v3 still):
+![Porcupine Front](images/porcupine_prototype_front.jpg) | ![Porcupine Back](images/porcupine_prototype_back.jpg)
 
 ## :boom::exclamation: This is currently in development phase so use at your own risk
 
