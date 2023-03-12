@@ -78,7 +78,9 @@ they should give you enough of info to build Porcupine as well. Just remember th
 
 ## :keyboard: Firmware/keymaps
 
-QMK/ZMK keymaps will be here once the proptotype is built.
+[QMK firmware and keymaps](https://github.com/anarion80/porcupine_qmk) - :exclamation: still in development, not tested with actual board - just some default keymaps for all variants to get it to compile successfully.
+
+ZMK firmware and keymaps will be here once the proptotype is built.
 
 ## :pencil2: How to use/update/modify
 
