@@ -44,8 +44,8 @@ Porcupine 3x6
 ![Porcupine Front](images/porcupine_6x3-front.png) | ![Porcupine Back](images/porcupine_6x3-back.png)
 Prototype boards (generated using Ergogen v3 still):
 ![Porcupine Front](images/porcupine_prototype_front.jpg) | ![Porcupine Back](images/porcupine_prototype_back.jpg)
-
-## :boom::exclamation: This is currently in development phase so use at your own risk
+Porcupine working final prototype
+![Porcupine working final prototype](images/porcupine_prototype_final.jpg)
 
 ## :receipt: Components list
 
@@ -71,16 +71,16 @@ To build and use a Porcupine you will need:
 Manually-routed PCBs for each variant are included in the `output` folder, so if they are fine for you, you can just take them directly, have them produced and then build.
 
 I don't have a dedicated build guide. Please refer to [@tzcl rae-dux build guide](https://www.tzcl.me/blog/rae-dux) or [Kyek's video](https://www.youtube.com/watch?v=fBPu7AyDtkM) -
-they should give you enough of info to build Porcupine as well. Just remember that Porcupine is reversible, so you need to solder the jumpers under MCU board and then place them facing up on both sides :exclamation:
+they should give you enough of info to build Porcupine as well. Just remember that Porcupine is reversible, so you need to solder the jumpers under MCU board and then place them facing up (to be clear: the side with MCU visible) on both sides :exclamation:
 
 * If you're going for a wired version, the on/off switch is optional, but you need to solder the Jumper.
 * If you're going for a wireless version, you can skip soldering TRRS jacks.
 
 ## :keyboard: Firmware/keymaps
 
-[QMK firmware and keymaps](https://github.com/anarion80/porcupine_qmk) - :exclamation: still in development, not tested with actual board - just some default keymaps for all variants to get it to compile successfully.
+[QMK firmware and keymaps](https://github.com/anarion80/porcupine_qmk) - confirmed working with the prototype boards! :tada:
 
-ZMK firmware and keymaps will be here once the proptotype is built.
+ZMK firmware and keymaps will be here once the proptotype is built and firmware configured/created.S
 
 ## :pencil2: How to use/update/modify
 
