@@ -192,7 +192,7 @@ outlines:
         ref:
           - matrix_inner_top
         shift: [1.2kx, -1.8ky]
-      size: [23, 75.5]
+      size: [24, 75.5]
       corner: px
   controller_plate:
     main:
@@ -200,7 +200,7 @@ outlines:
       adjust:
         ref:
           - matrix_inner_top
-        shift: [21.5, -14]
+        shift: [22.5, -16]
       size: [20, 39]
       corner: px
   controller_plate_holes:
@@ -208,13 +208,13 @@ outlines:
       what: circle
       adjust:
         ref: matrix_inner_bottom
-        shift: [16, 4]
+        shift: [17, 2]
       radius: 1.5
     right:
       what: circle
       adjust:
         ref: matrix_inner_bottom
-        shift: [26.5, 4]
+        shift: [27.5, 2]
       radius: 1.5
   # circle:
   #   main:
@@ -497,7 +497,7 @@ pcbs:
         adjust:
           ref:
             - matrix_inner_top
-          shift: [21, -11]
+          shift: [21, -13]
           rotate: 270
       # Remove this if you'd rather pay more to not have the order number printed at all
       jlc_order_number:
@@ -513,8 +513,8 @@ pcbs:
         what: bat2p0
         adjust:
           ref: matrix_inner_bottom
-          shift: [13.5, -3]
-          rotate: 0
+          shift: [16.5, -8]
+          rotate: 90
         params:
           front: true
           back: true
@@ -525,8 +525,8 @@ pcbs:
         adjust:
           ref:
             - matrix_inner_bottom
-          shift: [18, -1.7]
-          rotate: 0
+          shift: [15, -5]
+          rotate: 90
         params:
           front: true
           back: true
@@ -540,8 +540,8 @@ pcbs:
         adjust:
           ref:
             - matrix_inner_bottom
-          shift: [18, -4.3]
-          rotate: 0
+          shift: [18, -5]
+          rotate: 90
         params:
           front: true
           back: true
@@ -554,7 +554,7 @@ pcbs:
         what: trrs
         adjust:
           ref: matrix_inner_home
-          shift: [33, -30]
+          shift: [33.5, -23]
           rotate: 270
         params:
           reverse: true
@@ -567,9 +567,9 @@ pcbs:
         what: jumper
         adjust:
           ref:
-            - matrix_inner_bottom
-          shift: [25, -6]
-          rotate: 270
+            - matrix_inner_top
+          shift: [29, 5]
+          rotate: 0
         params:
           side: B
           from: Bplus
@@ -578,9 +578,9 @@ pcbs:
         what: jumper
         adjust:
           ref:
-            - matrix_inner_bottom
-          shift: [25, -6]
-          rotate: 270
+            - matrix_inner_top
+          shift: [29, 5]
+          rotate: 0
         params:
           side: F
           from: Bplus
@@ -588,9 +588,9 @@ pcbs:
       pcm12:
         what: pcm12
         adjust:
-          ref: matrix_inner_bottom
-          shift: [30.9, -4]
-          rotate: 90
+          ref: matrix_inner_top
+          shift: [19, 5]
+          rotate: 180
         params:
           reverse: true
           from: RAW
@@ -599,7 +599,7 @@ pcbs:
         what: b3u1000p
         adjust:
           ref: matrix_inner_bottom
-          shift: [16, -9]
+          shift: [29, -14]
           rotate: 0
         params:
           reverse: true
@@ -1152,7 +1152,7 @@ pcbs:
         what: through_hole
         adjust:
           ref: matrix_inner_bottom
-          shift: [16, 4]
+          shift: [17, 2]
         params:
           size: 4.4
           drill: 2.2
@@ -1160,7 +1160,7 @@ pcbs:
         what: through_hole
         adjust:
           ref: matrix_inner_bottom
-          shift: [26.5, 4]
+          shift: [27.5, 2]
         params:
           size: 4.4
           drill: 2.2
