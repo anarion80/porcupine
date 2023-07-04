@@ -1,5 +1,5 @@
 meta:
-  version: "v0.0.1"
+  version: "v2.0.1"
   author: "Anarion"
 units:
   kx: cx
@@ -19,16 +19,10 @@ points:
       columns:
         outer:
           key:
-            splay: 17
             column_net: P16
           rows:
-            bottom.skip: true
-            bottom.bind: 0
         pinky:
           key:
-            spread: 19
-            splay: 0
-            origin: [0,-ky]
             column_net: P20
           rows:
             top:
@@ -37,10 +31,7 @@ points:
               bind: [0, 5, 0.1, 0.1]
         ring:
           key:
-            spread: 18
-            stagger: 18
-            splay: -7
-            origin: [0,-ky]
+            stagger: ky/4
             column_net: P19
           rows:
             top:
@@ -49,28 +40,20 @@ points:
               bind: [0.1, 0.5 kx, 0.1, 0.1]
         middle:
           key:
-            spread: 18
             stagger: ky/4
-            splay: -5
-            origin: [0,-ky]
             column_net: P18
-            shift: [0.2, 0]
           rows:
             top:
               bind: [0.1, 0.1, 0.5 kx, 0.1]
         index:
           key:
-            spread: 18
-            stagger: -ky/3
-            splay: -5
-            origin: [0,-ky]
+            stagger: -ky/4
             column_net: P15
           rows:
             top:
               bind: [0.1, 0.1, 0.5 kx, 0.5 kx]
         inner:
           key:
-            spread: 19
             stagger: -ky/6
             column_net: P14
       rows:
@@ -97,7 +80,7 @@ points:
         inner:
           key:
             spread: 0
-            splay: -5
+            splay: -3
             origin: [1 kx, -2.5 ky]
             column_net: P19
           rows:
@@ -108,7 +91,7 @@ points:
           key:
             column_net: P18
             spread: kx
-            splay: -10
+            splay: -6
             origin: [-0.5 kx, -0.8 ky]
           rows:
             thumb:
@@ -117,7 +100,7 @@ points:
         home:
           key:
             spread: kx
-            splay: -15
+            splay: -9
             rotate: 90
             origin: [-0.5 kx, -0.7 ky]
             column_net: P15
@@ -130,7 +113,7 @@ points:
         far:
           key:
             spread: kx
-            splay: -15
+            splay: -6
             rotate: 90
             origin: [-0.5 kx, -0.9 ky]
             column_net: P14
@@ -177,10 +160,12 @@ outlines:
           shift: [0.75 kx + 0.5px, -0.55 ky - 0.5 py]
         - ref: thumbfan_far_thumb
           shift: [-0.75 kx - 0.5px, -0.55 ky - 0.5 py]
-        - ref: thumbfan_near_thumb
-          shift: [-0.5 kx + 0.5 px, -0.9 ky - 0.5 py]
+        - ref: thumbfan_inner_thumb
+          shift: [-0.5 kx - 1 py, -0.5ky - 1 py]
         - ref: matrix_pinky_bottom
-          shift: [0.5 kx - 0.5 py, -0.5 ky - 0.5 py]
+          shift: [1.5 kx + 0.5px,-0.5ky - 1.5]
+        - ref: matrix_pinky_bottom
+          shift: [0.5 kx + 0.5px,-0.5ky - 1.5]
         - ref: matrix_pinky_home
         - ref: matrix_inner_home
   thumbfan_glue_top_plate:
@@ -192,10 +177,12 @@ outlines:
           shift: [0.75 kx + 0.5px, -0.55 ky - 0.5 py]
         - ref: thumbfan_far_thumb
           shift: [-0.75 kx - 0.5px, -0.55 ky - 0.5 py]
-        - ref: thumbfan_near_thumb
-          shift: [-0.5 kx + 0.5 px, -0.9 ky - 0.5 py]
+        - ref: thumbfan_inner_thumb
+          shift: [-0.5 kx - 1 py, -0.5ky - 1 py]
         - ref: matrix_pinky_bottom
-          shift: [0.5 kx - 0.5 py, -0.5 ky - 0.5 py]
+          shift: [1.5 kx + 0.5px,-0.5ky - 1.5]
+        - ref: matrix_pinky_bottom
+          shift: [0.5 kx + 0.5px,-0.5ky - 1.5]
         - ref: matrix_pinky_home
         - ref: matrix_inner_home
   controller_area:
@@ -229,14 +216,14 @@ outlines:
         ref: matrix_inner_bottom
         shift: [26.5, 4]
       radius: 1.5
-  circle:
-    main:
-      what: circle
-      adjust:
-        ref:
-          - matrix_index_bottom
-        shift: [-24, -137]
-      radius: 105
+  # circle:
+  #   main:
+  #     what: circle
+  #     adjust:
+  #       ref:
+  #         - matrix_index_bottom
+  #       shift: [-24, -137]
+  #     radius: 105
   switches:
     - what: rectangle
       where: true
@@ -274,10 +261,10 @@ outlines:
     main:
       what: outline
       name: keywell
-    circle:
-      what: outline
-      name: circle
-      operation: subtract
+    # circle:
+    #   what: outline
+    #   name: circle
+    #   operation: subtract
     controller:
       what: outline
       name: controller_area
@@ -357,10 +344,10 @@ outlines:
       what: outline
       name: keywell_top_plate
       #fillet: 1
-    circle:
-      what: outline
-      name: circle
-      operation: subtract
+    # circle:
+    #   what: outline
+    #   name: circle
+    #   operation: subtract
   plate:
     main:
       what: outline
@@ -379,10 +366,10 @@ outlines:
     main:
       what: outline
       name: keywell
-    circle:
-      what: outline
-      name: circle
-      operation: subtract
+    # circle:
+    #   what: outline
+    #   name: circle
+    #   operation: subtract
     controller:
       what: outline
       name: controller_area
@@ -663,10 +650,10 @@ pcbs:
         adjust:
           ref:
             - matrix_index_home
-          shift: [-0.6 kx, -0.3kx]
+          shift: [-0.53 kx, -0.27kx]
         params:
           reverseSilks: false
-          eastHole: false
+          # eastHole: false
       side_l:
         what: sideindicator
         adjust:
