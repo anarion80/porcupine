@@ -609,8 +609,8 @@ pcbs:
         what: porcupine_new
         adjust:
           ref:
-            - matrix_index_bottom
-          shift: [-22, -20]
+            - matrix_middle_bottom
+          shift: [0, -ky]
           rotate: 0
         params:
           side: F
@@ -618,8 +618,8 @@ pcbs:
         what: porcupine_new
         adjust:
           ref:
-            - matrix_index_bottom
-          shift: [-22, -20]
+            - matrix_middle_bottom
+          shift: [0, -ky]
           rotate: 0
         params:
           side: B
@@ -627,23 +627,23 @@ pcbs:
         what: text
         adjust:
           ref:
-            - matrix_inner_bottom
-          shift: [-49, -24]
-          rotate: 0
+            - thumbfan_inner_thumb
+          shift: [-1.2kx, 0.3ky]
+          rotate: -50
         params:
           layer: F.SilkS
-          text: "porcupine v0.1\\nby AnarioN"
+          text: "porcupine v2.0\\nby AnarioN"
           justify: left
       info_r:
         what: text
         adjust:
           ref:
-            - matrix_inner_bottom
-          shift: [-39, -24]
-          rotate: 0
+            - thumbfan_inner_thumb
+          shift: [-0.8kx, -0.2ky]
+          rotate: -50
         params:
           layer: B.SilkS
-          text: "porcupine v0.1\\nby AnarioN"
+          text: "porcupine v2.0\\nby AnarioN"
           justify: left mirror
       tenting_puck:
         what: tentingpuck
@@ -658,16 +658,16 @@ pcbs:
         what: sideindicator
         adjust:
           ref:
-            - matrix_index_bottom
-          shift: [-2.1 kx, -1.475kx]
+            - matrix_ring_bottom
+          shift: [-0.1kx, -0.6ky]
         params:
           side: F
       side_r:
         what: sideindicator
         adjust:
           ref:
-            - matrix_index_bottom
-          shift: [-2.1 kx, -1.7kx]
+            - matrix_ring_bottom
+          shift: [-0.1kx, -0.85ky]
         params:
           side: B
       mcu_solder_l:
