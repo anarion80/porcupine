@@ -610,7 +610,7 @@ pcbs:
         adjust:
           ref:
             - matrix_middle_bottom
-          shift: [0, -ky]
+          shift: [-0.5kx, -0.65ky]
           rotate: 0
         params:
           side: F
@@ -619,7 +619,7 @@ pcbs:
         adjust:
           ref:
             - matrix_middle_bottom
-          shift: [0, -ky]
+          shift: [-0.5kx, -0.65ky]
           rotate: 0
         params:
           side: B
