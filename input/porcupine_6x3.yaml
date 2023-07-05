@@ -333,14 +333,14 @@ outlines:
     top_left:
       what: circle
       adjust:
-        - ref: matrix_ring_home
-          shift: [-0.6 kx, -0.1 ky]
+        - ref: matrix_outer_top
+          shift: [0.75 kx, 0]
       radius: 1.05
     bottom_left:
       what: circle
       adjust:
-        - ref: matrix_pinky_bottom
-          shift: [0.6 kx, 0]
+        - ref: matrix_outer_bottom
+          shift: [0.75 kx, 0]
       radius: 1.05
     top_right:
       what: circle
