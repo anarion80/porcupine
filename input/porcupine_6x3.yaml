@@ -21,56 +21,107 @@ points:
           key:
             column_net: P16
           rows:
+            top:
+              tags:
+                high15: true
+            home:
+              tags:
+                high15: true
+            bottom:
+              tags:
+                high15: true
         pinky:
           key:
+            spread: kx/2 + 1.5kx/2 + 1
             column_net: P20
           rows:
             top:
-              bind: [0.5, 5, 0.1, 0.1]
+              tags:
+                  high1: true
+              bind: [0.5, 5, 0.1, 5]
             home:
-              bind: [0, 5, 0.1, 0.1]
+              tags:
+                  high1: true
+              bind: [0, 5, 0.1, 5]
+            bottom:
+              tags:
+                  high1: true
+              bind: [0, 5, 0.5, 5]
         ring:
           key:
             stagger: ky/4
             column_net: P19
           rows:
             top:
+              tags:
+                  high1: true
               bind: [0.1, 0.5 kx, 0.1, 0.1]
             home:
+              tags:
+                  high1: true
               bind: [0.1, 0.5 kx, 0.1, 0.1]
+            bottom:
+              tags:
+                  high1: true
         middle:
           key:
             stagger: ky/4
             column_net: P18
           rows:
             top:
+              tags:
+                  high1: true
               bind: [0.1, 0.1, 0.5 kx, 0.1]
+            home:
+              tags:
+                high1: true
+            bottom:
+              tags:
+                high1: true
         index:
           key:
             stagger: -ky/4
             column_net: P15
           rows:
             top:
+              tags:
+                  high1: true
               bind: [0.1, 0.1, 0.5 kx, 0.5 kx]
+            home:
+              tags:
+                  high1: true
+            bottom:
+              tags:
+                  high1: true
         inner:
           key:
             stagger: -ky/6
             column_net: P14
+          rows:
+            top:
+              tags:
+                  high1: true
+            home:
+              tags:
+                  high1: true
+            bottom:
+              tags:
+                  high1: true
       rows:
         bottom:
           row_net: P6
           tags:
-            high1: false
+            # high1: false
           bind: 0.5
         home:
           row_net: P5
           tags:
-            high1: false
+            # high1: false
           bind: 0.5
         top:
           row_net: P4
           tags:
-            high1: false
+            # high1: false
           bind: 0.5
     thumbfan:
       anchor:
@@ -108,7 +159,7 @@ points:
             thumb:
               bind: [3, -2, 4, 0.1]
               tags:
-                high15: true
+                thumb_high15: true
             #rotate: 90
         far:
           key:
@@ -121,7 +172,7 @@ points:
             thumb:
               bind: [4, -2, 0.1, 0.1]
               tags:
-                high15: true
+                thumb_high15: true
       rows:
         thumb:
           row_net: P7
@@ -137,9 +188,9 @@ outlines:
       bound: true
     - what: rectangle
       where: "high15"
-      size: [1.5kx + px, 1ky + py]
+      size: [1.5kx + px, ky + py]
       corner: px
-      bound: false
+      bound: true
   raw_top_plate:
     - what: rectangle
       where: "high1"
@@ -148,6 +199,11 @@ outlines:
       corner: px
     - what: rectangle
       where: "high15"
+      size: [1.5kx + px, ky + py]
+      corner: px
+      bound: true
+    - what: rectangle
+      where: "thumb_high15"
       size: [kx + px, ky + py]
       corner: px
       bound: true
