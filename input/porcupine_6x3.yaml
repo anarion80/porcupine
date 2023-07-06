@@ -334,13 +334,25 @@ outlines:
       what: circle
       adjust:
         - ref: matrix_outer_top
-          shift: [0.75 kx, 0]
+          shift: [0.775 kx, 0]
       radius: 1.05
     bottom_left:
       what: circle
       adjust:
         - ref: matrix_outer_bottom
-          shift: [0.75 kx, 0]
+          shift: [0.775 kx, 0]
+      radius: 1.05
+    top_left_inner:
+      what: circle
+      adjust:
+        - ref: matrix_pinky_top
+          shift: [0.525 kx, -0.1ky]
+      radius: 1.05
+    bottom_left_inner:
+      what: circle
+      adjust:
+        - ref: matrix_pinky_bottom
+          shift: [0.525 kx, -0.1ky]
       radius: 1.05
     top_right:
       what: circle
@@ -365,6 +377,10 @@ outlines:
     top_left:
       radius: 2.05
     bottom_left:
+      radius: 2.05
+    top_left_inner:
+      radius: 2.05
+    bottom_left_inner:
       radius: 2.05
     top_right:
       radius: 2.05
@@ -661,24 +677,24 @@ pcbs:
           reverse: true
           r1: RST
           r2: GND
-      porcupine_l:
-        what: porcupine_new
-        adjust:
-          ref:
-            - matrix_middle_bottom
-          shift: [-0.5kx, -0.65ky]
-          rotate: 0
-        params:
-          side: F
-      porcupine_r:
-        what: porcupine_new
-        adjust:
-          ref:
-            - matrix_middle_bottom
-          shift: [-0.5kx, -0.65ky]
-          rotate: 0
-        params:
-          side: B
+      # porcupine_l:
+      #   what: porcupine_new
+      #   adjust:
+      #     ref:
+      #       - matrix_middle_bottom
+      #     shift: [-0.5kx, -0.65ky]
+      #     rotate: 0
+      #   params:
+      #     side: F
+      # porcupine_r:
+      #   what: porcupine_new
+      #   adjust:
+      #     ref:
+      #       - matrix_middle_bottom
+      #     shift: [-0.5kx, -0.65ky]
+      #     rotate: 0
+      #   params:
+      #     side: B
       info_l:
         what: text
         adjust:
@@ -772,27 +788,27 @@ pcbs:
           text: "and place MCU facing UP!"
           style: italic
           justify: left mirror
-      via_RAW_1:
-        what: simple_via
-        adjust:
-          ref: matrix_inner_bottom
-          shift: [27.5,-6.3]
-        params:
-          net: RAW
-      via_Bplus_1:
-        what: simple_via
-        adjust:
-          ref: matrix_inner_bottom
-          shift: [26,-4]
-        params:
-          net: Bplus
-      via_GND_1:
-        what: simple_via
-        adjust:
-          ref: matrix_inner_bottom
-          shift: [21,-4]
-        params:
-          net: GND
+      # via_RAW_1:
+      #   what: simple_via
+      #   adjust:
+      #     ref: matrix_inner_bottom
+      #     shift: [27.5,-6.3]
+      #   params:
+      #     net: RAW
+      # via_Bplus_1:
+      #   what: simple_via
+      #   adjust:
+      #     ref: matrix_inner_bottom
+      #     shift: [26,-4]
+      #   params:
+      #     net: Bplus
+      # via_GND_1:
+      #   what: simple_via
+      #   adjust:
+      #     ref: matrix_inner_bottom
+      #     shift: [21,-4]
+      #   params:
+      #     net: GND
       via_GND_2:
         what: simple_via
         adjust:
@@ -849,27 +865,27 @@ pcbs:
           shift: [9.5,-2]
         params:
           net: GND
-      via_RST_1:
-        what: simple_via
-        adjust:
-          ref: matrix_inner_bottom
-          shift: [14.5,-6.5]
-        params:
-          net: RST
-      via_RST_2:
-        what: simple_via
-        adjust:
-          ref: matrix_inner_bottom
-          shift: [27,-9]
-        params:
-          net: RST
-      via_Bplus_2:
-        what: simple_via
-        adjust:
-          ref: matrix_inner_bottom
-          shift: [31.5,-4]
-        params:
-          net: Bplus
+      # via_RST_1:
+      #   what: simple_via
+      #   adjust:
+      #     ref: matrix_inner_bottom
+      #     shift: [14.5,-6.5]
+      #   params:
+      #     net: RST
+      # via_RST_2:
+      #   what: simple_via
+      #   adjust:
+      #     ref: matrix_inner_bottom
+      #     shift: [27,-9]
+      #   params:
+      #     net: RST
+      # via_Bplus_2:
+      #   what: simple_via
+      #   adjust:
+      #     ref: matrix_inner_bottom
+      #     shift: [31.5,-4]
+      #   params:
+      #     net: Bplus
       via_p20_1:
         what: simple_via
         adjust:
@@ -1171,7 +1187,7 @@ pcbs:
           shift: [0,3]
         params:
           net: P16
-      via_outer_bottom:
+      via_outer_top:
         what: simple_via
         adjust:
           ref: matrix_outer_top
@@ -1192,6 +1208,20 @@ pcbs:
           shift: [0,8.5]
         params:
           net: outer_home
+      via_P16_3:
+        what: simple_via
+        adjust:
+          ref: matrix_outer_bottom
+          shift: [0,3]
+        params:
+          net: P16
+      via_outer_bottom:
+        what: simple_via
+        adjust:
+          ref: matrix_outer_bottom
+          shift: [0,8.5]
+        params:
+          net: outer_bottom
       zone_l:
         what: zone
         params:
