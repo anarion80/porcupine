@@ -527,11 +527,11 @@ outlines:
     main:
       what: outline
       name: cutout
-    mounting_holes:
-      what: outline
-      # TODO use plated through hole footprints as mounting holes
-      name: mounting_holes
-      operation: subtract
+    # mounting_holes:
+    #   what: outline
+    #   # TODO use plated through hole footprints as mounting holes
+    #   name: mounting_holes
+    #   operation: subtract
 pcbs:
   porcupine_6x3_top_plate:
     outlines:
@@ -1285,7 +1285,7 @@ pcbs:
           net: GND
           side: B
           points: [[310, 202], [103, 202], [103, 50], [310, 50]]
-      hole_1:
+      hole_controller_1:
         what: through_hole
         adjust:
           ref: matrix_inner_bottom
@@ -1293,11 +1293,67 @@ pcbs:
         params:
           size: 4.4
           drill: 2.2
-      hole_2:
+      hole_controller_2:
         what: through_hole
         adjust:
           ref: matrix_inner_bottom
           shift: [27.5, 2]
+        params:
+          size: 4.4
+          drill: 2.2
+      hole_case_top_left:
+        what: through_hole
+        adjust:
+          ref: matrix_outer_top
+          shift: [0.7 kx, -0.5ky]
+        params:
+          size: 4.4
+          drill: 2.2
+      hole_case_bottom_left:
+        what: through_hole
+        adjust:
+          ref: matrix_outer_bottom
+          shift: [0.7 kx, 0.5ky]
+        params:
+          size: 4.4
+          drill: 2.2
+      hole_case_top_left_inner:
+        what: through_hole
+        adjust:
+          ref: matrix_pinky_top
+          shift: [0.525 kx, -0.1ky]
+        params:
+          size: 4.4
+          drill: 2.2
+      hole_case_bottom_left_inner:
+        what: through_hole
+        adjust:
+          ref: matrix_pinky_bottom
+          shift: [0.525 kx, -0.1ky]
+        params:
+          size: 4.4
+          drill: 2.2
+      hole_case_top_right:
+        what: through_hole
+        adjust:
+          ref: matrix_inner_top
+          shift: [-0.53 kx, 0]
+        params:
+          size: 4.4
+          drill: 2.2
+      hole_case_palm:
+        what: through_hole
+        adjust:
+          ref: matrix_index_bottom
+          shift: [0.45kx, -0.75 ky]
+        params:
+          size: 4.4
+          drill: 2.2
+      hole_case_thumb:
+        what: through_hole
+        adjust:
+          ref: thumbfan_far_thumb
+          shift: [0, 0.6 kx]
         params:
           size: 4.4
           drill: 2.2
