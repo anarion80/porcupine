@@ -218,7 +218,7 @@ outlines:
       bound: true
     - what: rectangle
       where: "thumb_high15"
-      size: [1.5kx + px, ky + py]
+      size: [kx + px, ky + py]
       corner: px
       bound: true
   raw_top_plate:
@@ -241,7 +241,7 @@ outlines:
     - what: polygon
       points:
         - ref: matrix_inner_bottom
-          shift: [0.5 kx + 0.5px, 0.5 ky + 0.5 py]
+          shift: [ 0.62kx , -0.7 ky + 0.5 py]
         - ref: thumbfan_far_thumb
           shift: [0.75 kx + 0.5px, -0.55 ky - 0.5 py]
         - ref: thumbfan_far_thumb
@@ -254,6 +254,7 @@ outlines:
           shift: [0.5 kx + 0.5px,-0.5ky - 1.5]
         - ref: matrix_pinky_home
         - ref: matrix_inner_home
+          # shift: [0,-2ky]
   thumbfan_glue_top_plate:
     - what: polygon
       points:
@@ -277,8 +278,8 @@ outlines:
       adjust:
         ref:
           - matrix_inner_top
-        shift: [1.2kx, -1.8ky]
-      size: [24, 75.5]
+        shift: [18, -30]
+      size: [32, 75]
       corner: px
   controller_plate:
     main:
@@ -636,8 +637,8 @@ pcbs:
         what: bat2p0
         adjust:
           ref: matrix_inner_bottom
-          shift: [16.5, -8]
-          rotate: 90
+          shift: [13.5, -4.5]
+          rotate: 0
         params:
           front: true
           back: true
@@ -648,8 +649,8 @@ pcbs:
         adjust:
           ref:
             - matrix_inner_bottom
-          shift: [15, -5]
-          rotate: 90
+          shift: [18, -3]
+          rotate: 0
         params:
           front: true
           back: true
@@ -663,8 +664,8 @@ pcbs:
         adjust:
           ref:
             - matrix_inner_bottom
-          shift: [18, -5]
-          rotate: 90
+          shift: [18, -6]
+          rotate: 0
         params:
           front: true
           back: true
@@ -676,8 +677,8 @@ pcbs:
       trrs:
         what: trrs
         adjust:
-          ref: matrix_inner_home
-          shift: [33.5, -23]
+          ref: matrix_inner_bottom
+          shift: [34, -11]
           rotate: 270
         params:
           reverse: true
@@ -691,7 +692,7 @@ pcbs:
         adjust:
           ref:
             - matrix_inner_top
-          shift: [29, 5]
+          shift: [29, 5.7]
           rotate: 0
         params:
           side: B
@@ -702,7 +703,7 @@ pcbs:
         adjust:
           ref:
             - matrix_inner_top
-          shift: [29, 5]
+          shift: [29, 5.7]
           rotate: 0
         params:
           side: F
@@ -712,7 +713,7 @@ pcbs:
         what: pcm12
         adjust:
           ref: matrix_inner_top
-          shift: [19, 5]
+          shift: [19, 5.3]
           rotate: 180
         params:
           reverse: true
@@ -722,7 +723,7 @@ pcbs:
         what: b3u1000p
         adjust:
           ref: matrix_inner_bottom
-          shift: [29, -14]
+          shift: [30, -4]
           rotate: 0
         params:
           reverse: true
