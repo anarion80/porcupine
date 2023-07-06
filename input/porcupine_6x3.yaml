@@ -191,6 +191,11 @@ outlines:
       size: [1.5kx + px, ky + py]
       corner: px
       bound: true
+    - what: rectangle
+      where: "thumb_high15"
+      size: [1.5kx + px, ky + py]
+      corner: px
+      bound: true
   raw_top_plate:
     - what: rectangle
       where: "high1"
@@ -294,6 +299,12 @@ outlines:
   keycaps15u:
     - what: rectangle
       where: "high15"
+      size: [1.5kx - 0.5, 1ky - 0.5] # Choc keycaps are 17.5 x 16.5
+      bound: false
+      corner: 1
+  keycaps_thumb15u:
+    - what: rectangle
+      where: "thumb_high15"
       size: [1.5kx - 0.5, 1ky - 0.5] # Choc keycaps are 17.5 x 16.5
       bound: false
       corner: 1
@@ -454,6 +465,10 @@ outlines:
       what: outline
       name: keycaps15u
       operation: subtract
+    keycaps_thumb15u:
+      what: outline
+      name: keycaps_thumb15u
+      operation: subtract
     mounting_holes:
       what: outline
       # TODO use footprints with pad + via reinforcement as mounting holes
@@ -470,6 +485,10 @@ outlines:
     keycaps15u:
       what: outline
       name: keycaps15u
+      operation: subtract
+    keycaps_thumb15u:
+      what: outline
+      name: keycaps_thumb15u
       operation: subtract
   pcb_case:
     main:
@@ -527,6 +546,9 @@ pcbs:
         layer: Eco1.User
       keys15u:
         outline: keycaps15u
+        layer: Eco1.User
+      keys_thumb15u:
+        outline: keycaps_thumb15u
         layer: Eco1.User
       switches_l:
         outline: switches
