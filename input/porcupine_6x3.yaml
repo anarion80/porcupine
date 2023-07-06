@@ -750,23 +750,23 @@ pcbs:
         what: text
         adjust:
           ref:
-            - thumbfan_inner_thumb
-          shift: [-1.2kx, 0.3ky]
-          rotate: -50
+            - thumbfan_near_thumb
+          shift: [-0.5kx, -0.8ky]
+          rotate: -7.5
         params:
           layer: F.SilkS
-          text: "porcupine v2.0\\nby AnarioN"
+          text: "porcupine v2.0 by AnarioN"
           justify: left
       info_r:
         what: text
         adjust:
           ref:
-            - thumbfan_inner_thumb
-          shift: [-0.8kx, -0.2ky]
-          rotate: -50
+            - thumbfan_near_thumb
+          shift: [11.1, -16.2]
+          rotate: -7.5
         params:
           layer: B.SilkS
-          text: "porcupine v2.0\\nby AnarioN"
+          text: "porcupine v2.0 by AnarioN"
           justify: left mirror
       tenting_puck:
         what: tentingpuck
