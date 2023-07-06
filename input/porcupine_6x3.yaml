@@ -38,15 +38,15 @@ points:
             top:
               tags:
                   high1: true
-              bind: [0.5, 5, 0.1, 5]
+              # bind: [0.5, 5, 0.1, 5]
             home:
               tags:
                   high1: true
-              bind: [0, 5, 0.1, 5]
+              # bind: [0, 5, 0.1, 5]
             bottom:
               tags:
                   high1: true
-              bind: [0, 5, 0.5, 5]
+              # bind: [0, 5, 0.5, 5]
         ring:
           key:
             stagger: ky/4
@@ -55,11 +55,11 @@ points:
             top:
               tags:
                   high1: true
-              bind: [0.1, 0.5 kx, 0.1, 0.1]
+              # bind: [0.1, 0.5 kx, 0.1, 0.1]
             home:
               tags:
                   high1: true
-              bind: [0.1, 0.5 kx, 0.1, 0.1]
+              # bind: [0.1, 0.5 kx, 0.1, 0.1]
             bottom:
               tags:
                   high1: true
@@ -71,7 +71,7 @@ points:
             top:
               tags:
                   high1: true
-              bind: [0.1, 0.1, 0.5 kx, 0.1]
+              # bind: [0.1, 0.1, 0.5 kx, 0.1]
             home:
               tags:
                 high1: true
@@ -86,7 +86,7 @@ points:
             top:
               tags:
                   high1: true
-              bind: [0.1, 0.1, 0.5 kx, 0.5 kx]
+              # bind: [0.1, 0.1, 0.5 kx, 0.5 kx]
             home:
               tags:
                   high1: true
@@ -157,7 +157,7 @@ points:
             column_net: P15
           rows:
             thumb:
-              bind: [3, -2, 4, 0.1]
+              # bind: [3, -2, 4, 0.1]
               tags:
                 thumb_high15: true
             #rotate: 90
@@ -170,16 +170,41 @@ points:
             column_net: P14
           rows:
             thumb:
-              bind: [4, -2, 0.1, 0.1]
+              # bind: [4, -2, 0.1, 0.1]
               tags:
                 thumb_high15: true
       rows:
         thumb:
           row_net: P7
-          bind: [0.1, 0.1, 0.1, 0.1]
+          # bind: [0.1, 0.1, 0.1, 0.1]
   rotate: 0
 outlines:
   # board dimensions according to JLCPCB: 166 mm * 113.7 mm
+  break:
+    - what: rectangle
+      where:
+        ref: matrix_outer_home
+        shift: [0.7kx,-8]
+      size: [1, 14]
+      fillet: 0.3
+    - what: rectangle
+      where:
+        ref: matrix_outer_home
+        shift: [0.7kx,8]
+      size: [1, 14]
+      fillet: 0.3
+    - what: rectangle
+      where:
+        ref: matrix_outer_top
+        shift: [0.7kx,0.5ky]
+      size: [1, 17]
+      fillet: 0.3
+    - what: rectangle
+      where:
+        ref: matrix_outer_bottom
+        shift: [0.7kx,-0.5ky]
+      size: [1, 17]
+      fillet: 0.3
   raw:
     - what: rectangle
       where: "high1"
@@ -316,6 +341,10 @@ outlines:
       what: outline
       name: thumbfan_glue
       operation: add
+    break:
+      what: outline
+      name: break
+      operation: subtract
   keywell_top_plate:
     main:
       what: outline
@@ -345,13 +374,13 @@ outlines:
       what: circle
       adjust:
         - ref: matrix_outer_top
-          shift: [0.775 kx, 0]
+          shift: [0.7 kx, -0.5ky]
       radius: 1.05
     bottom_left:
       what: circle
       adjust:
         - ref: matrix_outer_bottom
-          shift: [0.775 kx, 0]
+          shift: [0.7 kx, 0.5ky]
       radius: 1.05
     top_left_inner:
       what: circle
