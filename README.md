@@ -80,7 +80,7 @@ they should give you enough of info to build Porcupine as well. Just remember th
 
 [QMK firmware and keymaps](https://github.com/anarion80/porcupine_qmk) - confirmed working with the prototype boards! :tada:
 
-ZMK firmware and keymaps will be here once the proptotype is built and firmware configured/created.S
+[ZMK firmware and keymaps](https://github.com/anarion80/zmk-config-porcupine) - confirmed working now as well! :tada:
 
 ## :pencil2: How to use/update/modify
 
