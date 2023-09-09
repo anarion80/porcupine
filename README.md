@@ -88,7 +88,7 @@ If you would like to modify this:
 
 * fork it
 * (optionally, to see the 3d view of generated PCB in KiCad)
-  * copy 3d models from `3dmodels/ergogen` folder into your KiCad's installation `${KICAD6_3RD_PARTY}/3dmodels/ergogen/` folder[^1].
+  * copy 3d models from `3dmodels/ergogen` folder into your KiCad's installation `${KICAD7_3RD_PARTY}/3dmodels/ergogen/` folder[^1].
 * change `input/porcupine*.yaml` to your liking
 * commit to Github
 
@@ -115,7 +115,7 @@ Further:
 
 ## :warning: Important Notes
 
-* Kicad files are 6.0, so unfortunately not backwards compatible.
+* Kicad files are now for version 7.
 * If you're going for wired version or just want to skip out on the power switch, you need to solder the Jumper.
 * Manually-routed boards are included, but there is no autorouting for generated boards.
 * You need to have Docker installed to use `npm run gen_images` or `npm run gen_kibot` to generate pcb images and Kibot bundle.
