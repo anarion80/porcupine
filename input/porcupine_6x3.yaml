@@ -19,7 +19,7 @@ points:
       columns:
         outer:
           key:
-            column_net: P16
+            column_net: col_outer
           rows:
             top:
               tags:
@@ -33,7 +33,7 @@ points:
         pinky:
           key:
             spread: kx/2 + 1.5kx/2 + 1
-            column_net: P20
+            column_net: col_pinky
           rows:
             top:
               tags:
@@ -50,7 +50,7 @@ points:
         ring:
           key:
             stagger: ky/4
-            column_net: P19
+            column_net: col_ring
           rows:
             top:
               tags:
@@ -66,7 +66,7 @@ points:
         middle:
           key:
             stagger: ky/4
-            column_net: P18
+            column_net: col_middle
           rows:
             top:
               tags:
@@ -81,7 +81,7 @@ points:
         index:
           key:
             stagger: -ky/4
-            column_net: P15
+            column_net: col_index
           rows:
             top:
               tags:
@@ -96,7 +96,7 @@ points:
         inner:
           key:
             stagger: -ky/6
-            column_net: P14
+            column_net: col_inner
           rows:
             top:
               tags:
@@ -109,17 +109,17 @@ points:
                   high1: true
       rows:
         bottom:
-          row_net: P6
+          row_net: row_bottom
           tags:
             # high1: false
           bind: 0.5
         home:
-          row_net: P5
+          row_net: row_home
           tags:
             # high1: false
           bind: 0.5
         top:
-          row_net: P4
+          row_net: row_top
           tags:
             # high1: false
           bind: 0.5
@@ -133,14 +133,14 @@ points:
             spread: 0
             splay: -3
             origin: [1 kx, -2.5 ky]
-            column_net: P19
+            column_net: col_ring
           rows:
             thumb:
               tags:
                 high1: true
         near:
           key:
-            column_net: P18
+            column_net: col_middle
             spread: kx
             splay: -6
             origin: [-0.5 kx, -0.8 ky]
@@ -154,7 +154,7 @@ points:
             splay: -9
             rotate: 90
             origin: [-0.5 kx, -0.7 ky]
-            column_net: P15
+            column_net: col_index
           rows:
             thumb:
               # bind: [3, -2, 4, 0.1]
@@ -167,7 +167,7 @@ points:
             splay: -6
             rotate: 90
             origin: [-0.5 kx, -0.9 ky]
-            column_net: P14
+            column_net: col_inner
           rows:
             thumb:
               # bind: [4, -2, 0.1, 0.1]
@@ -175,7 +175,7 @@ points:
                 thumb_high15: true
       rows:
         thumb:
-          row_net: P7
+          row_net: row_thumb
           # bind: [0.1, 0.1, 0.1, 0.1]
   rotate: 0
 outlines:
@@ -274,34 +274,52 @@ outlines:
         - ref: matrix_inner_home
   controller_area:
     main:
-      what: rectangle
-      adjust:
-        ref:
-          - matrix_inner_top
-        shift: [18, -30]
-      size: [32, 75]
-      corner: px
+      # what: rectangle
+      # adjust:
+      #   ref:
+      #     - matrix_inner_top
+      #   # shift: [18, -30]
+      # size: [50, 75]
+      # corner: px
+      what: polygon
+      points:
+        - ref: matrix_middle_top
+          shift: [0, 0.5ky + 1.5]
+        - ref: matrix_middle_top
+          shift: [82, 0.5ky + 1.5]
+        - ref: matrix_middle_top
+          shift: [82, -70]
+        - ref: matrix_middle_top
+          shift: [0, -60]
+      fillet: px
   controller_plate:
     main:
       what: rectangle
       adjust:
         ref:
           - matrix_inner_top
-        shift: [22.5, -16]
-      size: [20, 39]
+        shift: [23, -5]
+      size: [25, 43]
       corner: px
   controller_plate_holes:
     left:
       what: circle
       adjust:
-        ref: matrix_inner_bottom
-        shift: [17, 2]
+        ref: matrix_inner_home
+        shift: [13.5, -7]
       radius: 1.5
     right:
       what: circle
       adjust:
-        ref: matrix_inner_bottom
-        shift: [27.5, 2]
+        ref: matrix_inner_home
+        shift: [32.5, -7]
+      radius: 1.5
+  reset_hole:
+    hole:
+      what: circle
+      adjust:
+        ref: matrix_inner_top
+        shift: [39, 0]
       radius: 1.5
   # circle:
   #   main:
@@ -410,8 +428,8 @@ outlines:
     thumb:
       what: circle
       adjust:
-        - ref: thumbfan_far_thumb
-          shift: [0, 0.6 kx]
+        - ref: thumbfan_near_thumb
+          shift: [8, -10]
       radius: 1.05
   mounting_holes:
     $extends: outlines.screw_holes
@@ -618,12 +636,74 @@ pcbs:
         what: promicro_pretty
         params:
           orientation: up
+          RAW: RAW
+          GND: GND
+          RST: RST
+          VCC: VCC
+          P21: ENCB
+          P20: ENCA
+          P19: col_outer
+          P18: col_pinky
+          P15: col_ring
+          P14: col_middle
+          P16: col_index
+          P10: col_inner
+          P1: CS
+          P0: trrs
+          P2: SDA
+          P3: SCL
+          P4: row_top
+          P5: row_home
+          P6: row_bottom
+          P7: row_thumb
+          P8: P8
+          P9: P9
         adjust:
           ref:
             - matrix_inner_top
-          shift: [21, -13]
+          shift: [23, -1]
           rotate: 270
+      niceview:
+        what: niceview
+        adjust:
+          ref:
+            - matrix_inner_bottom
+          # shift: [1.16kx, 0.1kx]
+          shift: [23, 14]
+          rotate: 90
+        params:
+          outline: true
+          side: 'F'
+          SDA: SDA
+          SCL: SCL
+          VCC: VCC
+          GND: GND
+          CS: CS
       # Remove this if you'd rather pay more to not have the order number printed at all
+      scrollwheel:
+        what: scrollwheel_mirrored
+        adjust:
+          ref:
+            - matrix_inner_bottom
+          shift: [23, -2]
+          rotate: 0
+        params:
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+          A: ENCB
+          B: GND
+          C: ENCA
+          D: undef
+      scroll_diode:
+        what: diode
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          ref:
+            - matrix_inner_bottom
+          shift: [24, -12]
+          rotate: 0
       jlc_order_number:
         what: text
         adjust:
@@ -636,8 +716,8 @@ pcbs:
       bat:
         what: bat2p0
         adjust:
-          ref: matrix_inner_bottom
-          shift: [13.5, -4.5]
+          ref: matrix_inner_top
+          shift: [-2.5, 13.5]
           rotate: 0
         params:
           front: true
@@ -648,8 +728,8 @@ pcbs:
         what: pad
         adjust:
           ref:
-            - matrix_inner_bottom
-          shift: [18, -3]
+            - matrix_inner_top
+          shift: [1, 12.5]
           rotate: 0
         params:
           front: true
@@ -663,8 +743,8 @@ pcbs:
         what: pad
         adjust:
           ref:
-            - matrix_inner_bottom
-          shift: [18, -6]
+            - matrix_inner_top
+          shift: [1, 14.5]
           rotate: 0
         params:
           front: true
@@ -677,23 +757,23 @@ pcbs:
       trrs:
         what: trrs
         adjust:
-          ref: matrix_inner_bottom
-          shift: [34, -11]
-          rotate: 270
+          ref: matrix_inner_top
+          shift: [38.8, 17]
+          rotate: 0
         params:
           reverse: true
           symmetric: true
           A: VCC
           B: VCC
           C: GND
-          D: P0
+          D: trrs
       jumper_l:
         what: jumper
         adjust:
           ref:
             - matrix_inner_top
-          shift: [29, 5.7]
-          rotate: 0
+          shift: [-11, 14]
+          rotate: 90
         params:
           side: B
           from: Bplus
@@ -703,8 +783,8 @@ pcbs:
         adjust:
           ref:
             - matrix_inner_top
-          shift: [29, 5.7]
-          rotate: 0
+          shift: [-11, 14]
+          rotate: 90
         params:
           side: F
           from: Bplus
@@ -712,8 +792,8 @@ pcbs:
       pcm12:
         what: pcm12
         adjust:
-          ref: matrix_inner_top
-          shift: [19, 5.3]
+          ref: matrix_index_top
+          shift: [0, 12.1]
           rotate: 180
         params:
           reverse: true
@@ -722,8 +802,8 @@ pcbs:
       reset:
         what: b3u1000p
         adjust:
-          ref: matrix_inner_bottom
-          shift: [30, -4]
+          ref: matrix_inner_top
+          shift: [39, 0]
           rotate: 0
         params:
           reverse: true
@@ -798,8 +878,8 @@ pcbs:
         what: text
         adjust:
           ref:
-            - matrix_inner_home
-          shift: [1kx, -0.2kx]
+            - matrix_inner_top
+          shift: [20, -9]
           rotate: 90
         params:
           text: "Solder the jumpers,"
@@ -809,8 +889,8 @@ pcbs:
         what: text
         adjust:
           ref:
-            - matrix_inner_home
-          shift: [1kx, 0.8kx]
+            - matrix_inner_top
+          shift: [20, 7]
           rotate: 90
         params:
           layer: B.SilkS
@@ -821,8 +901,8 @@ pcbs:
         what: text
         adjust:
           ref:
-            - matrix_inner_home
-          shift: [1.3kx, -0.2kx]
+            - matrix_inner_top
+          shift: [26.2, -12]
           rotate: 90
         params:
           text: "and place MCU facing UP!"
@@ -832,14 +912,148 @@ pcbs:
         what: text
         adjust:
           ref:
-            - matrix_inner_home
-          shift: [1.3kx, 0.8kx]
+            - matrix_inner_top
+          shift: [26.2, 10]
           rotate: 90
         params:
           layer: B.SilkS
           text: "and place MCU facing UP!"
           style: italic
           justify: left mirror
+      # jstph:
+      #   what: jstphx4
+      #   params:
+      #     side: both
+      #     P1: GND
+      #     P2: VCC
+      #     P3: SDA
+      #     P4: SCL
+      #   adjust:
+      #       ref: matrix_inner_bottom
+      #       shift: [1kx, 0.1kx]
+      # oled:
+      #   what: oled_reversible
+      #   adjust:
+      #     ref:
+      #       - matrix_inner_bottom
+      #     shift: [0.83kx, 0]
+      #     rotate: 90
+      #   params:
+      #     # outline: true
+      #     side: 'F'
+      #     SDA: NN_SDA_CS
+      #     SCL: NN_SCL_GND
+      #     VCC: NN_VCC
+      #     GND: NN_GND_SCL
+      #     # CS: NN_CS_SDA
+      # jumper_nv_left_sda:
+      #   what: jumper
+      #   params:
+      #     from: SDA
+      #     to: NN_SDA_CS
+      #     side: B
+      #   adjust:
+      #     ref:
+      #       - matrix_inner_bottom
+      #     shift: [1kx, 0.1kx]
+      #     rotate: 0
+      # jumper_nv_left_scl:
+      #   what: jumper
+      #   params:
+      #     from: SCL
+      #     to: NN_SCL_GND
+      #     side: B
+      #   adjust:
+      #     ref:
+      #       - matrix_inner_bottom
+      #     shift: [1kx, 0.1kx]
+      #     rotate: 0
+      # jumper_nv_left_vcc:
+      #   what: jumper
+      #   params:
+      #     from: VCC
+      #     to: NN_VCC
+      #     side: B
+      #   adjust:
+      #     ref:
+      #       - matrix_inner_bottom
+      #     shift: [20.50-2.5, 0]
+      #     rotate: 0
+      # jumper_nv_left_gnd:
+      #   what: jumper
+      #   params:
+      #     from: GND
+      #     to: NN_GND_SCL
+      #     side: B
+      #   adjust:
+      #     ref:
+      #       - matrix_inner_bottom
+      #     shift: [20.50-2.5, 2.54]
+      #     rotate: 0
+      # jumper_nv_left_cs:
+      #   what: jumper
+      #   params:
+      #     from: CS
+      #     to: NN_CS_SDA
+      #     side: B
+      #   adjust:
+      #     ref:
+      #       - matrix_inner_bottom
+      #     shift: [20.50-2.5, 5.08]
+      #     rotate: 0
+      # jumper_nv_right_sda:
+      #   what: jumper
+      #   params:
+      #     from: SDA
+      #     to: NN_CS_SDA
+      #     side: F
+      #   adjust:
+      #     ref:
+      #       - matrix_inner_bottom
+      #     shift: [20.50-2.5, 5.08]
+      #     rotate: 0
+      # jumper_nv_right_scl:
+      #   what: jumper
+      #   params:
+      #     from: SCL
+      #     to: NN_GND_SCL
+      #     side: F
+      #   adjust:
+      #     ref:
+      #       - matrix_inner_bottom
+      #     shift: [20.50-2.5, 2.54]
+      #     rotate: 0
+      # jumper_nv_right_vcc:
+      #   what: jumper
+      #   params:
+      #     from: VCC
+      #     to: NN_VCC
+      #     side: F
+      #   adjust:
+      #     shift: [20.50-2.5, 0]
+      #     rotate: 0
+      # jumper_nv_right_gnd:
+      #   what: jumper
+      #   params:
+      #     from: GND
+      #     to: NN_SCL_GND
+      #     side: F
+      #   adjust:
+      #     ref:
+      #       - matrix_inner_bottom
+      #     shift: [20.50-2.5, -2.54]
+      #     rotate: 0
+      # jumper_nv_right_cs:
+      #   what: jumper
+      #   params:
+      #     from: CS
+      #     to: NN_SDA_CS
+      #     side: F
+      #   adjust:
+      #     ref:
+      #       - matrix_inner_bottom
+      #     shift: [20.50-2.5, -5.08]
+      #     rotate: 0
       # via_RAW_1:
       #   what: simple_via
       #   adjust:
@@ -875,13 +1089,6 @@ pcbs:
           shift: [12,-3]
         params:
           net: GND
-      via_GND_4:
-        what: simple_via
-        adjust:
-          ref: matrix_middle_top
-          shift: [11,-1]
-        params:
-          net: GND
       via_GND_5:
         what: simple_via
         adjust:
@@ -893,7 +1100,7 @@ pcbs:
         what: simple_via
         adjust:
           ref: matrix_inner_home
-          shift: [-7,-2]
+          shift: [-6,-2]
         params:
           net: GND
       via_GND_7:
@@ -938,13 +1145,13 @@ pcbs:
       #     shift: [31.5,-4]
       #   params:
       #     net: Bplus
-      via_p20_1:
+      via_col_pinky_1:
         what: simple_via
         adjust:
           ref: matrix_pinky_top
           shift: [0,3]
         params:
-          net: P20
+          net: col_pinky
       via_pinky_top:
         what: simple_via
         adjust:
@@ -952,13 +1159,13 @@ pcbs:
           shift: [-5,8]
         params:
           net: pinky_top
-      via_P20_2:
+      via_col_pinky_2:
         what: simple_via
         adjust:
           ref: matrix_pinky_home
           shift: [-2.5,3]
         params:
-          net: P20
+          net: col_pinky
       via_pinky_home:
         what: simple_via
         adjust:
@@ -966,27 +1173,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: pinky_home
-      via_P20_3:
+      via_col_pinky_3:
         what: simple_via
         adjust:
           ref: matrix_pinky_bottom
           shift: [0,3]
         params:
-          net: P20
-      via_P20_4:
-        what: simple_via
-        adjust:
-          ref: matrix_middle_top
-          shift: [9,-1]
-        params:
-          net: P20
-      via_P20_5:
-        what: simple_via
-        adjust:
-          ref: matrix_middle_top
-          shift: [6,-5]
-        params:
-          net: P20
+          net: col_pinky
       via_pinky_bottom:
         what: simple_via
         adjust:
@@ -994,13 +1187,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: pinky_bottom
-      via_P19_1:
+      via_col_ring_1:
         what: simple_via
         adjust:
           ref: matrix_ring_top
           shift: [-2.5,3]
         params:
-          net: P19
+          net: col_ring
       via_ring_top:
         what: simple_via
         adjust:
@@ -1008,13 +1201,13 @@ pcbs:
           shift: [-5,8]
         params:
           net: ring_top
-      via_P19_2:
+      via_col_ring_2:
         what: simple_via
         adjust:
           ref: matrix_ring_home
           shift: [-2.5,3]
         params:
-          net: P19
+          net: col_ring
       via_ring_home:
         what: simple_via
         adjust:
@@ -1022,13 +1215,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: ring_home
-      via_P19_3:
+      via_col_ring_3:
         what: simple_via
         adjust:
           ref: matrix_ring_bottom
           shift: [0,3]
         params:
-          net: P19
+          net: col_ring
       via_ring_bottom:
         what: simple_via
         adjust:
@@ -1036,13 +1229,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: ring_bottom
-      via_P18_1:
+      via_col_middle_1:
         what: simple_via
         adjust:
           ref: matrix_middle_top
           shift: [0,3]
         params:
-          net: P18
+          net: col_middle
       via_middle_top:
         what: simple_via
         adjust:
@@ -1050,13 +1243,13 @@ pcbs:
           shift: [-5,8]
         params:
           net: middle_top
-      via_P18_2:
+      via_col_middle_2:
         what: simple_via
         adjust:
           ref: matrix_middle_home
           shift: [0,3]
         params:
-          net: P18
+          net: col_middle
       via_middle_home:
         what: simple_via
         adjust:
@@ -1064,13 +1257,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: middle_home
-      via_P18_3:
+      via_col_middle_3:
         what: simple_via
         adjust:
           ref: matrix_middle_bottom
           shift: [-3,3]
         params:
-          net: P18
+          net: col_middle
       via_middle_bottom:
         what: simple_via
         adjust:
@@ -1078,13 +1271,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: middle_bottom
-      via_P15_1:
+      via_col_index_1:
         what: simple_via
         adjust:
           ref: matrix_index_top
           shift: [0,3]
         params:
-          net: P15
+          net: col_index
       via_index_top:
         what: simple_via
         adjust:
@@ -1092,13 +1285,13 @@ pcbs:
           shift: [-5,8]
         params:
           net: index_top
-      via_P15_2:
+      via_col_index_2:
         what: simple_via
         adjust:
           ref: matrix_index_home
           shift: [0,3]
         params:
-          net: P15
+          net: col_index
       via_index_home:
         what: simple_via
         adjust:
@@ -1106,13 +1299,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: index_home
-      via_P15_3:
+      via_col_index_3:
         what: simple_via
         adjust:
           ref: matrix_index_bottom
           shift: [0,3]
         params:
-          net: P15
+          net: col_index
       via_index_bottom:
         what: simple_via
         adjust:
@@ -1120,13 +1313,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: index_bottom
-      via_P14_1:
+      via_col_inner_1:
         what: simple_via
         adjust:
           ref: matrix_inner_top
           shift: [0,3]
         params:
-          net: P14
+          net: col_inner
       via_inner_top:
         what: simple_via
         adjust:
@@ -1134,13 +1327,13 @@ pcbs:
           shift: [-5,8]
         params:
           net: inner_top
-      via_P14_2:
+      via_col_inner_2:
         what: simple_via
         adjust:
           ref: matrix_inner_home
           shift: [0,3]
         params:
-          net: P14
+          net: col_inner
       via_inner_home:
         what: simple_via
         adjust:
@@ -1148,13 +1341,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: inner_home
-      via_P14_3:
+      via_col_inner_3:
         what: simple_via
         adjust:
           ref: matrix_inner_bottom
           shift: [0,3]
         params:
-          net: P14
+          net: col_inner
       via_inner_bottom:
         what: simple_via
         adjust:
@@ -1168,7 +1361,7 @@ pcbs:
           ref: thumbfan_near_thumb
           shift: [0,3]
         params:
-          net: P18
+          net: col_middle
       via_near_thumb:
         what: simple_via
         adjust:
@@ -1182,7 +1375,7 @@ pcbs:
           ref: thumbfan_home_thumb
           shift: [0,3]
         params:
-          net: P15
+          net: col_index
       via_home_thumb:
         what: simple_via
         adjust:
@@ -1196,7 +1389,7 @@ pcbs:
           ref: thumbfan_far_thumb
           shift: [-2,3]
         params:
-          net: P14
+          net: col_inner
       via_far_thumb:
         what: simple_via
         adjust:
@@ -1204,27 +1397,13 @@ pcbs:
           shift: [4,8.5]
         params:
           net: far_thumb
-      via_18_5:
-        what: simple_via
-        adjust:
-          ref: thumbfan_near_thumb
-          shift: [-5,11]
-        params:
-          net: P18
-      via_15_5:
-        what: simple_via
-        adjust:
-          ref: thumbfan_near_thumb
-          shift: [0,12]
-        params:
-          net: P15
-      via_P19_4:
+      via_col_ring_4:
         what: simple_via
         adjust:
           ref: thumbfan_inner_thumb
           shift: [0,3]
         params:
-          net: P19
+          net: col_ring
       via_inner_thumb:
         what: simple_via
         adjust:
@@ -1232,13 +1411,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: inner_thumb
-      via_P16_1:
+      via_col_outer_1:
         what: simple_via
         adjust:
           ref: matrix_outer_top
           shift: [0,3]
         params:
-          net: P16
+          net: col_outer
       via_outer_top:
         what: simple_via
         adjust:
@@ -1246,13 +1425,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: outer_top
-      via_P16_2:
+      via_col_outer_2:
         what: simple_via
         adjust:
           ref: matrix_outer_home
           shift: [0,3]
         params:
-          net: P16
+          net: col_outer
       via_outer_home:
         what: simple_via
         adjust:
@@ -1260,13 +1439,13 @@ pcbs:
           shift: [0,8.5]
         params:
           net: outer_home
-      via_P16_3:
+      via_col_outer_3:
         what: simple_via
         adjust:
           ref: matrix_outer_bottom
           shift: [0,3]
         params:
-          net: P16
+          net: col_outer
       via_outer_bottom:
         what: simple_via
         adjust:
@@ -1279,26 +1458,26 @@ pcbs:
         params:
           net: GND
           side: F
-          points: [[310, 202], [103, 202], [103, 50], [310, 50]]
+          points: [[330, 230], [100, 230], [100, 50], [330, 50]]
       zone_r:
         what: zone
         params:
           net: GND
           side: B
-          points: [[310, 202], [103, 202], [103, 50], [310, 50]]
+          points: [[330, 230], [100, 230], [100, 50], [330, 50]]
       hole_controller_1:
         what: through_hole
         adjust:
-          ref: matrix_inner_bottom
-          shift: [17, 2]
+          ref: matrix_inner_home
+          shift: [13.5, -7]
         params:
           size: 4.4
           drill: 2.2
       hole_controller_2:
         what: through_hole
         adjust:
-          ref: matrix_inner_bottom
-          shift: [27.5, 2]
+          ref: matrix_inner_home
+          shift: [32.5, -7]
         params:
           size: 4.4
           drill: 2.2
@@ -1353,8 +1532,8 @@ pcbs:
       hole_case_thumb:
         what: through_hole
         adjust:
-          ref: thumbfan_far_thumb
-          shift: [0, 0.6 kx]
+          ref: thumbfan_near_thumb
+          shift: [8, -10]
         params:
           size: 4.4
           drill: 2.2
