@@ -552,7 +552,7 @@ outlines:
     #   name: mounting_holes
     #   operation: subtract
 pcbs:
-  porcupine_6x3_top_plate:
+  porcupine_top_plate:
     outlines:
       edge:
         outline: plate
@@ -568,7 +568,7 @@ pcbs:
         params:
           text: "JLCJLCJLCJLC"
           justify: left
-  porcupine_6x3_bottom_plate:
+  porcupine_bottom_plate:
     outlines:
       edge:
         outline: bottom_outline
@@ -584,7 +584,7 @@ pcbs:
         params:
           text: "JLCJLCJLCJLC"
           justify: left
-  porcupine_6x3:
+  porcupine:
     outlines:
       edge:
         outline: pcb
