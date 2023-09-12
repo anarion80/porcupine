@@ -5,6 +5,6 @@
         "gen_kibot": "./gen_kibot.sh"
     },
     "dependencies": {
-        "ergogen": "github:anarion80/ergogen#e5de0cf1959b2a80ed39500494d4eafae2c31825"
+        "ergogen": "github:anarion80/ergogen#master"
     }
 }
