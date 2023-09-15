@@ -12,6 +12,23 @@ units:
   py: 2
   $default_width: cx
   $default_height: cy
+  mcu_cover_height: 43
+  mcu_cover_width: 25
+  # distance keys to mcu
+  mcu_padding: 1.5
+  scrollwheel_width: 17
+  scrollwheel_height: 14
+  screw_diameter: 4.7
+  screw_hole: 4.1
+  screen_screw_diameter: 4
+  screen_screw_hole: 2.2
+  switchplate_switch_cutout: 14
+  switchplate_scrollwheel_cutout_x: 17.5
+  switchplate_scrollwheel_cutout_y: 14.5
+  switchplate_screw_diameter: 3.3
+  switchplate_screw_hole: 2.2
+  trrs_x: 12
+  trrs_y: 6
 points:
   key:
     padding: ky
@@ -106,6 +123,94 @@ points:
       key:
         spread: kx
         tags: [switch1u]
+    scrollwheel:
+      anchor:
+        ref: matrix_inner_bottom
+      columns:
+        scrollwheel:
+          key:
+            tags: [scrollwheel]
+            shift: [23, -2]
+            column_net: col_inner
+            width: scrollwheel_width
+            height: scrollwheel_height
+      rows:
+        scrollwheel:
+          row_net: row_thumb
+    mcu:
+      anchor:
+        ref: matrix_inner_top
+      columns:
+        mcu:
+          key:
+            tags: [mcu]
+            width: mcu_cover_height  # footprint width/height unintuitive
+            height: mcu_cover_width
+            # rotate: 270
+            shift: [23, -1]
+            # shift: [kx+mcu_padding, -mcu_width/2-0.3]
+    screw_top_left:
+      anchor:
+        ref.aggregate.parts: [matrix_pinky_top, matrix_pinky_home]
+        shift: [-0.5kx - 0.1u, 0]
+      columns.screw.key.tags: [screw, break_away_screw]
+    screw_bottom_left:
+      anchor:
+        ref.aggregate.parts: [matrix_pinky_home, matrix_pinky_bottom]
+        shift: [-0.5kx - 0.1u, 0]
+      columns.screw.key.tags: [screw, break_away_screw]
+    screw_top_left_inner:
+      anchor:
+        ref.aggregate.parts: [matrix_ring_top, matrix_ring_home]
+        shift: [-0.5kx - 0.5, 0]
+      columns.screw.key.tags: [screw]
+    screw_bottom_left_inner:
+      anchor:
+        ref.aggregate.parts: [matrix_pinky_bottom, matrix_ring_bottom]
+        # affect: y
+        shift: [0, -0.4ky]
+      columns.screw.key.tags: [screw]
+    screw_top_right:
+      anchor:
+        ref.aggregate.parts: [matrix_index_top, matrix_inner_top]
+        # affect: y
+        shift: [0, -0.1ky]
+      columns.screw.key.tags: [screw]
+    screw_palm:
+      anchor:
+        ref.aggregate.parts: [matrix_index_bottom, matrix_inner_bottom]
+        # affect: y
+        shift: [0, -0.7ky]
+      columns.screw.key.tags: [screw]
+    screw_thumb:
+      anchor:
+        ref: [thumbfan_near_thumb]
+        shift: [0.5kx, -0.6ky]
+      columns.screw.key.tags: [screw]
+    trrs:
+      anchor:
+        ref: [mcu_mcu]
+        shift: [mcu_cover_width/2 + trrs_y/2, mcu_cover_height/2 - 3.5]
+      columns.trrs.key.tags: [trrs]
+    reset:
+      anchor:
+        ref: [trrs_trrs]
+        shift: [0, -18]
+      columns.reset.key.tags: [reset]
+    controller_hole_left:
+      anchor:
+        ref: [mcu_mcu]
+        # affect: x
+        shift: [-mcu_cover_width/2 + 3, -mcu_cover_height/2 - 1.5]
+        # shift: [-10, -20]
+      columns.controller_hole.key.tags: [controller_hole_left]
+    controller_hole_right:
+      anchor:
+        ref: [mcu_mcu]
+        # shift: [10, -20]
+        # affect: x
+        shift: [mcu_cover_width/2 - 3, -mcu_cover_height/2 - 1.5]
+      columns.controller_hole.key.tags: [controller_hole_right]
 outlines:
   # board dimensions according to JLCPCB: 166 mm * 113.7 mm
   break:
@@ -215,31 +320,36 @@ outlines:
   controller_plate:
     main:
       what: rectangle
+      where: [mcu]
+      size: [mcu_cover_width, mcu_cover_height]
       adjust:
-        ref:
-          - matrix_inner_top
-        shift: [23, -5]
-      size: [25, 43]
+        # ref: [mcu_mcu]
+        # rotate: 90
+        # affect: x
+        shift: [0, -0.3ky]
       corner: px
   controller_plate_holes:
     left:
       what: circle
-      adjust:
-        ref: matrix_inner_home
-        shift: [13.5, -7]
+      where: [controller_hole_left]
+      # adjust:
+      #   ref: matrix_inner_home
+      #   shift: [13.5, -7]
       radius: 1.5
     right:
       what: circle
-      adjust:
-        ref: matrix_inner_home
-        shift: [32.5, -7]
+      where: [controller_hole_right]
+      # adjust:
+      #   ref: matrix_inner_home
+      #   shift: [32.5, -7]
       radius: 1.5
   reset_hole:
     hole:
       what: circle
-      adjust:
-        ref: matrix_inner_top
-        shift: [39, 0]
+      where: [reset]
+      # adjust:
+      #   ref: matrix_inner_top
+      #   shift: [39, 0]
       radius: 1.5
   switches:
     - what: rectangle
@@ -292,69 +402,82 @@ outlines:
       what: outline
       name: controller_area
       operation: add
+  break_away_screw_holes:
+    - what: circle
+      where: [break_away_screw]
+      radius: 0.5switchplate_screw_hole
+  screw_holes:
+    - what: circle
+      where: [screw]
+      radius: 0.5switchplate_screw_hole
+    # top_left:
+    #   what: circle
+    #   adjust:
+    #     - ref: matrix_outer_top
+    #       shift: [0.7 kx, -0.5ky]
+    #   radius: 1.05
+    # bottom_left:
+    #   what: circle
+    #   adjust:
+    #     - ref: matrix_outer_bottom
+    #       shift: [0.7 kx, 0.5ky]
+    #   radius: 1.05
+    # top_left_inner:
+    #   what: circle
+    #   adjust:
+    #     - ref: matrix_pinky_top
+    #       shift: [0.525 kx, -0.1ky]
+    #   radius: 1.05
+    # bottom_left_inner:
+    #   what: circle
+    #   adjust:
+    #     - ref: matrix_pinky_bottom
+    #       shift: [0.525 kx, -0.1ky]
+    #   radius: 1.05
+    # top_right:
+    #   what: circle
+    #   adjust:
+    #     - ref: matrix_inner_top
+    #       shift: [-0.53 kx, 0]
+    #   radius: 1.05
+    # palm:
+    #   what: circle
+    #   adjust:
+    #     - ref: matrix_index_bottom
+    #       shift: [0.45kx, -0.75 ky]
+    #   radius: 1.05
+    # thumb:
+    #   what: circle
+    #   adjust:
+    #     - ref: thumbfan_near_thumb
+    #       shift: [8, -10]
+    #   radius: 1.05
+  # mounting_holes:
+  #   $extends: outlines.screw_holes
+  #   # top_left:
+  #   #   radius: 2.05
+  #   # bottom_left:
+  #   #   radius: 2.05
+  #   # top_left_inner:
+  #   #   radius: 2.05
+  #   # bottom_left_inner:
+  #   #   radius: 2.05
+  #   # top_right:
+  #   #   radius: 2.05
+  #   # palm:
+  #   #   radius: 2.05
+  #   # thumb:
+  #   screw_holes:
+  #     radius: 2.05
   cutout:
-    - what: outline
+    main:
+      what: outline
       name: base_outline
       fillet: 1
-  screw_holes:
-    top_left:
-      what: circle
-      adjust:
-        - ref: matrix_outer_top
-          shift: [0.7 kx, -0.5ky]
-      radius: 1.05
-    bottom_left:
-      what: circle
-      adjust:
-        - ref: matrix_outer_bottom
-          shift: [0.7 kx, 0.5ky]
-      radius: 1.05
-    top_left_inner:
-      what: circle
-      adjust:
-        - ref: matrix_pinky_top
-          shift: [0.525 kx, -0.1ky]
-      radius: 1.05
-    bottom_left_inner:
-      what: circle
-      adjust:
-        - ref: matrix_pinky_bottom
-          shift: [0.525 kx, -0.1ky]
-      radius: 1.05
-    top_right:
-      what: circle
-      adjust:
-        - ref: matrix_inner_top
-          shift: [-0.53 kx, 0]
-      radius: 1.05
-    palm:
-      what: circle
-      adjust:
-        - ref: matrix_index_bottom
-          shift: [0.45kx, -0.75 ky]
-      radius: 1.05
-    thumb:
-      what: circle
-      adjust:
-        - ref: thumbfan_near_thumb
-          shift: [8, -10]
-      radius: 1.05
-  mounting_holes:
-    $extends: outlines.screw_holes
-    top_left:
-      radius: 2.05
-    bottom_left:
-      radius: 2.05
-    top_left_inner:
-      radius: 2.05
-    bottom_left_inner:
-      radius: 2.05
-    top_right:
-      radius: 2.05
-    palm:
-      radius: 2.05
-    thumb:
-      radius: 2.05
+    holes:
+      what: outline
+      name: break_away_screw_holes
+      operation: subtract
   controller_plate_mounting_holes:
     $extends: outlines.controller_plate_holes
     left:
@@ -528,6 +651,7 @@ pcbs:
           shift: [0, -5]
       mcu:
         what: promicro_pretty
+        where: [mcu]
         params:
           orientation: up
           RAW: RAW
@@ -553,9 +677,9 @@ pcbs:
           P8: P8
           P9: P9
         adjust:
-          ref:
-            - matrix_inner_top
-          shift: [23, -1]
+          # ref:
+          #   - matrix_inner_top
+          # shift: [23, -1]
           rotate: 270
       niceview:
         what: niceview
@@ -574,11 +698,12 @@ pcbs:
           CS: CS
       scrollwheel:
         what: scrollwheel_mirrored
-        adjust:
-          ref:
-            - matrix_inner_bottom
-          shift: [23, -2]
-          rotate: 0
+        where: [scrollwheel]
+        # adjust:
+        #   ref:
+        #     - matrix_inner_bottom
+        #   shift: [23, -2]
+        #   rotate: 0
         params:
           from: "{{column_net}}"
           to: "{{colrow}}"
@@ -588,14 +713,15 @@ pcbs:
           D: undef
       scroll_diode:
         what: diode
+        where: [scrollwheel]
         params:
           reverse: true
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          ref:
-            - matrix_inner_bottom
-          shift: [24, -12]
+          # ref:
+          #   - matrix_inner_bottom
+          shift: [-5, -9]
           rotate: 0
       jlc_order_number:
         what: text
@@ -649,9 +775,10 @@ pcbs:
           net: GND
       trrs:
         what: trrs
+        where: [trrs]
         adjust:
-          ref: matrix_inner_top
-          shift: [38.8, 17]
+          # ref: matrix_inner_top
+          # shift: [38.8, 17]
           rotate: 0
         params:
           reverse: true
@@ -694,10 +821,11 @@ pcbs:
           to: Bplus
       reset:
         what: b3u1000p
-        adjust:
-          ref: matrix_inner_top
-          shift: [39, 0]
-          rotate: 0
+        where: [reset]
+        # adjust:
+        #   ref: matrix_inner_top
+        #   shift: [39, 0]
+        #   rotate: 0
         params:
           reverse: true
           r1: RST
