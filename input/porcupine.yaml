@@ -2,11 +2,14 @@ meta:
   version: "v2.0.1"
   author: "Anarion"
 units:
+  U: 19.05 # 19.05mm MX spacing
+  u: 19 # 19mm MX spacing
+  cx: 18 # 18mm Choc X spacing
+  cy: 17 # 17mm Choc Y spacing
   kx: cx
   ky: cy
   px: 2
   py: 2
-  #$default_autobind: 11
   $default_width: cx
   $default_height: cy
 points:
@@ -16,112 +19,51 @@ points:
     matrix:
       anchor:
         shift: [150, -150]
+      key:
+        tags: [switch1u]
       columns:
         outer:
           key:
             column_net: col_outer
           rows:
             top:
-              tags:
-                high15: true
+              key.width: 1.5kx
+              tags: [switch15u]
             home:
-              tags:
-                high15: true
+              key.width: 1.5kx
+              tags: [switch15u]
             bottom:
-              tags:
-                high15: true
+              key.width: 1.5kx
+              tags: [switch15u]
         pinky:
           key:
             spread: kx/2 + 1.5kx/2 + 1
             column_net: col_pinky
-          rows:
-            top:
-              tags:
-                  high1: true
-              # bind: [0.5, 5, 0.1, 5]
-            home:
-              tags:
-                  high1: true
-              # bind: [0, 5, 0.1, 5]
-            bottom:
-              tags:
-                  high1: true
-              # bind: [0, 5, 0.5, 5]
         ring:
           key:
             stagger: ky/4
             column_net: col_ring
-          rows:
-            top:
-              tags:
-                  high1: true
-              # bind: [0.1, 0.5 kx, 0.1, 0.1]
-            home:
-              tags:
-                  high1: true
-              # bind: [0.1, 0.5 kx, 0.1, 0.1]
-            bottom:
-              tags:
-                  high1: true
         middle:
           key:
             stagger: ky/4
             column_net: col_middle
-          rows:
-            top:
-              tags:
-                  high1: true
-              # bind: [0.1, 0.1, 0.5 kx, 0.1]
-            home:
-              tags:
-                high1: true
-            bottom:
-              tags:
-                high1: true
         index:
           key:
             stagger: -ky/4
             column_net: col_index
-          rows:
-            top:
-              tags:
-                  high1: true
-              # bind: [0.1, 0.1, 0.5 kx, 0.5 kx]
-            home:
-              tags:
-                  high1: true
-            bottom:
-              tags:
-                  high1: true
         inner:
           key:
             stagger: -ky/6
             column_net: col_inner
-          rows:
-            top:
-              tags:
-                  high1: true
-            home:
-              tags:
-                  high1: true
-            bottom:
-              tags:
-                  high1: true
       rows:
         bottom:
           row_net: row_bottom
-          tags:
-            # high1: false
           bind: 0.5
         home:
           row_net: row_home
-          tags:
-            # high1: false
           bind: 0.5
         top:
           row_net: row_top
-          tags:
-            # high1: false
           bind: 0.5
     thumbfan:
       anchor:
@@ -130,54 +72,40 @@ points:
       columns:
         inner:
           key:
-            spread: 0
             splay: -3
             origin: [1 kx, -2.5 ky]
             column_net: col_ring
-          rows:
-            thumb:
-              tags:
-                high1: true
         near:
           key:
             column_net: col_middle
-            spread: kx
             splay: -6
             origin: [-0.5 kx, -0.8 ky]
-          rows:
-            thumb:
-              tags:
-                high1: true
         home:
           key:
-            spread: kx
             splay: -9
             rotate: 90
             origin: [-0.5 kx, -0.7 ky]
             column_net: col_index
+            width: 1.5kx
           rows:
             thumb:
-              # bind: [3, -2, 4, 0.1]
-              tags:
-                thumb_high15: true
-            #rotate: 90
+              tags: [switch15u_thumb]
         far:
           key:
-            spread: kx
             splay: -6
             rotate: 90
             origin: [-0.5 kx, -0.9 ky]
             column_net: col_inner
+            width: 1.5kx
           rows:
             thumb:
-              # bind: [4, -2, 0.1, 0.1]
-              tags:
-                thumb_high15: true
+              tags: [switch15u_thumb]
       rows:
         thumb:
           row_net: row_thumb
-          # bind: [0.1, 0.1, 0.1, 0.1]
-  rotate: 0
+      key:
+        spread: kx
+        tags: [switch1u]
 outlines:
   # board dimensions according to JLCPCB: 166 mm * 113.7 mm
   break:
@@ -207,33 +135,33 @@ outlines:
       fillet: 0.3
   raw:
     - what: rectangle
-      where: "high1"
+      where: [switch1u]
       size: [kx + px, ky + py]
       corner: px
       bound: true
     - what: rectangle
-      where: "high15"
+      where: [switch15u]
       size: [1.5kx + px, ky + py]
       corner: px
       bound: true
     - what: rectangle
-      where: "thumb_high15"
+      where: [switch15u_thumb]
       size: [kx + px, ky + py]
       corner: px
       bound: true
   raw_top_plate:
     - what: rectangle
-      where: "high1"
+      where: [switch1u]
       bound: true
       size: [kx + px, ky + py]
       corner: px
     - what: rectangle
-      where: "high15"
+      where: [switch15u]
       size: [1.5kx + px, ky + py]
       corner: px
       bound: true
     - what: rectangle
-      where: "thumb_high15"
+      where: [switch15u_thumb]
       size: [kx + px, ky + py]
       corner: px
       bound: true
@@ -254,7 +182,6 @@ outlines:
           shift: [0.5 kx + 0.5px,-0.5ky - 1.5]
         - ref: matrix_pinky_home
         - ref: matrix_inner_home
-          # shift: [0,-2ky]
   thumbfan_glue_top_plate:
     - what: polygon
       points:
@@ -274,13 +201,6 @@ outlines:
         - ref: matrix_inner_home
   controller_area:
     main:
-      # what: rectangle
-      # adjust:
-      #   ref:
-      #     - matrix_inner_top
-      #   # shift: [18, -30]
-      # size: [50, 75]
-      # corner: px
       what: polygon
       points:
         - ref: matrix_middle_top
@@ -321,34 +241,26 @@ outlines:
         ref: matrix_inner_top
         shift: [39, 0]
       radius: 1.5
-  # circle:
-  #   main:
-  #     what: circle
-  #     adjust:
-  #       ref:
-  #         - matrix_index_bottom
-  #       shift: [-24, -137]
-  #     radius: 105
   switches:
     - what: rectangle
-      where: true
+      where: [switch1u, switch15u, switch15u_thumb]
       size: 14
       bound: false
   keycaps1u:
     - what: rectangle
-      where: "high1"
+      where: [switch1u]
       size: [1kx - 0.5, 1ky - 0.5]
       bound: false
       corner: 1
   keycaps15u:
     - what: rectangle
-      where: "high15"
+      where: [switch15u]
       size: [1.5kx - 0.5, 1ky - 0.5] # Choc keycaps are 17.5 x 16.5
       bound: false
       corner: 1
   keycaps_thumb15u:
     - what: rectangle
-      where: "thumb_high15"
+      where: [switch15u_thumb]
       size: [1.5kx - 0.5, 1ky - 0.5] # Choc keycaps are 17.5 x 16.5
       bound: false
       corner: 1
@@ -376,10 +288,6 @@ outlines:
     main:
       what: outline
       name: keywell
-    # circle:
-    #   what: outline
-    #   name: circle
-    #   operation: subtract
     controller:
       what: outline
       name: controller_area
@@ -474,11 +382,6 @@ outlines:
     main:
       what: outline
       name: keywell_top_plate
-      #fillet: 1
-    # circle:
-    #   what: outline
-    #   name: circle
-    #   operation: subtract
   plate:
     main:
       what: outline
@@ -497,10 +400,6 @@ outlines:
     main:
       what: outline
       name: keywell
-    # circle:
-    #   what: outline
-    #   name: circle
-    #   operation: subtract
     controller:
       what: outline
       name: controller_area
@@ -546,11 +445,6 @@ outlines:
     main:
       what: outline
       name: cutout
-    # mounting_holes:
-    #   what: outline
-    #   # TODO use plated through hole footprints as mounting holes
-    #   name: mounting_holes
-    #   operation: subtract
 pcbs:
   porcupine_top_plate:
     outlines:
@@ -616,7 +510,7 @@ pcbs:
     footprints:
       choc_hotswap:
         what: choc
-        where: true
+        where: [switch1u, switch15u, switch15u_thumb]
         params:
           hotswap: true
           reverse: true
@@ -625,7 +519,7 @@ pcbs:
           to: "{{column_net}}"
       diode:
         what: diode
-        where: true
+        where: [switch1u, switch15u, switch15u_thumb]
         params:
           reverse: true
           from: "{{colrow}}"
@@ -668,7 +562,6 @@ pcbs:
         adjust:
           ref:
             - matrix_inner_bottom
-          # shift: [1.16kx, 0.1kx]
           shift: [23, 14]
           rotate: 90
         params:
@@ -679,7 +572,6 @@ pcbs:
           VCC: VCC
           GND: GND
           CS: CS
-      # Remove this if you'd rather pay more to not have the order number printed at all
       scrollwheel:
         what: scrollwheel_mirrored
         adjust:
@@ -697,6 +589,7 @@ pcbs:
       scroll_diode:
         what: diode
         params:
+          reverse: true
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
@@ -857,7 +750,6 @@ pcbs:
           shift: [-0.53 kx, -0.27kx]
         params:
           reverseSilks: false
-          # eastHole: false
       side_l:
         what: sideindicator
         adjust:
@@ -920,161 +812,6 @@ pcbs:
           text: "and place MCU facing UP!"
           style: italic
           justify: left mirror
-      # jstph:
-      #   what: jstphx4
-      #   params:
-      #     side: both
-      #     P1: GND
-      #     P2: VCC
-      #     P3: SDA
-      #     P4: SCL
-      #   adjust:
-      #       ref: matrix_inner_bottom
-      #       shift: [1kx, 0.1kx]
-      # oled:
-      #   what: oled_reversible
-      #   adjust:
-      #     ref:
-      #       - matrix_inner_bottom
-      #     shift: [0.83kx, 0]
-      #     rotate: 90
-      #   params:
-      #     # outline: true
-      #     side: 'F'
-      #     SDA: NN_SDA_CS
-      #     SCL: NN_SCL_GND
-      #     VCC: NN_VCC
-      #     GND: NN_GND_SCL
-      #     # CS: NN_CS_SDA
-      # jumper_nv_left_sda:
-      #   what: jumper
-      #   params:
-      #     from: SDA
-      #     to: NN_SDA_CS
-      #     side: B
-      #   adjust:
-      #     ref:
-      #       - matrix_inner_bottom
-      #     shift: [1kx, 0.1kx]
-      #     rotate: 0
-      # jumper_nv_left_scl:
-      #   what: jumper
-      #   params:
-      #     from: SCL
-      #     to: NN_SCL_GND
-      #     side: B
-      #   adjust:
-      #     ref:
-      #       - matrix_inner_bottom
-      #     shift: [1kx, 0.1kx]
-      #     rotate: 0
-      # jumper_nv_left_vcc:
-      #   what: jumper
-      #   params:
-      #     from: VCC
-      #     to: NN_VCC
-      #     side: B
-      #   adjust:
-      #     ref:
-      #       - matrix_inner_bottom
-      #     shift: [20.50-2.5, 0]
-      #     rotate: 0
-      # jumper_nv_left_gnd:
-      #   what: jumper
-      #   params:
-      #     from: GND
-      #     to: NN_GND_SCL
-      #     side: B
-      #   adjust:
-      #     ref:
-      #       - matrix_inner_bottom
-      #     shift: [20.50-2.5, 2.54]
-      #     rotate: 0
-      # jumper_nv_left_cs:
-      #   what: jumper
-      #   params:
-      #     from: CS
-      #     to: NN_CS_SDA
-      #     side: B
-      #   adjust:
-      #     ref:
-      #       - matrix_inner_bottom
-      #     shift: [20.50-2.5, 5.08]
-      #     rotate: 0
-      # jumper_nv_right_sda:
-      #   what: jumper
-      #   params:
-      #     from: SDA
-      #     to: NN_CS_SDA
-      #     side: F
-      #   adjust:
-      #     ref:
-      #       - matrix_inner_bottom
-      #     shift: [20.50-2.5, 5.08]
-      #     rotate: 0
-      # jumper_nv_right_scl:
-      #   what: jumper
-      #   params:
-      #     from: SCL
-      #     to: NN_GND_SCL
-      #     side: F
-      #   adjust:
-      #     ref:
-      #       - matrix_inner_bottom
-      #     shift: [20.50-2.5, 2.54]
-      #     rotate: 0
-      # jumper_nv_right_vcc:
-      #   what: jumper
-      #   params:
-      #     from: VCC
-      #     to: NN_VCC
-      #     side: F
-      #   adjust:
-      #     shift: [20.50-2.5, 0]
-      #     rotate: 0
-      # jumper_nv_right_gnd:
-      #   what: jumper
-      #   params:
-      #     from: GND
-      #     to: NN_SCL_GND
-      #     side: F
-      #   adjust:
-      #     ref:
-      #       - matrix_inner_bottom
-      #     shift: [20.50-2.5, -2.54]
-      #     rotate: 0
-      # jumper_nv_right_cs:
-      #   what: jumper
-      #   params:
-      #     from: CS
-      #     to: NN_SDA_CS
-      #     side: F
-      #   adjust:
-      #     ref:
-      #       - matrix_inner_bottom
-      #     shift: [20.50-2.5, -5.08]
-      #     rotate: 0
-      # via_RAW_1:
-      #   what: simple_via
-      #   adjust:
-      #     ref: matrix_inner_bottom
-      #     shift: [27.5,-6.3]
-      #   params:
-      #     net: RAW
-      # via_Bplus_1:
-      #   what: simple_via
-      #   adjust:
-      #     ref: matrix_inner_bottom
-      #     shift: [26,-4]
-      #   params:
-      #     net: Bplus
-      # via_GND_1:
-      #   what: simple_via
-      #   adjust:
-      #     ref: matrix_inner_bottom
-      #     shift: [21,-4]
-      #   params:
-      #     net: GND
       via_GND_2:
         what: simple_via
         adjust:
@@ -1124,27 +861,6 @@ pcbs:
           shift: [9.5,-2]
         params:
           net: GND
-      # via_RST_1:
-      #   what: simple_via
-      #   adjust:
-      #     ref: matrix_inner_bottom
-      #     shift: [14.5,-6.5]
-      #   params:
-      #     net: RST
-      # via_RST_2:
-      #   what: simple_via
-      #   adjust:
-      #     ref: matrix_inner_bottom
-      #     shift: [27,-9]
-      #   params:
-      #     net: RST
-      # via_Bplus_2:
-      #   what: simple_via
-      #   adjust:
-      #     ref: matrix_inner_bottom
-      #     shift: [31.5,-4]
-      #   params:
-      #     net: Bplus
       via_col_pinky_1:
         what: simple_via
         adjust:
