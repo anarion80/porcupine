@@ -149,6 +149,16 @@ points:
             # rotate: 270
             shift: [23, -1]
             # shift: [kx+mcu_padding, -mcu_width/2-0.3]
+    trrs:
+      anchor:
+        ref: [mcu_mcu]
+        shift: [mcu_cover_width/2 + trrs_y/2, mcu_cover_height/2 - 3.5]
+      columns.trrs.key.tags: [trrs]
+    reset:
+      anchor:
+        ref: [trrs_trrs]
+        shift: [0, -18]
+      columns.reset.key.tags: [reset]
     screw_top_left:
       anchor:
         ref.aggregate.parts: [matrix_pinky_top, matrix_pinky_home]
@@ -184,19 +194,14 @@ points:
       columns.screw.key.tags: [screw]
     screw_thumb:
       anchor:
+        ref: [reset_reset]
+        shift: [0, -ky]
+      columns.screw.key.tags: [screw]
+    screw_inner:
+      anchor:
         ref: [thumbfan_near_thumb]
         shift: [0.5kx, -0.6ky]
       columns.screw.key.tags: [screw]
-    trrs:
-      anchor:
-        ref: [mcu_mcu]
-        shift: [mcu_cover_width/2 + trrs_y/2, mcu_cover_height/2 - 3.5]
-      columns.trrs.key.tags: [trrs]
-    reset:
-      anchor:
-        ref: [trrs_trrs]
-        shift: [0, -18]
-      columns.reset.key.tags: [reset]
     controller_hole_left:
       anchor:
         ref: [mcu_mcu]
