@@ -323,33 +323,21 @@ outlines:
       where: [mcu]
       size: [mcu_cover_width, mcu_cover_height]
       adjust:
-        # ref: [mcu_mcu]
-        # rotate: 90
-        # affect: x
         shift: [0, -0.3ky]
       corner: px
   controller_plate_holes:
     left:
       what: circle
       where: [controller_hole_left]
-      # adjust:
-      #   ref: matrix_inner_home
-      #   shift: [13.5, -7]
       radius: 1.5
     right:
       what: circle
       where: [controller_hole_right]
-      # adjust:
-      #   ref: matrix_inner_home
-      #   shift: [32.5, -7]
       radius: 1.5
   reset_hole:
     hole:
       what: circle
       where: [reset]
-      # adjust:
-      #   ref: matrix_inner_top
-      #   shift: [39, 0]
       radius: 1.5
   switches:
     - what: rectangle
@@ -410,65 +398,6 @@ outlines:
     - what: circle
       where: [screw]
       radius: 0.5switchplate_screw_hole
-    # top_left:
-    #   what: circle
-    #   adjust:
-    #     - ref: matrix_outer_top
-    #       shift: [0.7 kx, -0.5ky]
-    #   radius: 1.05
-    # bottom_left:
-    #   what: circle
-    #   adjust:
-    #     - ref: matrix_outer_bottom
-    #       shift: [0.7 kx, 0.5ky]
-    #   radius: 1.05
-    # top_left_inner:
-    #   what: circle
-    #   adjust:
-    #     - ref: matrix_pinky_top
-    #       shift: [0.525 kx, -0.1ky]
-    #   radius: 1.05
-    # bottom_left_inner:
-    #   what: circle
-    #   adjust:
-    #     - ref: matrix_pinky_bottom
-    #       shift: [0.525 kx, -0.1ky]
-    #   radius: 1.05
-    # top_right:
-    #   what: circle
-    #   adjust:
-    #     - ref: matrix_inner_top
-    #       shift: [-0.53 kx, 0]
-    #   radius: 1.05
-    # palm:
-    #   what: circle
-    #   adjust:
-    #     - ref: matrix_index_bottom
-    #       shift: [0.45kx, -0.75 ky]
-    #   radius: 1.05
-    # thumb:
-    #   what: circle
-    #   adjust:
-    #     - ref: thumbfan_near_thumb
-    #       shift: [8, -10]
-    #   radius: 1.05
-  # mounting_holes:
-  #   $extends: outlines.screw_holes
-  #   # top_left:
-  #   #   radius: 2.05
-  #   # bottom_left:
-  #   #   radius: 2.05
-  #   # top_left_inner:
-  #   #   radius: 2.05
-  #   # bottom_left_inner:
-  #   #   radius: 2.05
-  #   # top_right:
-  #   #   radius: 2.05
-  #   # palm:
-  #   #   radius: 2.05
-  #   # thumb:
-  #   screw_holes:
-  #     radius: 2.05
   cutout:
     main:
       what: outline
@@ -579,9 +508,8 @@ pcbs:
       jlc_order_number:
         what: text
         adjust:
-          ref:
-            - matrix_ring_home
-          shift: [-0.25 kx, 0.5 ky]
+          ref.aggregate.parts: [matrix_ring_top, matrix_ring_home]
+          shift: [-0.25 kx, 0]
         params:
           text: "JLCJLCJLCJLC"
           justify: left
@@ -595,9 +523,8 @@ pcbs:
       jlc_order_number:
         what: text
         adjust:
-          ref:
-            - matrix_ring_home
-          shift: [-0.25 kx, 0.5 ky]
+          ref.aggregate.parts: [matrix_ring_top, matrix_ring_home]
+          shift: [-0.25 kx, 0]
         params:
           text: "JLCJLCJLCJLC"
           justify: left
@@ -677,16 +604,12 @@ pcbs:
           P8: P8
           P9: P9
         adjust:
-          # ref:
-          #   - matrix_inner_top
-          # shift: [23, -1]
           rotate: 270
       niceview:
         what: niceview
+        where: [mcu_mcu]
         adjust:
-          ref:
-            - matrix_inner_bottom
-          shift: [23, 14]
+          shift: [0, -1.1ky]
           rotate: 90
         params:
           outline: true
@@ -696,14 +619,9 @@ pcbs:
           VCC: VCC
           GND: GND
           CS: CS
-      scrollwheel:
+      scrollwheel_vertical:
         what: scrollwheel_mirrored
         where: [scrollwheel]
-        # adjust:
-        #   ref:
-        #     - matrix_inner_bottom
-        #   shift: [23, -2]
-        #   rotate: 0
         params:
           from: "{{column_net}}"
           to: "{{colrow}}"
@@ -711,6 +629,21 @@ pcbs:
           B: GND
           C: ENCA
           D: undef
+      # scrollwheel_horizontal:
+      #   what: scrollwheel_mirrored
+      #   where: [scrollwheel]
+      #   adjust:
+      #   #   ref:
+      #   #     - matrix_inner_bottom
+      #     shift: [3, -3]
+      #     rotate: -90
+      #   params:
+      #     from: "{{column_net}}"
+      #     to: "{{colrow}}"
+      #     A: ENCB
+      #     B: GND
+      #     C: ENCA
+      #     D: undef
       scroll_diode:
         what: diode
         where: [scrollwheel]
@@ -719,16 +652,13 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          # ref:
-          #   - matrix_inner_bottom
-          shift: [-5, -9]
+          shift: [1, -11]
           rotate: 0
       jlc_order_number:
         what: text
         adjust:
-          ref:
-            - matrix_ring_home
-          shift: [-0.25 kx, 0.5 ky]
+          ref.aggregate.parts: [matrix_ring_top, matrix_ring_home]
+          shift: [-0.25 kx, 0]
         params:
           text: "JLCJLCJLCJLC"
           justify: left
@@ -777,8 +707,6 @@ pcbs:
         what: trrs
         where: [trrs]
         adjust:
-          # ref: matrix_inner_top
-          # shift: [38.8, 17]
           rotate: 0
         params:
           reverse: true
@@ -822,10 +750,6 @@ pcbs:
       reset:
         what: b3u1000p
         where: [reset]
-        # adjust:
-        #   ref: matrix_inner_top
-        #   shift: [39, 0]
-        #   rotate: 0
         params:
           reverse: true
           r1: RST
@@ -873,9 +797,8 @@ pcbs:
       tenting_puck:
         what: tentingpuck
         adjust:
-          ref:
-            - matrix_index_home
-          shift: [-0.53 kx, -0.27kx]
+          ref.aggregate.parts: [matrix_middle_home, matrix_index_home]
+          shift: [0, -0.35ky]
         params:
           reverseSilks: false
       side_l:
@@ -896,10 +819,9 @@ pcbs:
           side: B
       mcu_solder_l:
         what: text
+        where: [mcu_mcu]
         adjust:
-          ref:
-            - matrix_inner_top
-          shift: [20, -9]
+          shift: [-0.2kx, -0.4ky]
           rotate: 90
         params:
           text: "Solder the jumpers,"
@@ -907,10 +829,9 @@ pcbs:
           justify: left
       mcu_solder_r:
         what: text
+        where: [mcu_mcu]
         adjust:
-          ref:
-            - matrix_inner_top
-          shift: [20, 7]
+          shift: [-0.2kx, 0.4ky]
           rotate: 90
         params:
           layer: B.SilkS
@@ -919,10 +840,9 @@ pcbs:
           justify: left mirror
       mcu_info_l:
         what: text
+        where: [mcu_mcu]
         adjust:
-          ref:
-            - matrix_inner_top
-          shift: [26.2, -12]
+          shift: [0.2kx, -0.6ky]
           rotate: 90
         params:
           text: "and place MCU facing UP!"
@@ -930,10 +850,9 @@ pcbs:
           justify: left
       mcu_info_r:
         what: text
+        where: [mcu_mcu]
         adjust:
-          ref:
-            - matrix_inner_top
-          shift: [26.2, 10]
+          shift: [0.2kx, 0.6ky]
           rotate: 90
         params:
           layer: B.SilkS
@@ -1325,62 +1244,12 @@ pcbs:
         params:
           size: 4.4
           drill: 2.2
-      hole_case_top_left:
+      mounting_holes:
         what: through_hole
-        adjust:
-          ref: matrix_outer_top
-          shift: [0.7 kx, -0.5ky]
+        where: [screw]
         params:
           size: 4.4
-          drill: 2.2
-      hole_case_bottom_left:
-        what: through_hole
-        adjust:
-          ref: matrix_outer_bottom
-          shift: [0.7 kx, 0.5ky]
-        params:
-          size: 4.4
-          drill: 2.2
-      hole_case_top_left_inner:
-        what: through_hole
-        adjust:
-          ref: matrix_pinky_top
-          shift: [0.525 kx, -0.1ky]
-        params:
-          size: 4.4
-          drill: 2.2
-      hole_case_bottom_left_inner:
-        what: through_hole
-        adjust:
-          ref: matrix_pinky_bottom
-          shift: [0.525 kx, -0.1ky]
-        params:
-          size: 4.4
-          drill: 2.2
-      hole_case_top_right:
-        what: through_hole
-        adjust:
-          ref: matrix_inner_top
-          shift: [-0.53 kx, 0]
-        params:
-          size: 4.4
-          drill: 2.2
-      hole_case_palm:
-        what: through_hole
-        adjust:
-          ref: matrix_index_bottom
-          shift: [0.45kx, -0.75 ky]
-        params:
-          size: 4.4
-          drill: 2.2
-      hole_case_thumb:
-        what: through_hole
-        adjust:
-          ref: thumbfan_near_thumb
-          shift: [8, -10]
-        params:
-          size: 4.4
-          drill: 2.2
+          drill: 2.3
 cases:
   case:
     - what: outline
