@@ -84,39 +84,55 @@ points:
           bind: 0.5
     thumbfan:
       anchor:
-        ref: matrix_inner_bottom
-        shift: [-1.3 kx, -1.3 ky]
+        ref: matrix_index_bottom
+        shift: [-0.2kx, -1.5ky]
       columns:
         inner:
           key:
-            splay: -3
-            origin: [1 kx, -2.5 ky]
             column_net: col_ring
+            splay: 20
+            rotate: 90
+            # origin: [1 kx, 0]
+            width: 1.25kx
+          rows:
+            thumb:
+              tags: [switch125u_thumb]
         near:
           key:
             column_net: col_middle
-            splay: -6
-            origin: [-0.5 kx, -0.8 ky]
+            splay: -25
+            rotate: 90
+            # origin: [-0.7 kx, -0.8 ky]
+            spread: 1.2kx
+            stagger: -0.4ky
+            width: 1.25kx
+          rows:
+            thumb:
+              tags: [switch125u_thumb]
         home:
           key:
-            splay: -9
-            rotate: 90
-            origin: [-0.5 kx, -0.7 ky]
             column_net: col_index
-            width: 1.5kx
+            splay: -25
+            rotate: 90
+            # origin: [-0.5 kx, -0.7 ky]
+            spread: 1.1ky
+            stagger: -0.7ky
+            width: 1.25kx
           rows:
             thumb:
-              tags: [switch15u_thumb]
+              tags: [switch125u_thumb]
         far:
           key:
-            splay: -6
-            rotate: 90
-            origin: [-0.5 kx, -0.9 ky]
             column_net: col_inner
-            width: 1.5kx
+            splay: -10
+            rotate: 90
+            # origin: [-0.5 kx, -0.9 ky]
+            spread: 1.05ky
+            stagger: -0.5ky
+            width: 1.25kx
           rows:
             thumb:
-              tags: [switch15u_thumb]
+              tags: [switch125u_thumb]
       rows:
         thumb:
           row_net: row_thumb
@@ -180,7 +196,7 @@ points:
         # affect: y
         shift: [0, -0.4ky]
       columns.screw.key.tags: [screw]
-    screw_top_right:
+    screw_top:
       anchor:
         ref.aggregate.parts: [matrix_index_top, matrix_inner_top]
         # affect: y
@@ -192,7 +208,7 @@ points:
         # affect: y
         shift: [0, -0.7ky]
       columns.screw.key.tags: [screw]
-    screw_thumb:
+    screw_top_right:
       anchor:
         ref: [reset_reset]
         shift: [0, -ky]
@@ -200,7 +216,12 @@ points:
     screw_inner:
       anchor:
         ref: [thumbfan_near_thumb]
-        shift: [0.5kx, -0.6ky]
+        shift: [-0.7kx, -0.3ky]
+      columns.screw.key.tags: [screw]
+    screw_bottom_right:
+      anchor:
+        ref: [reset_reset]
+        shift: [0, -4ky]
       columns.screw.key.tags: [screw]
     controller_hole_left:
       anchor:
@@ -255,7 +276,7 @@ outlines:
       corner: px
       bound: true
     - what: rectangle
-      where: [switch15u_thumb]
+      where: [switch125u_thumb]
       size: [kx + px, ky + py]
       corner: px
       bound: true
@@ -271,44 +292,52 @@ outlines:
       corner: px
       bound: true
     - what: rectangle
-      where: [switch15u_thumb]
+      where: [switch125u_thumb]
       size: [kx + px, ky + py]
       corner: px
       bound: true
   thumbfan_glue:
     - what: polygon
       points:
-        - ref: matrix_inner_bottom
+        - ref: matrix_pinky_home
+        - ref: matrix_inner_home
+        - ref: matrix_inner_home
           shift: [ 0.62kx , -0.7 ky + 0.5 py]
+        - ref: matrix_inner_home
+          shift: [2.5kx - px, -0.7 ky + 0.5 py]
+        - ref: matrix_middle_top
+          shift: [4.5kx, -5.4ky]
         - ref: thumbfan_far_thumb
-          shift: [0.75 kx + 0.5px, -0.55 ky - 0.5 py]
-        - ref: thumbfan_far_thumb
-          shift: [-0.75 kx - 0.5px, -0.55 ky - 0.5 py]
-        - ref: thumbfan_inner_thumb
-          shift: [-0.5 kx - 1 py, -0.5ky - 1 py]
+          shift: [-0.6 kx - 0.5px, -0.55 ky - 0.5 py]
+        - ref: matrix_inner_bottom
+          shift: [-0.4kx, -2.2ky]
+        - ref: matrix_inner_bottom
+          shift: [-1.5kx, -2.2ky]
         - ref: matrix_pinky_bottom
           shift: [1.5 kx + 0.5px,-0.5ky - 1.5]
         - ref: matrix_pinky_bottom
           shift: [0.5 kx + 0.5px,-0.5ky - 1.5]
-        - ref: matrix_pinky_home
-        - ref: matrix_inner_home
   thumbfan_glue_top_plate:
     - what: polygon
       points:
-        - ref: matrix_inner_bottom
+        - ref: matrix_pinky_home
+        - ref: matrix_inner_home
+        - ref: matrix_inner_home
           shift: [ 0.62kx , -0.7 ky + 0.5 py]
+        - ref: matrix_inner_home
+          shift: [2.5kx - px, -0.7 ky + 0.5 py]
+        - ref: matrix_middle_top
+          shift: [4.5kx, -5.4ky]
         - ref: thumbfan_far_thumb
-          shift: [0.75 kx + 0.5px, -0.55 ky - 0.5 py]
-        - ref: thumbfan_far_thumb
-          shift: [-0.75 kx - 0.5px, -0.55 ky - 0.5 py]
-        - ref: thumbfan_inner_thumb
-          shift: [-0.5 kx - 1 py, -0.5ky - 1 py]
+          shift: [-0.6 kx - 0.5px, -0.55 ky - 0.5 py]
+        - ref: matrix_inner_bottom
+          shift: [-0.4kx, -2.2ky]
+        - ref: matrix_inner_bottom
+          shift: [-1.5kx, -2.2ky]
         - ref: matrix_pinky_bottom
           shift: [1.5 kx + 0.5px,-0.5ky - 1.5]
         - ref: matrix_pinky_bottom
           shift: [0.5 kx + 0.5px,-0.5ky - 1.5]
-        - ref: matrix_pinky_home
-        - ref: matrix_inner_home
   controller_area:
     main:
       what: polygon
@@ -316,11 +345,11 @@ outlines:
         - ref: matrix_middle_top
           shift: [0, 0.5ky + 1.5]
         - ref: matrix_middle_top
-          shift: [82, 0.5ky + 1.5]
+          shift: [4.5kx, 0.5ky + 1.5]
         - ref: matrix_middle_top
-          shift: [82, -70]
+          shift: [4.5kx, -5ky]
         - ref: matrix_middle_top
-          shift: [0, -60]
+          shift: [0, -3.5ky]
       fillet: px
   controller_plate:
     main:
@@ -346,7 +375,7 @@ outlines:
       radius: 1.5
   switches:
     - what: rectangle
-      where: [switch1u, switch15u, switch15u_thumb]
+      where: [switch1u, switch15u, switch125u_thumb]
       size: 14
       bound: false
   keycaps1u:
@@ -363,8 +392,8 @@ outlines:
       corner: 1
   keycaps_thumb15u:
     - what: rectangle
-      where: [switch15u_thumb]
-      size: [1.5kx - 0.5, 1ky - 0.5] # Choc keycaps are 17.5 x 16.5
+      where: [switch125u_thumb]
+      size: [1.25kx - 0.5, 1ky - 0.5] # Choc keycaps are 17.5 x 16.5
       bound: false
       corner: 1
   keywell:
@@ -565,7 +594,7 @@ pcbs:
     footprints:
       choc_hotswap:
         what: choc
-        where: [switch1u, switch15u, switch15u_thumb]
+        where: [switch1u, switch15u, switch125u_thumb]
         params:
           hotswap: true
           reverse: true
@@ -574,7 +603,7 @@ pcbs:
           to: "{{column_net}}"
       diode:
         what: diode
-        where: [switch1u, switch15u, switch15u_thumb]
+        where: [switch1u, switch15u, switch125u_thumb]
         params:
           reverse: true
           from: "{{colrow}}"
@@ -779,22 +808,24 @@ pcbs:
       #     side: B
       info_l:
         what: text
+        where: [reset_reset]
         adjust:
-          ref:
-            - thumbfan_near_thumb
-          shift: [-0.5kx, -0.8ky]
-          rotate: -7.5
+          # ref:
+          #   - thumbfan_near_thumb
+          rotate: 90
+          shift: [0.15kx, -3ky]
         params:
           layer: F.SilkS
           text: "porcupine v2.0 by AnarioN"
           justify: left
       info_r:
         what: text
+        where: [reset_reset]
         adjust:
-          ref:
-            - thumbfan_near_thumb
-          shift: [11.1, -16.2]
-          rotate: -7.5
+        #   ref:
+        #     - thumbfan_near_thumb
+          rotate: 90
+          shift: [0.15kx, -1.8ky]
         params:
           layer: B.SilkS
           text: "porcupine v2.0 by AnarioN"
@@ -811,7 +842,7 @@ pcbs:
         adjust:
           ref:
             - matrix_middle_bottom
-          shift: [0, -22]
+          shift: [0, -ky]
         params:
           side: F
       side_r:
@@ -819,7 +850,7 @@ pcbs:
         adjust:
           ref:
             - matrix_middle_bottom
-          shift: [0, -26]
+          shift: [0, -ky]
         params:
           side: B
       mcu_solder_l:
