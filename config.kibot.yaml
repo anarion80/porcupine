@@ -7,12 +7,31 @@ preflight:
   run_drc: true
   check_zone_fills: true
   ignore_unconnected: true
+  filters:
+    - filter: 'We know some connectors extend outside the board'
+      error: 'silk_over_copper'
+      regex: 'clipped by solder mask'
+    - filter: 'We know some connectors extend outside the board'
+      error: 'hole_clearance'
+      regex: 'Hole clearance violation'
+    - filter: 'We know some connectors extend outside the board'
+      error: 'solder_mask_bridge'
+      regex: 'solder mask aperture bridges items with different nets'
+    - filter: 'We know some connectors extend outside the board'
+      error: 'copper_edge_clearance'
+      regex: 'Board edge clearance violation'
 
 global:
   filters:
-  - number: 1007
-  - number: 1015
-  - number: 58
+    - filter: Ignore PcbDraw missing components
+      number: 103
+    - filter: Ignore missing KiCad config, not in docker images
+      number: 8
+    - filter: Ignore missing KiCad 3D models, not in docker images
+      number: 10
+    - filter: Ignore missing KiCad config from KiAuto, not in docker images
+      number: 58
+      regex: kicad_common.json
   # solder_mask_color: black
   # silk_screen_color: white
   # pcb_finish: ENIG

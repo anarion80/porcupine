@@ -2,8 +2,8 @@
 
 container_cmd=docker
 container_args="-w /board -v $(pwd):/board -v /tmp/.X11-unix:/tmp/.X11-unix --rm"
-docker_image="ghcr.io/inti-cmnb/kicad6_auto"
-docker_tag="latest"
+docker_image="ghcr.io/inti-cmnb/kicad_auto_full"
+docker_tag="dev_k7"
 
 for d in ./output/*; do
     if [ -d $d ]; then
