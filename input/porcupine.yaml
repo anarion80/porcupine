@@ -8,6 +8,9 @@ units:
   cy: 17 # 17mm Choc Y spacing
   kx: cx
   ky: cy
+  choc1u: 17.5
+  choc125u: 22
+  choc15u: 26.5
   px: 2
   py: 2
   $default_width: cx
@@ -44,17 +47,17 @@ points:
             column_net: col_outer
           rows:
             top:
-              key.width: 1.5kx
-              tags: [switch15u]
+              key.width: choc125u
+              tags: [switch125u]
             home:
-              key.width: 1.5kx
-              tags: [switch15u]
+              key.width: choc125u
+              tags: [switch125u]
             bottom:
-              key.width: 1.5kx
-              tags: [switch15u]
+              key.width: choc125u
+              tags: [switch125u]
         pinky:
           key:
-            spread: kx/2 + 1.5kx/2 + 1
+            spread: choc1u/2 + choc125u/2 + 1.5
             column_net: col_pinky
         ring:
           key:
@@ -93,7 +96,7 @@ points:
             splay: 20
             rotate: 90
             # origin: [1 kx, 0]
-            width: 1.25kx
+            width: choc125u
           rows:
             thumb:
               tags: [switch125u_thumb]
@@ -105,7 +108,7 @@ points:
             # origin: [-0.7 kx, -0.8 ky]
             spread: 1.2kx
             stagger: -0.4ky
-            width: 1.25kx
+            width: choc125u
           rows:
             thumb:
               tags: [switch125u_thumb]
@@ -117,7 +120,7 @@ points:
             # origin: [-0.5 kx, -0.7 ky]
             spread: 1.1ky
             stagger: -0.7ky
-            width: 1.25kx
+            width: choc125u
           rows:
             thumb:
               tags: [switch125u_thumb]
@@ -129,7 +132,7 @@ points:
             # origin: [-0.5 kx, -0.9 ky]
             spread: 1.05ky
             stagger: -0.5ky
-            width: 1.25kx
+            width: choc125u
           rows:
             thumb:
               tags: [switch125u_thumb]
@@ -162,9 +165,7 @@ points:
             tags: [mcu]
             width: mcu_cover_height  # footprint width/height unintuitive
             height: mcu_cover_width
-            # rotate: 270
             shift: [23, -1]
-            # shift: [kx+mcu_padding, -mcu_width/2-0.3]
     trrs:
       anchor:
         ref: [mcu_mcu]
@@ -178,12 +179,12 @@ points:
     screw_top_left:
       anchor:
         ref.aggregate.parts: [matrix_pinky_top, matrix_pinky_home]
-        shift: [-0.5kx - 0.1u, 0]
+        shift: [-(choc1u/2 + choc125u/2 + 1.5)/2, 0]
       columns.screw.key.tags: [screw, break_away_screw]
     screw_bottom_left:
       anchor:
         ref.aggregate.parts: [matrix_pinky_home, matrix_pinky_bottom]
-        shift: [-0.5kx - 0.1u, 0]
+        shift: [-(choc1u/2 + choc125u/2 + 1.5)/2, 0]
       columns.screw.key.tags: [screw, break_away_screw]
     screw_top_left_inner:
       anchor:
@@ -193,19 +194,16 @@ points:
     screw_bottom_left_inner:
       anchor:
         ref.aggregate.parts: [matrix_pinky_bottom, matrix_ring_bottom]
-        # affect: y
         shift: [0, -0.4ky]
       columns.screw.key.tags: [screw]
     screw_top:
       anchor:
         ref.aggregate.parts: [matrix_index_top, matrix_inner_top]
-        # affect: y
         shift: [0, -0.1ky]
       columns.screw.key.tags: [screw]
     screw_palm:
       anchor:
         ref.aggregate.parts: [matrix_index_bottom, matrix_inner_bottom]
-        # affect: y
         shift: [0, -0.7ky]
       columns.screw.key.tags: [screw]
     screw_top_right:
@@ -226,15 +224,11 @@ points:
     controller_hole_left:
       anchor:
         ref: [mcu_mcu]
-        # affect: x
         shift: [-mcu_cover_width/2 + 3, -mcu_cover_height/2 - 1.5]
-        # shift: [-10, -20]
       columns.controller_hole.key.tags: [controller_hole_left]
     controller_hole_right:
       anchor:
         ref: [mcu_mcu]
-        # shift: [10, -20]
-        # affect: x
         shift: [mcu_cover_width/2 - 3, -mcu_cover_height/2 - 1.5]
       columns.controller_hole.key.tags: [controller_hole_right]
 outlines:
@@ -242,26 +236,30 @@ outlines:
   break:
     - what: rectangle
       where:
-        ref: matrix_outer_home
-        shift: [0.7kx,-8]
+        # ref: matrix_outer_home
+        ref.aggregate.parts: [matrix_outer_home, matrix_pinky_home]
+        shift: [0,-8]
       size: [1, 14]
       fillet: 0.3
     - what: rectangle
       where:
-        ref: matrix_outer_home
-        shift: [0.7kx,8]
+        # ref: matrix_outer_home
+        shift: [0,8]
+        ref.aggregate.parts: [matrix_outer_home, matrix_pinky_home]
       size: [1, 14]
       fillet: 0.3
     - what: rectangle
       where:
-        ref: matrix_outer_top
-        shift: [0.7kx,0.5ky]
+        # ref: matrix_outer_top
+        ref.aggregate.parts: [matrix_outer_top, matrix_pinky_top]
+        shift: [0,0.5ky]
       size: [1, 17]
       fillet: 0.3
     - what: rectangle
       where:
-        ref: matrix_outer_bottom
-        shift: [0.7kx,-0.5ky]
+        # ref: matrix_outer_bottom
+        ref.aggregate.parts: [matrix_outer_bottom, matrix_pinky_bottom]
+        shift: [0,-0.5ky]
       size: [1, 17]
       fillet: 0.3
   raw:
@@ -271,8 +269,8 @@ outlines:
       corner: px
       bound: true
     - what: rectangle
-      where: [switch15u]
-      size: [1.5kx + px, ky + py]
+      where: [switch125u]
+      size: [1.25kx + px, ky + py]
       corner: px
       bound: true
     - what: rectangle
@@ -287,8 +285,8 @@ outlines:
       size: [kx + px, ky + py]
       corner: px
     - what: rectangle
-      where: [switch15u]
-      size: [1.5kx + px, ky + py]
+      where: [switch125u]
+      size: [1.25kx + px, ky + py]
       corner: px
       bound: true
     - what: rectangle
@@ -375,25 +373,25 @@ outlines:
       radius: 1.5
   switches:
     - what: rectangle
-      where: [switch1u, switch15u, switch125u_thumb]
+      where: [switch1u, switch125u, switch125u_thumb]
       size: 14
       bound: false
   keycaps1u:
     - what: rectangle
       where: [switch1u]
-      size: [1kx - 0.5, 1ky - 0.5]
+      size: [choc1u, choc1u - 1]
       bound: false
       corner: 1
   keycaps15u:
     - what: rectangle
-      where: [switch15u]
-      size: [1.5kx - 0.5, 1ky - 0.5] # Choc keycaps are 17.5 x 16.5
+      where: [switch125u]
+      size: [choc125u, choc1u - 1] # Choc keycaps are 17.5 x 16.5, 1.25u are 22 x 16.5, 1.5u are 26.5 x 16.5
       bound: false
       corner: 1
   keycaps_thumb15u:
     - what: rectangle
       where: [switch125u_thumb]
-      size: [1.25kx - 0.5, 1ky - 0.5] # Choc keycaps are 17.5 x 16.5
+      size: [choc125u, choc1u - 1] # Choc keycaps are 17.5 x 16.5, 1.25u are 22 x 16.5, 1.5u are 26.5 x 16.5
       bound: false
       corner: 1
   keywell:
@@ -594,7 +592,7 @@ pcbs:
     footprints:
       choc_hotswap:
         what: choc
-        where: [switch1u, switch15u, switch125u_thumb]
+        where: [switch1u, switch125u, switch125u_thumb]
         params:
           hotswap: true
           reverse: true
@@ -603,7 +601,7 @@ pcbs:
           to: "{{column_net}}"
       diode:
         what: diode
-        where: [switch1u, switch15u, switch125u_thumb]
+        where: [switch1u, switch125u, switch125u_thumb]
         params:
           reverse: true
           from: "{{colrow}}"
