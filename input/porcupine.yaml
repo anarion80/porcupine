@@ -370,7 +370,7 @@ outlines:
     hole:
       what: circle
       where: [reset]
-      radius: 1.5
+      radius: 1
   switches:
     - what: rectangle
       where: [switch1u, switch125u, switch125u_thumb]
@@ -394,6 +394,11 @@ outlines:
       size: [choc125u, choc1u - 1] # Choc keycaps are 17.5 x 16.5, 1.25u are 22 x 16.5, 1.5u are 26.5 x 16.5
       bound: false
       corner: 1
+  scrollwheel_cutout:
+    - what: rectangle
+      where: [scrollwheel]
+      size: [switchplate_scrollwheel_cutout_x, switchplate_scrollwheel_cutout_y]
+      bound: false
   keywell:
     main:
       what: outline
@@ -529,11 +534,26 @@ outlines:
     main:
       what: outline
       name: cutout
+  top_plate:
+    - raw_top_plate
+    - +thumbfan_glue_top_plate
+    - +controller_area
+  top_plate_fillet:
+    - what: outline
+      name: top_plate
+      fillet: 1
+  combo:
+    - top_plate_fillet
+    - -switches
+    - -controller_plate
+    - -scrollwheel_cutout
+    - -screw_holes
+    - -reset_hole
 pcbs:
   porcupine_top_plate:
     outlines:
       edge:
-        outline: plate
+        outline: combo
         layer: Edge.Cuts
     # Remove this if you'd rather pay more to not have the order number printed at all
     footprints:
@@ -581,7 +601,7 @@ pcbs:
         outline: switches
         layer: B.SilkS
       top_plate:
-        outline: plate
+        outline: combo
         layer: Eco2.User
       bottom_plate:
         outline: bottom_outline
