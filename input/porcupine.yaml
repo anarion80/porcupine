@@ -95,7 +95,6 @@ points:
             column_net: col_ring
             splay: 20
             rotate: 90
-            # origin: [1 kx, 0]
             width: choc125u
             bind: [0,2,0,2]
           rows:
@@ -106,7 +105,6 @@ points:
             column_net: col_middle
             splay: -25
             rotate: 90
-            # origin: [-0.7 kx, -0.8 ky]
             spread: 1.2kx
             stagger: -0.4ky
             width: choc125u
@@ -119,7 +117,6 @@ points:
             column_net: col_index
             splay: -15
             rotate: 90
-            # origin: [-0.5 kx, -0.7 ky]
             spread: 1.1kx
             stagger: -0.15ky
             width: choc125u
@@ -132,7 +129,6 @@ points:
             column_net: col_inner
             splay: -15
             rotate: 90
-            # origin: [-0.5 kx, -0.9 ky]
             spread: 1.1kx
             stagger: -0.15ky
             width: choc125u
@@ -231,36 +227,32 @@ points:
       columns.controller_hole.key.tags: [controller_hole_right]
 outlines:
   # board dimensions according to JLCPCB: 166 mm * 113.7 mm
-  break:
+  _break:
     - what: rectangle
       where:
-        # ref: matrix_outer_home
         ref.aggregate.parts: [matrix_outer_home, matrix_pinky_home]
         shift: [0,-8]
       size: [1, 14]
       fillet: 0.3
     - what: rectangle
       where:
-        # ref: matrix_outer_home
         shift: [0,8]
         ref.aggregate.parts: [matrix_outer_home, matrix_pinky_home]
       size: [1, 14]
       fillet: 0.3
     - what: rectangle
       where:
-        # ref: matrix_outer_top
         ref.aggregate.parts: [matrix_outer_top, matrix_pinky_top]
         shift: [0,0.5ky]
       size: [1, 17]
       fillet: 0.3
     - what: rectangle
       where:
-        # ref: matrix_outer_bottom
         ref.aggregate.parts: [matrix_outer_bottom, matrix_pinky_bottom]
         shift: [0,-0.5ky]
       size: [1, 17]
       fillet: 0.3
-  raw:
+  _raw:
     - what: rectangle
       where: [switch1u]
       size: [kx + px, ky + py]
@@ -276,23 +268,7 @@ outlines:
       size: [kx + px, ky + py]
       corner: px
       bound: true
-  raw_top_plate:
-    - what: rectangle
-      where: [switch1u]
-      bound: true
-      size: [kx + px, ky + py]
-      corner: px
-    - what: rectangle
-      where: [switch125u]
-      size: [1.25kx + px, ky + py]
-      corner: px
-      bound: true
-    - what: rectangle
-      where: [switch125u_thumb]
-      size: [kx + px, ky + py]
-      corner: px
-      bound: true
-  thumbfan_glue:
+  _thumbfan_glue:
     - what: polygon
       points:
         - ref: matrix_pinky_home
@@ -307,7 +283,7 @@ outlines:
           shift: [1.5 kx + 0.5px,-0.5ky - 1.5]
         - ref: matrix_pinky_bottom
           shift: [0.5 kx + 0.5px,-0.5ky - 1.5]
-  controller_area:
+  _controller_area:
     main:
       what: polygon
       points:
@@ -322,7 +298,7 @@ outlines:
         - ref: matrix_pinky_bottom
           shift: [-0.2kx, 0]
       fillet: px
-  controller_plate:
+  _controller_plate:
     main:
       what: rectangle
       where: [mcu]
@@ -330,7 +306,7 @@ outlines:
       adjust:
         shift: [0, -0.3ky]
       corner: px
-  controller_plate_holes:
+  _controller_plate_holes:
     left:
       what: circle
       where: [controller_hole_left]
@@ -339,94 +315,86 @@ outlines:
       what: circle
       where: [controller_hole_right]
       radius: 1.5
-  reset_hole:
+  _reset_hole:
     hole:
       what: circle
       where: [reset]
       radius: 1
-  switches:
+  _switches:
     - what: rectangle
       where: [switch1u, switch125u, switch125u_thumb]
       size: 14
       bound: false
-  keycaps1u:
+  _keycaps1u:
     - what: rectangle
       where: [switch1u]
       size: [choc1u, choc1u - 1]
       bound: false
       corner: 1
-  keycaps15u:
+  _keycaps15u:
     - what: rectangle
       where: [switch125u]
       size: [choc125u, choc1u - 1] # Choc keycaps are 17.5 x 16.5, 1.25u are 22 x 16.5, 1.5u are 26.5 x 16.5
       bound: false
       corner: 1
-  keycaps_thumb15u:
+  _keycaps_thumb15u:
     - what: rectangle
       where: [switch125u_thumb]
       size: [choc125u, choc1u - 1] # Choc keycaps are 17.5 x 16.5, 1.25u are 22 x 16.5, 1.5u are 26.5 x 16.5
       bound: false
       corner: 1
-  scrollwheel_cutout:
+  _scrollwheel_cutout:
     - what: rectangle
       where: [scrollwheel]
       size: [switchplate_scrollwheel_cutout_x, switchplate_scrollwheel_cutout_y]
       bound: false
-  left_circle:
+  _left_circle:
     main:
       what: circle
       adjust:
         ref: matrix_pinky_bottom
         shift: [-2.5, -73]
       radius: 63
-  right_circle:
+  _right_circle:
     main:
       what: circle
       adjust:
         ref: thumbfan_near_thumb
         shift: [-75, 0]
       radius: 63
-  keywell:
+  _keywell:
     main:
       what: outline
-      name: raw
+      name: _raw
     thumbfan_glue:
       what: outline
-      name: thumbfan_glue
+      name: _thumbfan_glue
       operation: add
     break:
       what: outline
-      name: break
+      name: _break
       operation: subtract
-  keywell_top_plate:
-    main:
-      what: outline
-      name: raw_top_plate
-    thumbfan_glue2:
-      what: outline
-      name: thumbfan_glue
-      operation: add
   base_outline:
     main:
       what: outline
-      name: keywell
+      name: _keywell
     controller:
       what: outline
-      name: controller_area
+      name: _controller_area
       operation: add
     left_cirlce:
       what: outline
-      name: left_circle
+      name: _left_circle
       operation: subtract
     right_cirlce:
       what: outline
-      name: right_circle
+      name: _right_circle
       operation: subtract
-  break_away_screw_holes:
+  _break_away_screw_holes:
     - what: circle
       where: [break_away_screw]
       radius: 0.5switchplate_screw_hole
-  screw_holes:
+  _screw_holes:
     - what: circle
       where: [screw]
       radius: 0.5switchplate_screw_hole
@@ -437,124 +405,52 @@ outlines:
       fillet: 1
     holes:
       what: outline
-      name: break_away_screw_holes
+      name: _break_away_screw_holes
       operation: subtract
-  controller_plate_mounting_holes:
-    $extends: outlines.controller_plate_holes
+  _controller_plate_mounting_holes:
+    $extends: outlines._controller_plate_holes
     left:
       radius: 2.5
     right:
       radius: 2.5
   controller_plate_with_holes:
-    main:
-      what: outline
-      name: controller_plate
-    holes:
-      what: outline
-      name: controller_plate_holes
-      operation: subtract
+    - _controller_plate
+    - -_controller_plate_holes
   bottom_outline:
-    main:
-      what: outline
-      name: cutout
-    screw_holes:
-      what: outline
-      # TODO use footprints with pad + via reinforcement as mounting holes
-      name: screw_holes
-      operation: subtract
-  plate_before_circle:
-    main:
-      what: outline
-      name: keywell_top_plate
-  plate:
-    main:
-      what: outline
-      name: plate_before_circle
-      fillet: 1
-    switches:
-      what: outline
-      name: switches
-      operation: subtract
-    mounting_holes:
-      what: outline
-      # TODO use footprints with pad + via reinforcement as mounting holes
-      name: screw_holes
-      operation: subtract
-  full_with_keycaps:
-    main:
-      what: outline
-      name: keywell
-    controller:
-      what: outline
-      name: controller_area
-      operation: add
-    keycaps1u:
-      what: outline
-      name: keycaps1u
-      operation: subtract
-    keycaps15u:
-      what: outline
-      name: keycaps15u
-      operation: subtract
-    keycaps_thumb15u:
-      what: outline
-      name: keycaps_thumb15u
-      operation: subtract
-    mounting_holes:
-      what: outline
-      # TODO use footprints with pad + via reinforcement as mounting holes
-      name: screw_holes
-      operation: subtract
+    - cutout
+    - -_screw_holes
   preview:
-    base_outline:
-      what: outline
-      name: base_outline
-    keycaps1u:
-      what: outline
-      name: keycaps1u
-      operation: subtract
-    keycaps15u:
-      what: outline
-      name: keycaps15u
-      operation: subtract
-    keycaps_thumb15u:
-      what: outline
-      name: keycaps_thumb15u
-      operation: subtract
-  pcb_case:
-    main:
-      what: outline
-      name: cutout
+    - base_outline
+    - -_keycaps1u
+    - -_keycaps15u
+    - -_keycaps_thumb15u
   pcb:
-    main:
-      what: outline
-      name: cutout
-  top_plate:
-    - raw
-    - +thumbfan_glue
-    - -break
-    - +controller_area
-    - -left_circle
-    - -right_circle
-  top_plate_fillet:
+    - cutout
+  _top_plate_step_1:
+    - _raw
+    - +_thumbfan_glue
+    - -_break
+    - +_controller_area
+    - -_left_circle
+    - -_right_circle
+  _top_plate_fillet:
     - what: outline
-      name: top_plate
+      name: _top_plate_step_1
       fillet: 1
-  combo:
-    - top_plate_fillet
-    - -break_away_screw_holes
-    # - top_plate_fillet
-    # - -switches
-    # - -controller_plate
-    # - -scrollwheel_cutout
-    # - -screw_holes
-    # - -reset_hole
+  top_outline:
+    - _top_plate_fillet
+    - -_break_away_screw_holes
+    - -_switches
+    - -_controller_plate
+    - -_scrollwheel_cutout
+    - -_screw_holes
+    - -_reset_hole
 
 pcbs:
   porcupine_top_plate:
     outlines:
       edge:
-        outline: combo
+        outline: top_outline
         layer: Edge.Cuts
     # Remove this if you'd rather pay more to not have the order number printed at all
     footprints:
@@ -587,22 +483,22 @@ pcbs:
         outline: pcb
         layer: Edge.Cuts
       keys1u:
-        outline: keycaps1u
+        outline: _keycaps1u
         layer: Eco1.User
       keys15u:
-        outline: keycaps15u
+        outline: _keycaps15u
         layer: Eco1.User
       keys_thumb15u:
-        outline: keycaps_thumb15u
+        outline: _keycaps_thumb15u
         layer: Eco1.User
       switches_l:
-        outline: switches
+        outline: _switches
         layer: F.SilkS
       switches_r:
-        outline: switches
+        outline: _switches
         layer: B.SilkS
       top_plate:
-        outline: combo
+        outline: top_outline
         layer: Eco2.User
       bottom_plate:
         outline: bottom_outline
@@ -1308,7 +1204,7 @@ pcbs:
 cases:
   case:
     - what: outline
-      name: pcb_case
+      name: pcb
       operation: add
       extrude: 1
   bottom_plate:
@@ -1318,6 +1214,6 @@ cases:
       extrude: 1
   top_plate:
     - what: outline
-      name: plate
+      name: top_outline
       operation: add
       extrude: 1
