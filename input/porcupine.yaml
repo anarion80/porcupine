@@ -530,8 +530,9 @@ outlines:
       what: outline
       name: cutout
   top_plate:
-    - raw_top_plate
+    - raw
     - +thumbfan_glue
+    - -break
     - +controller_area
     - -left_circle
     - -right_circle
@@ -541,11 +542,13 @@ outlines:
       fillet: 1
   combo:
     - top_plate_fillet
-    - -switches
-    - -controller_plate
-    - -scrollwheel_cutout
-    - -screw_holes
-    - -reset_hole
+    - -break_away_screw_holes
+    # - top_plate_fillet
+    # - -switches
+    # - -controller_plate
+    # - -scrollwheel_cutout
+    # - -screw_holes
+    # - -reset_hole
 
 pcbs:
   porcupine_top_plate:
