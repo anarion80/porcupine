@@ -136,7 +136,7 @@ points:
             spread: 1.1kx
             stagger: -0.15ky
             width: choc125u
-            bind: [2,1.5,0.5,1.5]
+            bind: [2,1.5,0.5,2.5]
           rows:
             thumb:
               tags: [switch125u_thumb]
@@ -318,7 +318,9 @@ outlines:
         - ref: matrix_middle_top
           shift: [4.5kx, -5ky]
         - ref: matrix_middle_top
-          shift: [0, -3ky]
+          shift: [-2kx, -5.5ky]
+        - ref: matrix_pinky_bottom
+          shift: [-0.2kx, 0]
       fillet: px
   controller_plate:
     main:
@@ -370,6 +372,20 @@ outlines:
       where: [scrollwheel]
       size: [switchplate_scrollwheel_cutout_x, switchplate_scrollwheel_cutout_y]
       bound: false
+  left_circle:
+    main:
+      what: circle
+      adjust:
+        ref: matrix_pinky_bottom
+        shift: [-2.5, -73]
+      radius: 63
+  right_circle:
+    main:
+      what: circle
+      adjust:
+        ref: thumbfan_near_thumb
+        shift: [-75, 0]
+      radius: 63
   keywell:
     main:
       what: outline
@@ -398,6 +414,14 @@ outlines:
       what: outline
       name: controller_area
       operation: add
+    left_cirlce:
+      what: outline
+      name: left_circle
+      operation: subtract
+    right_cirlce:
+      what: outline
+      name: right_circle
+      operation: subtract
   break_away_screw_holes:
     - what: circle
       where: [break_away_screw]
@@ -509,6 +533,8 @@ outlines:
     - raw_top_plate
     - +thumbfan_glue
     - +controller_area
+    - -left_circle
+    - -right_circle
   top_plate_fillet:
     - what: outline
       name: top_plate
@@ -520,6 +546,7 @@ outlines:
     - -scrollwheel_cutout
     - -screw_holes
     - -reset_hole
+
 pcbs:
   porcupine_top_plate:
     outlines:
