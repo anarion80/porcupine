@@ -9,7 +9,7 @@ docker_tag="v1.0.0"
 
 for d in ./output/*; do
     if [ -d $d ]; then
-        for f in $d/pcbs/*; do
+        for f in $d/pcbs/*.kicad_pcb; do
             filename=${f##*/}
             file=${filename%.*}
 
