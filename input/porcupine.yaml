@@ -216,8 +216,8 @@ points:
       columns.screw.key.tags: [screw]
     screw_bottom_right:
       anchor:
-        ref: [reset_reset]
-        shift: [0, -3ky]
+        ref.aggregate.parts: [thumbfan_home_thumb, thumbfan_far_thumb]
+        shift: [0.3kx, 0]
       columns.screw.key.tags: [screw]
     controller_hole_left:
       anchor:
