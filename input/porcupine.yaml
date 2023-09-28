@@ -804,24 +804,24 @@ pcbs:
           reverse: true
           r1: RST
           r2: GND
-      # porcupine_l:
-      #   what: porcupine_new
-      #   adjust:
-      #     ref:
-      #       - matrix_middle_bottom
-      #     shift: [-0.5kx, -0.65ky]
-      #     rotate: 0
-      #   params:
-      #     side: F
-      # porcupine_r:
-      #   what: porcupine_new
-      #   adjust:
-      #     ref:
-      #       - matrix_middle_bottom
-      #     shift: [-0.5kx, -0.65ky]
-      #     rotate: 0
-      #   params:
-      #     side: B
+      porcupine_l:
+        what: porcupine_new
+        adjust:
+          ref:
+            - matrix_middle_bottom
+          shift: [-0.3kx, -1.25ky]
+          rotate: -30
+        params:
+          side: F
+      porcupine_r:
+        what: porcupine_new
+        adjust:
+          ref:
+            - matrix_middle_bottom
+          shift: [-0.3kx, -1.25ky]
+          rotate: -30
+        params:
+          side: B
       info_l:
         what: text
         where: [reset_reset]
@@ -857,16 +857,16 @@ pcbs:
         what: sideindicator
         adjust:
           ref:
-            - matrix_middle_bottom
-          shift: [0, -ky]
+            - matrix_index_bottom
+          shift: [0.4kx, -ky]
         params:
           side: F
       side_r:
         what: sideindicator
         adjust:
           ref:
-            - matrix_middle_bottom
-          shift: [0, -ky]
+            - matrix_index_bottom
+          shift: [0.4kx, -ky]
         params:
           side: B
       mcu_solder_l:
