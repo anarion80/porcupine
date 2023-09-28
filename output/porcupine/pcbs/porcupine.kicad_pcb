@@ -145,8 +145,11 @@
 (net 43 "P8")
 (net 44 "P9")
 (net 45 "scrollwheel_scrollwheel")
-(net 46 "undef")
-(net 47 "Bplus")
+(net 46 "ENCB_undef")
+(net 47 "GND_ENCA")
+(net 48 "ENCA_GND")
+(net 49 "undef_ENCB")
+(net 50 "Bplus")
             
   (net_class Default "This is the default net class."
     (clearance 0.2)
@@ -198,7 +201,10 @@
 (add_net "P8")
 (add_net "P9")
 (add_net "scrollwheel_scrollwheel")
-(add_net "undef")
+(add_net "ENCB_undef")
+(add_net "GND_ENCA")
+(add_net "ENCA_GND")
+(add_net "undef_ENCB")
   )
 
             
@@ -6173,8 +6179,62 @@
 
         
         (module RollerEncoder_Panasonic_EVQWGD001 (layer "F.Cu") (tedit 6040A10C)
-        (at 270.25 150.5833333 0)
-        (fp_text reference "S23" (at 0 0 0) (layer "F.Fab") (effects (font (size 1 1) (thickness 0.15))))
+        (at 277.75 155.0833333 90)
+        (fp_text reference "S23" (at 0 0 90) (layer "F.Fab") (effects (font (size 1 1) (thickness 0.15))))
+        (fp_text value RollerEncoder_Panasonic_EVQWGD001 (at -0.1 9 90) (layer "F.Fab") (effects (font (size 1 1) (thickness 0.15))))
+
+        
+        (fp_line (start -8.4 -6.4) (end 8.4 -6.4) (layer "F.SilkS") (width 0.12))
+        (fp_line (start 8.4 -6.4) (end 8.4 7.4) (layer "F.SilkS") (width 0.12))
+        (fp_line (start 8.4 7.4) (end -8.4 7.4) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -8.4 7.4) (end -8.4 -6.4) (layer "F.SilkS") (width 0.12))
+
+        (fp_line (start -8.4 6.4) (end 8.4 6.4) (layer "B.SilkS") (width 0.12))
+        (fp_line (start 8.4 6.4) (end 8.4 -7.4) (layer "B.SilkS") (width 0.12))
+        (fp_line (start 8.4 -7.4) (end -8.4 -7.4) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -8.4 -7.4) (end -8.4 6.4) (layer "B.SilkS") (width 0.12))
+
+        (fp_text user "Scrollwheel" (at 0 0 180) (layer "F.SilkS") (effects (font (size 1.0 1.0) (thickness 0.15))))
+        (fp_text user "EVQWGD001" (at 1.75 0 180) (layer "F.SilkS") (effects (font (size 1.0 1.0) (thickness 0.15))))
+
+      
+        
+            (model "${KICAD7_3RD_PARTY}/3dmodels/ergogen/Encoder.step"
+                (offset (xyz 8.5 -7 -3.5))
+                (scale (xyz 1 1 1))
+                (rotate (xyz 0 0 -90))
+            )
+            
+        
+          
+          (fp_line (start 9.8 7.3) (end 9.8 -7.3) (layer "Edge.Cuts") (width 0.15))
+          (fp_line (start 7.4 -7.3) (end 7.4 7.3) (layer "Edge.Cuts") (width 0.15))
+          (fp_line (start 9.5 -7.6) (end 7.7 -7.6) (layer "Edge.Cuts") (width 0.15))
+          (fp_line (start 7.7 7.6) (end 9.5 7.6) (layer "Edge.Cuts") (width 0.15))
+
+          (fp_arc (start 7.4 -7.3) (mid 7.487868 -7.512132) (end 7.7 -7.6) (width 0.15) (layer "Edge.Cuts"))
+          (fp_arc (start 7.7 7.6) (mid 7.487868 7.512132) (end 7.4 7.3) (width 0.15) (layer "Edge.Cuts"))
+          (fp_arc (start 9.5 -7.6) (mid 9.712132 -7.512132) (end 9.8 -7.3) (width 0.15) (layer "Edge.Cuts"))
+          (fp_arc (start 9.8 7.3) (mid 9.712132 7.512132) (end 9.5 7.6) (width 0.15) (layer "Edge.Cuts"))
+
+          
+          (pad S1 thru_hole circle (at -6.85 -6.2 90) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 22 "col_inner"))
+          (pad S2 thru_hole circle (at -5 -6.2 90) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 45 "scrollwheel_scrollwheel"))
+          (pad A thru_hole circle (at -5.625 -3.81 90) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 46 "ENCB_undef"))
+          (pad B thru_hole circle (at -5.625 -1.27 90) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 47 "GND_ENCA"))
+          (pad C thru_hole circle (at -5.625 1.27 90) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 48 "ENCA_GND"))
+          (pad D thru_hole circle (at -5.625 3.81 90) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 49 "undef_ENCB"))
+
+          
+          (pad S1 thru_hole circle (at -6.85 6.2 90) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 22 "col_inner"))
+          (pad S2 thru_hole circle (at -5 6.2 90) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 45 "scrollwheel_scrollwheel"))
+        )
+        
+
+        
+        (module RollerEncoder_Panasonic_EVQWGD001 (layer "F.Cu") (tedit 6040A10C)
+        (at 272.75 151.5833333 0)
+        (fp_text reference "S24" (at 0 0 0) (layer "F.Fab") (effects (font (size 1 1) (thickness 0.15))))
         (fp_text value RollerEncoder_Panasonic_EVQWGD001 (at -0.1 9 0) (layer "F.Fab") (effects (font (size 1 1) (thickness 0.15))))
 
         
@@ -6214,10 +6274,10 @@
           
           (pad S1 thru_hole circle (at -6.85 -6.2 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 22 "col_inner"))
           (pad S2 thru_hole circle (at -5 -6.2 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 45 "scrollwheel_scrollwheel"))
-          (pad A thru_hole circle (at -5.625 -3.81 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 37 "ENCB"))
-          (pad B thru_hole circle (at -5.625 -1.27 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 34 "GND"))
-          (pad C thru_hole circle (at -5.625 1.27 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 38 "ENCA"))
-          (pad D thru_hole circle (at -5.625 3.81 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 46 "undef"))
+          (pad A thru_hole circle (at -5.625 -3.81 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 46 "ENCB_undef"))
+          (pad B thru_hole circle (at -5.625 -1.27 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 47 "GND_ENCA"))
+          (pad C thru_hole circle (at -5.625 1.27 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 48 "ENCA_GND"))
+          (pad D thru_hole circle (at -5.625 3.81 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 49 "undef_ENCB"))
 
           
           (pad S1 thru_hole circle (at -6.85 6.2 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 22 "col_inner"))
@@ -6229,7 +6289,7 @@
             (footprint "Diode_SMD:SOD-123" (layer "F.Cu")
 
 
-            (at 271.25 161.5833333 0)
+            (at 277.75 165.5833333 0)
             (descr "SOD-123")
             (tags "SOD-123")
             (property "LCSC Part #" "C105503" )
@@ -6320,6 +6380,300 @@
             )
             
 
+        (footprint "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" (layer "B.Cu")
+        (at 261.75 147.7733333 0)
+        (descr "SMD Solder Jumper, 1x1.5mm Triangular Pads, 0.3mm gap, open")
+        (tags "solder jumper open")
+        (attr exclude_from_pos_files exclude_from_bom)
+
+        
+
+        (fp_text reference "J1" (at 0 0) (layer B.SilkS) hide hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value Jumper (at 0 -2.5) (layer B.Fab) (effects (font (size 1 1) (thickness 0.15))))
+
+        
+        (fp_line (start 1.4 1) (end -1.4 1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start 1.4 -1) (end 1.4 1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.4 1) (end -1.4 -1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.4 -1) (end 1.4 -1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.65 -1.25) (end 1.65 -1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end -1.65 1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end 1.65 -1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start -1.65 -1.25) (end -1.65 1.25) (layer "B.CrtYd") (width 0.05))
+
+        (pad "1" smd custom (at -0.725 0 0) (size 0.3 0.3) (layers "B.Cu" "B.Mask")
+          (net 37 "ENCB") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 1 0)
+                (xy 0.5 0.75)
+                (xy -0.5 0.75)
+                (xy -0.5 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+        (pad "2" smd custom (at 0.725 0 0) (size 0.3 0.3) (layers "B.Cu" "B.Mask")
+          (net 46 "ENCB_undef") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 0.5 0.75)
+                (xy -0.65 0.75)
+                (xy -0.15 0)
+                (xy -0.65 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+      )
+
+    
+
+        (footprint "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" (layer "B.Cu")
+        (at 261.75 150.31333329999998 0)
+        (descr "SMD Solder Jumper, 1x1.5mm Triangular Pads, 0.3mm gap, open")
+        (tags "solder jumper open")
+        (attr exclude_from_pos_files exclude_from_bom)
+
+        
+
+        (fp_text reference "J2" (at 0 0) (layer B.SilkS) hide hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value Jumper (at 0 -2.5) (layer B.Fab) (effects (font (size 1 1) (thickness 0.15))))
+
+        
+        (fp_line (start 1.4 1) (end -1.4 1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start 1.4 -1) (end 1.4 1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.4 1) (end -1.4 -1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.4 -1) (end 1.4 -1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.65 -1.25) (end 1.65 -1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end -1.65 1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end 1.65 -1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start -1.65 -1.25) (end -1.65 1.25) (layer "B.CrtYd") (width 0.05))
+
+        (pad "1" smd custom (at -0.725 0 0) (size 0.3 0.3) (layers "B.Cu" "B.Mask")
+          (net 34 "GND") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 1 0)
+                (xy 0.5 0.75)
+                (xy -0.5 0.75)
+                (xy -0.5 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+        (pad "2" smd custom (at 0.725 0 0) (size 0.3 0.3) (layers "B.Cu" "B.Mask")
+          (net 47 "GND_ENCA") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 0.5 0.75)
+                (xy -0.65 0.75)
+                (xy -0.15 0)
+                (xy -0.65 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+      )
+
+    
+
+        (footprint "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" (layer "B.Cu")
+        (at 261.75 152.8533333 0)
+        (descr "SMD Solder Jumper, 1x1.5mm Triangular Pads, 0.3mm gap, open")
+        (tags "solder jumper open")
+        (attr exclude_from_pos_files exclude_from_bom)
+
+        
+
+        (fp_text reference "J3" (at 0 0) (layer B.SilkS) hide hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value Jumper (at 0 -2.5) (layer B.Fab) (effects (font (size 1 1) (thickness 0.15))))
+
+        
+        (fp_line (start 1.4 1) (end -1.4 1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start 1.4 -1) (end 1.4 1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.4 1) (end -1.4 -1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.4 -1) (end 1.4 -1) (layer "B.SilkS") (width 0.12))
+        (fp_line (start -1.65 -1.25) (end 1.65 -1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end -1.65 1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end 1.65 -1.25) (layer "B.CrtYd") (width 0.05))
+        (fp_line (start -1.65 -1.25) (end -1.65 1.25) (layer "B.CrtYd") (width 0.05))
+
+        (pad "1" smd custom (at -0.725 0 0) (size 0.3 0.3) (layers "B.Cu" "B.Mask")
+          (net 38 "ENCA") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 1 0)
+                (xy 0.5 0.75)
+                (xy -0.5 0.75)
+                (xy -0.5 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+        (pad "2" smd custom (at 0.725 0 0) (size 0.3 0.3) (layers "B.Cu" "B.Mask")
+          (net 48 "ENCA_GND") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 0.5 0.75)
+                (xy -0.65 0.75)
+                (xy -0.15 0)
+                (xy -0.65 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+      )
+
+    
+
+        (footprint "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" (layer "F.Cu")
+        (at 261.75 155.3933333 0)
+        (descr "SMD Solder Jumper, 1x1.5mm Triangular Pads, 0.3mm gap, open")
+        (tags "solder jumper open")
+        (attr exclude_from_pos_files exclude_from_bom)
+
+        
+
+        (fp_text reference "J4" (at 0 0) (layer F.SilkS) hide hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value Jumper (at 0 -2.5) (layer F.Fab) (effects (font (size 1 1) (thickness 0.15))))
+
+        
+        (fp_line (start 1.4 1) (end -1.4 1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start 1.4 -1) (end 1.4 1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.4 1) (end -1.4 -1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.4 -1) (end 1.4 -1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.65 -1.25) (end 1.65 -1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end -1.65 1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end 1.65 -1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start -1.65 -1.25) (end -1.65 1.25) (layer "F.CrtYd") (width 0.05))
+
+        (pad "1" smd custom (at -0.725 0 0) (size 0.3 0.3) (layers "F.Cu" "F.Mask")
+          (net 37 "ENCB") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 1 0)
+                (xy 0.5 0.75)
+                (xy -0.5 0.75)
+                (xy -0.5 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+        (pad "2" smd custom (at 0.725 0 0) (size 0.3 0.3) (layers "F.Cu" "F.Mask")
+          (net 49 "undef_ENCB") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 0.5 0.75)
+                (xy -0.65 0.75)
+                (xy -0.15 0)
+                (xy -0.65 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+      )
+
+    
+
+        (footprint "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" (layer "F.Cu")
+        (at 261.75 152.8533333 0)
+        (descr "SMD Solder Jumper, 1x1.5mm Triangular Pads, 0.3mm gap, open")
+        (tags "solder jumper open")
+        (attr exclude_from_pos_files exclude_from_bom)
+
+        
+
+        (fp_text reference "J5" (at 0 0) (layer F.SilkS) hide hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value Jumper (at 0 -2.5) (layer F.Fab) (effects (font (size 1 1) (thickness 0.15))))
+
+        
+        (fp_line (start 1.4 1) (end -1.4 1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start 1.4 -1) (end 1.4 1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.4 1) (end -1.4 -1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.4 -1) (end 1.4 -1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.65 -1.25) (end 1.65 -1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end -1.65 1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end 1.65 -1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start -1.65 -1.25) (end -1.65 1.25) (layer "F.CrtYd") (width 0.05))
+
+        (pad "1" smd custom (at -0.725 0 0) (size 0.3 0.3) (layers "F.Cu" "F.Mask")
+          (net 34 "GND") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 1 0)
+                (xy 0.5 0.75)
+                (xy -0.5 0.75)
+                (xy -0.5 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+        (pad "2" smd custom (at 0.725 0 0) (size 0.3 0.3) (layers "F.Cu" "F.Mask")
+          (net 48 "ENCA_GND") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 0.5 0.75)
+                (xy -0.65 0.75)
+                (xy -0.15 0)
+                (xy -0.65 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+      )
+
+    
+
+        (footprint "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" (layer "F.Cu")
+        (at 261.75 150.31333329999998 0)
+        (descr "SMD Solder Jumper, 1x1.5mm Triangular Pads, 0.3mm gap, open")
+        (tags "solder jumper open")
+        (attr exclude_from_pos_files exclude_from_bom)
+
+        
+
+        (fp_text reference "J6" (at 0 0) (layer F.SilkS) hide hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value Jumper (at 0 -2.5) (layer F.Fab) (effects (font (size 1 1) (thickness 0.15))))
+
+        
+        (fp_line (start 1.4 1) (end -1.4 1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start 1.4 -1) (end 1.4 1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.4 1) (end -1.4 -1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.4 -1) (end 1.4 -1) (layer "F.SilkS") (width 0.12))
+        (fp_line (start -1.65 -1.25) (end 1.65 -1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end -1.65 1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start 1.65 1.25) (end 1.65 -1.25) (layer "F.CrtYd") (width 0.05))
+        (fp_line (start -1.65 -1.25) (end -1.65 1.25) (layer "F.CrtYd") (width 0.05))
+
+        (pad "1" smd custom (at -0.725 0 0) (size 0.3 0.3) (layers "F.Cu" "F.Mask")
+          (net 38 "ENCA") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 1 0)
+                (xy 0.5 0.75)
+                (xy -0.5 0.75)
+                (xy -0.5 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+        (pad "2" smd custom (at 0.725 0 0) (size 0.3 0.3) (layers "F.Cu" "F.Mask")
+          (net 47 "GND_ENCA") (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+                (xy 0.5 0.75)
+                (xy -0.65 0.75)
+                (xy -0.15 0)
+                (xy -0.65 -0.75)
+                (xy 0.5 -0.75)
+              ) (width 0) (fill yes))
+          ))
+      )
+
+    
+
             (gr_text "JLCJLCJLCJLC" (at 185.75 120.25 0) (layer F.SilkS)
                 (effects (font (size 1 1) (thickness 0.15) ) (justify left))
             )
@@ -6346,7 +6700,7 @@
             (fp_line (start -2 -2) (end -2 -3) (layer "F.SilkS") (width 0.12))
 
 
-            (pad "1" thru_hole roundrect (at 0 -1 0) (size 1.75 1.2) (drill 0.75) (layers *.Cu F.SilkS F.Mask) (net 47 "Bplus") (roundrect_rratio 0.208333))
+            (pad "1" thru_hole roundrect (at 0 -1 0) (size 1.75 1.2) (drill 0.75) (layers *.Cu F.SilkS F.Mask) (net 50 "Bplus") (roundrect_rratio 0.208333))
             (fp_text user Bplus (at -3.6 -1 0) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) ))
             (pad "2" thru_hole oval (at 0 1 0) (size 1.75 1.2) (drill 0.75) (layers *.Cu F.SilkS F.Mask) (net 34 "GND"))
             (fp_text user GND (at -2.6 1 0) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) ))
@@ -6362,7 +6716,7 @@
             (fp_line (start -2 -2) (end -2 -3) (layer "B.SilkS") (width 0.12))
 
 
-            (pad "1" thru_hole roundrect (at 0 -1 0) (size 1.75 1.2) (drill 0.75) (layers *.Cu B.SilkS B.Mask) (net 47 "Bplus") (roundrect_rratio 0.208333))
+            (pad "1" thru_hole roundrect (at 0 -1 0) (size 1.75 1.2) (drill 0.75) (layers *.Cu B.SilkS B.Mask) (net 50 "Bplus") (roundrect_rratio 0.208333))
             (fp_text user Bplus (at -3.6 -1 0) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)))
             (pad "2" thru_hole oval (at 0 1 0) (size 1.75 1.2) (drill 0.75) (layers *.Cu B.SilkS B.Mask) (net 34 "GND"))
             (fp_text user GND (at -2.6 1 0) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)))
@@ -6388,9 +6742,9 @@
             (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
-            (pad 1 smd rect (at 0 0 0) (size 1.5 1.5) (layers F.Cu F.Paste F.Mask) (net 47 "Bplus"))
+            (pad 1 smd rect (at 0 0 0) (size 1.5 1.5) (layers F.Cu F.Paste F.Mask) (net 50 "Bplus"))
 (fp_text user Bplus (at 3.75 0 0) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) ))
-            (pad 1 smd rect (at 0 0 0) (size 1.5 1.5) (layers B.Cu B.Paste B.Mask) (net 47 "Bplus"))
+            (pad 1 smd rect (at 0 0 0) (size 1.5 1.5) (layers B.Cu B.Paste B.Mask) (net 50 "Bplus"))
 (fp_text user Bplus (at 3.75 0 0) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)))
             
         )
@@ -6519,9 +6873,8 @@
 
         
 
-        (fp_text reference "J1" (at 0 0) (layer B.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value Jumper (at 0 -7.3) (layer B.Fab) (effects (font (size 1 1) (thickness 0.15))))
-        (fp_text value Jumper (at 0 2 270) (layer B.SilkS) (effects (font (size 1 1) (thickness 0.15)) (justify mirror) ))
+        (fp_text reference "J7" (at 0 0) (layer B.SilkS) hide hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value Jumper (at 0 -2.5) (layer B.Fab) (effects (font (size 1 1) (thickness 0.15))))
 
         
         (fp_line (start 1.4 1) (end -1.4 1) (layer "B.SilkS") (width 0.12))
@@ -6534,7 +6887,7 @@
         (fp_line (start -1.65 -1.25) (end -1.65 1.25) (layer "B.CrtYd") (width 0.05))
 
         (pad "1" smd custom (at -0.725 0 90) (size 0.3 0.3) (layers "B.Cu" "B.Mask")
-          (net 47 "Bplus") (zone_connect 2)
+          (net 50 "Bplus") (zone_connect 2)
           (options (clearance outline) (anchor rect))
           (primitives
             (gr_poly (pts
@@ -6569,9 +6922,8 @@
 
         
 
-        (fp_text reference "J2" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value Jumper (at 0 -7.3) (layer F.Fab) (effects (font (size 1 1) (thickness 0.15))))
-        (fp_text value Jumper (at 0 2 270) (layer F.SilkS) (effects (font (size 1 1) (thickness 0.15))  ))
+        (fp_text reference "J8" (at 0 0) (layer F.SilkS) hide hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value Jumper (at 0 -2.5) (layer F.Fab) (effects (font (size 1 1) (thickness 0.15))))
 
         
         (fp_line (start 1.4 1) (end -1.4 1) (layer "F.SilkS") (width 0.12))
@@ -6584,7 +6936,7 @@
         (fp_line (start -1.65 -1.25) (end -1.65 1.25) (layer "F.CrtYd") (width 0.05))
 
         (pad "1" smd custom (at -0.725 0 90) (size 0.3 0.3) (layers "F.Cu" "F.Mask")
-          (net 47 "Bplus") (zone_connect 2)
+          (net 50 "Bplus") (zone_connect 2)
           (options (clearance outline) (anchor rect))
           (primitives
             (gr_poly (pts
@@ -6666,7 +7018,7 @@
       (pad "" np_thru_hole circle (at 1.5 0.33) (size 0.9 0.9) (drill 0.9) (layers *.Cu *.Mask))
       (pad 1 smd rect (at -2.25 -1.43 180) (size 0.7 1.5) (layers F.Cu F.Paste F.Mask) (net 33 "RAW"))
 
-      (pad 2 smd rect (at 0.75 -1.43 180) (size 0.7 1.5) (layers F.Cu F.Paste F.Mask) (net 47 "Bplus"))
+      (pad 2 smd rect (at 0.75 -1.43 180) (size 0.7 1.5) (layers F.Cu F.Paste F.Mask) (net 50 "Bplus"))
       (pad 3 smd rect (at 2.25 -1.43 180) (size 0.7 1.5) (layers F.Cu F.Paste F.Mask))
       (pad "" smd rect (at -3.65 1.43 180) (size 1 0.8) (layers F.Cu F.Paste F.Mask))
       (pad "" smd rect (at 3.65 1.43 180) (size 1 0.8) (layers F.Cu F.Paste F.Mask))
@@ -6691,7 +7043,7 @@
       (pad "" np_thru_hole circle (at 1.5 0.33) (size 0.9 0.9) (drill 0.9) (layers *.Cu *.Mask))
       (pad 1 smd rect (at 2.25 -1.43 180) (size 0.7 1.5) (layers B.Cu B.Paste B.Mask) (net 33 "RAW"))
 
-      (pad 2 smd rect (at -0.75 -1.43 180) (size 0.7 1.5) (layers B.Cu B.Paste B.Mask) (net 47 "Bplus"))
+      (pad 2 smd rect (at -0.75 -1.43 180) (size 0.7 1.5) (layers B.Cu B.Paste B.Mask) (net 50 "Bplus"))
       (pad 3 smd rect (at -2.25 -1.43 180) (size 0.7 1.5) (layers B.Cu B.Paste B.Mask))
       (pad "" smd rect (at 3.65 1.43 180) (size 1 0.8) (layers B.Cu B.Paste B.Mask))
       (pad "" smd rect (at -3.65 1.43 180) (size 1 0.8) (layers B.Cu B.Paste B.Mask))
@@ -8878,6 +9230,109 @@
 (gr_arc (start 160.12500000116876 123.5202041022903) (mid 159.525 124.5) (end 160.12500000116876 125.4797958977097) (layer "Eco2.User") (width 0.15))
 (gr_arc (start 161.12499999883124 142.4797958977097) (mid 161.725 141.5) (end 161.12499999883124 140.5202041022903) (layer "Eco2.User") (width 0.15))
 (gr_arc (start 160.12500000116876 140.5202041022903) (mid 159.525 141.5) (end 160.12500000116876 142.4797958977097) (layer "Eco2.User") (width 0.15))
+(gr_line (start 143 157) (end 157 157) (layer "Eco2.User") (width 0.15))
+(gr_line (start 157 157) (end 157 143) (layer "Eco2.User") (width 0.15))
+(gr_line (start 157 143) (end 143 143) (layer "Eco2.User") (width 0.15))
+(gr_line (start 143 143) (end 143 157) (layer "Eco2.User") (width 0.15))
+(gr_line (start 143 140) (end 157 140) (layer "Eco2.User") (width 0.15))
+(gr_line (start 157 140) (end 157 126) (layer "Eco2.User") (width 0.15))
+(gr_line (start 157 126) (end 143 126) (layer "Eco2.User") (width 0.15))
+(gr_line (start 143 126) (end 143 140) (layer "Eco2.User") (width 0.15))
+(gr_line (start 143 123) (end 157 123) (layer "Eco2.User") (width 0.15))
+(gr_line (start 157 123) (end 157 109) (layer "Eco2.User") (width 0.15))
+(gr_line (start 157 109) (end 143 109) (layer "Eco2.User") (width 0.15))
+(gr_line (start 143 109) (end 143 123) (layer "Eco2.User") (width 0.15))
+(gr_line (start 164.25 157) (end 178.25 157) (layer "Eco2.User") (width 0.15))
+(gr_line (start 178.25 157) (end 178.25 143) (layer "Eco2.User") (width 0.15))
+(gr_line (start 178.25 143) (end 164.25 143) (layer "Eco2.User") (width 0.15))
+(gr_line (start 164.25 143) (end 164.25 157) (layer "Eco2.User") (width 0.15))
+(gr_line (start 164.25 140) (end 178.25 140) (layer "Eco2.User") (width 0.15))
+(gr_line (start 178.25 140) (end 178.25 126) (layer "Eco2.User") (width 0.15))
+(gr_line (start 178.25 126) (end 164.25 126) (layer "Eco2.User") (width 0.15))
+(gr_line (start 164.25 126) (end 164.25 140) (layer "Eco2.User") (width 0.15))
+(gr_line (start 164.25 123) (end 178.25 123) (layer "Eco2.User") (width 0.15))
+(gr_line (start 178.25 123) (end 178.25 109) (layer "Eco2.User") (width 0.15))
+(gr_line (start 178.25 109) (end 164.25 109) (layer "Eco2.User") (width 0.15))
+(gr_line (start 164.25 109) (end 164.25 123) (layer "Eco2.User") (width 0.15))
+(gr_line (start 183.25 152.75) (end 197.25 152.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 197.25 152.75) (end 197.25 138.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 197.25 138.75) (end 183.25 138.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 183.25 138.75) (end 183.25 152.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 183.25 135.75) (end 197.25 135.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 197.25 135.75) (end 197.25 121.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 197.25 121.75) (end 183.25 121.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 183.25 121.75) (end 183.25 135.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 183.25 118.75) (end 197.25 118.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 197.25 118.75) (end 197.25 104.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 197.25 104.75) (end 183.25 104.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 183.25 104.75) (end 183.25 118.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 202.25 148.5) (end 216.25 148.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 216.25 148.5) (end 216.25 134.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 216.25 134.5) (end 202.25 134.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 202.25 134.5) (end 202.25 148.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 202.25 131.5) (end 216.25 131.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 216.25 131.5) (end 216.25 117.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 216.25 117.5) (end 202.25 117.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 202.25 117.5) (end 202.25 131.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 202.25 114.5) (end 216.25 114.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 216.25 114.5) (end 216.25 100.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 216.25 100.5) (end 202.25 100.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 202.25 100.5) (end 202.25 114.5) (layer "Eco2.User") (width 0.15))
+(gr_line (start 221.25 152.75) (end 235.25 152.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 235.25 152.75) (end 235.25 138.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 235.25 138.75) (end 221.25 138.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 221.25 138.75) (end 221.25 152.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 221.25 135.75) (end 235.25 135.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 235.25 135.75) (end 235.25 121.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 235.25 121.75) (end 221.25 121.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 221.25 121.75) (end 221.25 135.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 221.25 118.75) (end 235.25 118.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 235.25 118.75) (end 235.25 104.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 235.25 104.75) (end 221.25 104.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 221.25 104.75) (end 221.25 118.75) (layer "Eco2.User") (width 0.15))
+(gr_line (start 240.25 155.5833333) (end 254.25 155.5833333) (layer "Eco2.User") (width 0.15))
+(gr_line (start 254.25 155.5833333) (end 254.25 141.5833333) (layer "Eco2.User") (width 0.15))
+(gr_line (start 254.25 141.5833333) (end 240.25 141.5833333) (layer "Eco2.User") (width 0.15))
+(gr_line (start 240.25 141.5833333) (end 240.25 155.5833333) (layer "Eco2.User") (width 0.15))
+(gr_line (start 240.25 138.5833333) (end 254.25 138.5833333) (layer "Eco2.User") (width 0.15))
+(gr_line (start 254.25 138.5833333) (end 254.25 124.58333329999999) (layer "Eco2.User") (width 0.15))
+(gr_line (start 254.25 124.58333329999999) (end 240.25 124.58333329999999) (layer "Eco2.User") (width 0.15))
+(gr_line (start 240.25 124.58333329999999) (end 240.25 138.5833333) (layer "Eco2.User") (width 0.15))
+(gr_line (start 240.25 121.58333329999999) (end 254.25 121.58333329999999) (layer "Eco2.User") (width 0.15))
+(gr_line (start 254.25 121.58333329999999) (end 254.25 107.58333329999999) (layer "Eco2.User") (width 0.15))
+(gr_line (start 254.25 107.58333329999999) (end 240.25 107.58333329999999) (layer "Eco2.User") (width 0.15))
+(gr_line (start 240.25 107.58333329999999) (end 240.25 121.58333329999999) (layer "Eco2.User") (width 0.15))
+(gr_line (start 233.6219893 175.4337073) (end 228.83370730000001 162.2780107) (layer "Eco2.User") (width 0.15))
+(gr_line (start 228.83370730000001 162.2780107) (end 215.67801070000002 167.0662927) (layer "Eco2.User") (width 0.15))
+(gr_line (start 215.67801070000002 167.0662927) (end 220.4662927 180.2219893) (layer "Eco2.User") (width 0.15))
+(gr_line (start 220.4662927 180.2219893) (end 233.6219893 175.4337073) (layer "Eco2.User") (width 0.15))
+(gr_line (start 253.6363703 177.83572779999997) (end 254.8565507 163.88900199999998) (layer "Eco2.User") (width 0.15))
+(gr_line (start 254.8565507 163.88900199999998) (end 240.9098249 162.6688216) (layer "Eco2.User") (width 0.15))
+(gr_line (start 240.9098249 162.6688216) (end 239.68964449999999 176.6155474) (layer "Eco2.User") (width 0.15))
+(gr_line (start 239.68964449999999 176.6155474) (end 253.6363703 177.83572779999997) (layer "Eco2.User") (width 0.15))
+(gr_line (start 270.95921269999997 183.49024419999998) (end 275.7474947 170.33454759999998) (layer "Eco2.User") (width 0.15))
+(gr_line (start 275.7474947 170.33454759999998) (end 262.5917981 165.5462656) (layer "Eco2.User") (width 0.15))
+(gr_line (start 262.5917981 165.5462656) (end 257.80351609999997 178.7019622) (layer "Eco2.User") (width 0.15))
+(gr_line (start 257.80351609999997 178.7019622) (end 270.95921269999997 183.49024419999998) (layer "Eco2.User") (width 0.15))
+(gr_line (start 286.2282972 193.4355693) (end 294.2583673 181.9674406) (layer "Eco2.User") (width 0.15))
+(gr_line (start 294.2583673 181.9674406) (end 282.7902386 173.9373705) (layer "Eco2.User") (width 0.15))
+(gr_line (start 282.7902386 173.9373705) (end 274.7601685 185.40549919999998) (layer "Eco2.User") (width 0.15))
+(gr_line (start 274.7601685 185.40549919999998) (end 286.2282972 193.4355693) (layer "Eco2.User") (width 0.15))
+(gr_line (start 259.75 142.1833333) (end 280.75 142.1833333) (layer "Eco2.User") (width 0.15))
+(gr_arc (start 280.75 142.1833333) (mid 282.1642135623731 141.5975468623731) (end 282.75 140.1833333) (layer "Eco2.User") (width 0.15))
+(gr_line (start 282.75 140.1833333) (end 282.75 101.18333329999999) (layer "Eco2.User") (width 0.15))
+(gr_arc (start 282.75 101.18333329999999) (mid 282.1642135623731 99.7691197376269) (end 280.75 99.18333329999999) (layer "Eco2.User") (width 0.15))
+(gr_line (start 280.75 99.18333329999999) (end 259.75 99.18333329999999) (layer "Eco2.User") (width 0.15))
+(gr_arc (start 259.75 99.18333329999999) (mid 258.3357864376269 99.7691197376269) (end 257.75 101.18333329999999) (layer "Eco2.User") (width 0.15))
+(gr_line (start 257.75 101.18333329999999) (end 257.75 140.1833333) (layer "Eco2.User") (width 0.15))
+(gr_arc (start 257.75 140.1833333) (mid 258.3357864376269 141.5975468623731) (end 259.75 142.1833333) (layer "Eco2.User") (width 0.15))
+(gr_circle (center 180.75 120.25) (end 181.85 120.25) (layer "Eco2.User") (width 0.15))
+(gr_circle (center 180.75 154.675) (end 181.85 154.675) (layer "Eco2.User") (width 0.15))
+(gr_circle (center 237.75 114.86666665) (end 238.85 114.86666665) (layer "Eco2.User") (width 0.15))
+(gr_circle (center 235.9615488 170.75113735) (end 237.0615488 170.75113735) (layer "Eco2.User") (width 0.15))
+(gr_circle (center 285.75 124.08333329999999) (end 286.85 124.08333329999999) (layer "Eco2.User") (width 0.15))
+(gr_circle (center 278.13582915 174.3125039) (end 279.23582915000003 174.3125039) (layer "Eco2.User") (width 0.15))
+(gr_circle (center 285.75 115.58333329999999) (end 286.75 115.58333329999999) (layer "Eco2.User") (width 0.15))
 (gr_line (start 138.25 160) (end 159.125 160) (layer "Cmts.User") (width 0.15))
 (gr_line (start 162.125 160) (end 168.74803921568628 160) (layer "Cmts.User") (width 0.15))
 (gr_line (start 138.25 106) (end 159.125 106) (layer "Cmts.User") (width 0.15))

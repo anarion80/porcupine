@@ -142,14 +142,28 @@ points:
       key:
         spread: kx
         tags: [switch1u]
-    scrollwheel:
+    scrollwheel_vertical:
       anchor:
         ref: matrix_inner_bottom
       columns:
         scrollwheel:
           key:
-            tags: [scrollwheel]
-            shift: [23, -2]
+            tags: [scrollwheel_vertical]
+            shift: [30.5, -6.5]
+            column_net: col_inner
+            width: scrollwheel_width
+            height: scrollwheel_height
+      rows:
+        scrollwheel:
+          row_net: row_thumb
+    scrollwheel_horizontal:
+      anchor:
+        ref: matrix_inner_bottom
+      columns:
+        scrollwheel:
+          key:
+            tags: [scrollwheel_horizontal]
+            shift: [25.5, -3]
             column_net: col_inner
             width: scrollwheel_width
             height: scrollwheel_height
@@ -343,9 +357,18 @@ outlines:
       size: [choc125u, choc1u - 1] # Choc keycaps are 17.5 x 16.5, 1.25u are 22 x 16.5, 1.5u are 26.5 x 16.5
       bound: false
       corner: 1
-  _scrollwheel_cutout:
+  _scrollwheel_cutout_vertical:
     - what: rectangle
-      where: [scrollwheel]
+      where: [scrollwheel_vertical]
+      adjust:
+        rotate: 90
+      size: [switchplate_scrollwheel_cutout_x, switchplate_scrollwheel_cutout_y]
+      bound: false
+  _scrollwheel_cutout_horizontal:
+    - what: rectangle
+      where: [scrollwheel_horizontal]
+      adjust:
+        rotate: 0
       size: [switchplate_scrollwheel_cutout_x, switchplate_scrollwheel_cutout_y]
       bound: false
   _left_circle:
@@ -442,15 +465,35 @@ outlines:
     - -_break_away_screw_holes
     - -_switches
     - -_controller_plate
-    - -_scrollwheel_cutout
     - -_screw_holes
     - -_reset_hole
+  top_outline_vertical_scroll:
+    - top_outline
+    - -_scrollwheel_cutout_vertical
+  top_outline_horizontal_scroll:
+    - top_outline
+    - -_scrollwheel_cutout_horizontal
 
 pcbs:
-  porcupine_top_plate:
+  porcupine_top_plate_vertical_scroll:
     outlines:
       edge:
-        outline: top_outline
+        outline: top_outline_vertical_scroll
+        layer: Edge.Cuts
+    # Remove this if you'd rather pay more to not have the order number printed at all
+    footprints:
+      jlc_order_number:
+        what: text
+        adjust:
+          ref.aggregate.parts: [matrix_ring_top, matrix_ring_home]
+          shift: [-0.25 kx, 0]
+        params:
+          text: "JLCJLCJLCJLC"
+          justify: left
+  porcupine_top_plate_horizontal_scroll:
+    outlines:
+      edge:
+        outline: top_outline_horizontal_scroll
         layer: Edge.Cuts
     # Remove this if you'd rather pay more to not have the order number printed at all
     footprints:
@@ -570,39 +613,98 @@ pcbs:
           CS: CS
       scrollwheel_vertical:
         what: scrollwheel_mirrored
-        where: [scrollwheel]
+        where: [scrollwheel_vertical]
+        adjust:
+          rotate: 90
         params:
           from: "{{column_net}}"
           to: "{{colrow}}"
-          A: ENCB
-          B: GND
-          C: ENCA
-          D: undef
-      # scrollwheel_horizontal:
-      #   what: scrollwheel_mirrored
-      #   where: [scrollwheel]
-      #   adjust:
-      #   #   ref:
-      #   #     - matrix_inner_bottom
-      #     shift: [3, -3]
-      #     rotate: -90
-      #   params:
-      #     from: "{{column_net}}"
-      #     to: "{{colrow}}"
-      #     A: ENCB
-      #     B: GND
-      #     C: ENCA
-      #     D: undef
+          A: ENCB_undef
+          B: GND_ENCA
+          C: ENCA_GND
+          D: undef_ENCB
+      scrollwheel_horizontal:
+        what: scrollwheel_mirrored
+        where: [scrollwheel_horizontal]
+        adjust:
+          rotate: 0
+        params:
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+          A: ENCB_undef
+          B: GND_ENCA
+          C: ENCA_GND
+          D: undef_ENCB
       scroll_diode:
         what: diode
-        where: [scrollwheel]
+        where: [scrollwheel_vertical]
         params:
           reverse: true
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [1, -11]
+          shift: [0, -10.5]
           rotate: 0
+      jumper_sw_left_a:
+        what: jumper
+        where: [scrollwheel_horizontal]
+        params:
+          side: B
+          to: ENCB_undef
+          from: ENCB
+        adjust:
+          rotate: 0
+          shift: [-11, 3.81]
+      jumper_sw_left_gnd:
+        what: jumper
+        where: [scrollwheel_horizontal]
+        params:
+          side: B
+          to: GND_ENCA
+          from: GND
+        adjust:
+          rotate: 0
+          shift: [-11, 1.27]
+      jumper_sw_left_ENCA:
+        what: jumper
+        where: [scrollwheel_horizontal]
+        params:
+          side: B
+          to: ENCA_GND
+          from: ENCA
+        adjust:
+          rotate: 0
+          shift: [-11, -1.27]
+      jumper_sw_right_a:
+        what: jumper
+        where: [scrollwheel_horizontal]
+        params:
+          side: F
+          to: undef_ENCB
+          from: ENCB
+        adjust:
+          rotate: 0
+          shift: [-11, -3.81]
+      jumper_sw_right_gnd:
+        what: jumper
+        where: [scrollwheel_horizontal]
+        params:
+          side: F
+          to: ENCA_GND
+          from: GND
+        adjust:
+          rotate: 0
+          shift: [-11, -1.27]
+      jumper_sw_right_ENCA:
+        what: jumper
+        where: [scrollwheel_horizontal]
+        params:
+          side: F
+          to: GND_ENCA
+          from: ENCA
+        adjust:
+          rotate: 0
+          shift: [-11, 1.27]
       jlc_order_number:
         what: text
         adjust:
