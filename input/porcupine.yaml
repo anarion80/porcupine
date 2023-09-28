@@ -884,20 +884,20 @@ pcbs:
           text: "and place MCU facing UP!"
           style: italic
           justify: left mirror
-      via_GND_2:
-        what: simple_via
-        adjust:
-          ref: matrix_ring_top
-          shift: [11,3]
-        params:
-          net: GND
-      via_GND_3:
-        what: simple_via
-        adjust:
-          ref: matrix_ring_top
-          shift: [12,-3]
-        params:
-          net: GND
+      # via_GND_2:
+      #   what: simple_via
+      #   adjust:
+      #     ref: matrix_ring_top
+      #     shift: [11,3]
+      #   params:
+      #     net: GND
+      # via_GND_3:
+      #   what: simple_via
+      #   adjust:
+      #     ref: matrix_ring_top
+      #     shift: [12,-3]
+      #   params:
+      #     net: GND
       via_GND_5:
         what: simple_via
         adjust:
@@ -944,14 +944,14 @@ pcbs:
         what: simple_via
         adjust:
           ref: matrix_pinky_top
-          shift: [-5,8]
+          shift: [0,8.5]
         params:
           net: pinky_top
       via_col_pinky_2:
         what: simple_via
         adjust:
           ref: matrix_pinky_home
-          shift: [-2.5,3]
+          shift: [0,3]
         params:
           net: col_pinky
       via_pinky_home:
@@ -979,21 +979,21 @@ pcbs:
         what: simple_via
         adjust:
           ref: matrix_ring_top
-          shift: [-2.5,3]
+          shift: [0,3]
         params:
           net: col_ring
       via_ring_top:
         what: simple_via
         adjust:
           ref: matrix_ring_top
-          shift: [-5,8]
+          shift: [0,8.5]
         params:
           net: ring_top
       via_col_ring_2:
         what: simple_via
         adjust:
           ref: matrix_ring_home
-          shift: [-2.5,3]
+          shift: [0,3]
         params:
           net: col_ring
       via_ring_home:
@@ -1028,7 +1028,7 @@ pcbs:
         what: simple_via
         adjust:
           ref: matrix_middle_top
-          shift: [-5,8]
+          shift: [0,8.5]
         params:
           net: middle_top
       via_col_middle_2:
@@ -1049,7 +1049,7 @@ pcbs:
         what: simple_via
         adjust:
           ref: matrix_middle_bottom
-          shift: [-3,3]
+          shift: [0,3]
         params:
           net: col_middle
       via_middle_bottom:
@@ -1070,7 +1070,7 @@ pcbs:
         what: simple_via
         adjust:
           ref: matrix_index_top
-          shift: [-5,8]
+          shift: [0,8.5]
         params:
           net: index_top
       via_col_index_2:
@@ -1112,7 +1112,7 @@ pcbs:
         what: simple_via
         adjust:
           ref: matrix_inner_top
-          shift: [-5,8]
+          shift: [0,8.5]
         params:
           net: inner_top
       via_col_inner_2:
@@ -1154,7 +1154,7 @@ pcbs:
         what: simple_via
         adjust:
           ref: thumbfan_near_thumb
-          shift: [-2,8.5]
+          shift: [0,8.5]
         params:
           net: near_thumb
       via_15_4:
@@ -1175,14 +1175,14 @@ pcbs:
         what: simple_via
         adjust:
           ref: thumbfan_far_thumb
-          shift: [-2,3]
+          shift: [0,3]
         params:
           net: col_inner
       via_far_thumb:
         what: simple_via
         adjust:
           ref: thumbfan_far_thumb
-          shift: [4,8.5]
+          shift: [0,8.5]
         params:
           net: far_thumb
       via_col_ring_4:
