@@ -729,7 +729,7 @@ pcbs:
         adjust:
           ref:
             - matrix_inner_top
-          shift: [1, 12.5]
+          shift: [1, 14.5]
           rotate: 0
         params:
           front: true
@@ -744,7 +744,7 @@ pcbs:
         adjust:
           ref:
             - matrix_inner_top
-          shift: [1, 14.5]
+          shift: [1, 12.5]
           rotate: 0
         params:
           front: true
