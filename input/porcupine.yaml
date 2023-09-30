@@ -239,6 +239,11 @@ points:
         ref: [mcu_mcu]
         shift: [mcu_cover_width/2 - 3, -mcu_cover_height/2 - 1.5]
       columns.controller_hole.key.tags: [controller_hole_right]
+    tenting_puck:
+      anchor:
+        ref.aggregate.parts: [matrix_middle_home, matrix_index_home]
+        shift: [0, -0.35ky]
+      columns.tenting_puck.key.tags: [tenting_puck]
 outlines:
   # board dimensions according to JLCPCB: 166 mm * 113.7 mm
   _break:
@@ -324,11 +329,13 @@ outlines:
     left:
       what: circle
       where: [controller_hole_left]
-      radius: 1.5
+      # radius: 1.5
+      radius: 0.5switchplate_screw_hole
     right:
       what: circle
       where: [controller_hole_right]
-      radius: 1.5
+      # radius: 1.5
+      radius: 0.5switchplate_screw_hole
   _reset_hole:
     hole:
       what: circle
@@ -418,7 +425,8 @@ outlines:
       where: [break_away_screw]
       radius: 0.5switchplate_screw_hole
   _screw_holes:
-    - what: circle
+    main:
+      what: circle
       where: [screw]
       radius: 0.5switchplate_screw_hole
   cutout:
@@ -436,12 +444,47 @@ outlines:
       radius: 2.5
     right:
       radius: 2.5
+  tenting_puck:
+    left:
+      what: circle
+      where: [tenting_puck]
+      radius: 0.5switchplate_screw_hole
+      adjust:
+        shift: [U, 0]
+    right:
+      what: circle
+      where: [tenting_puck]
+      radius: 0.5switchplate_screw_hole
+      adjust:
+        shift: [-U, 0]
+    top:
+      what: circle
+      where: [tenting_puck]
+      radius: 0.5switchplate_screw_hole
+      adjust:
+        shift: [0, -U]
+    bottom:
+      what: circle
+      where: [tenting_puck]
+      radius: 0.5switchplate_screw_hole
+      adjust:
+        shift: [0, U]
+  _tenting_puck_outer:
+    $extends: outlines.tenting_puck
+    left:
+      radius: 2.125
+    right:
+      radius: 2.125
+    top:
+      radius: 2.125
+    bottom:
+      radius: 2.125
   controller_plate_with_holes:
     - _controller_plate
     - -_controller_plate_holes
-  bottom_outline:
-    - cutout
-    - -_screw_holes
+  # bottom_outline:
+  #   - cutout
+  #   - -_screw_holes
   preview:
     - base_outline
     - -_keycaps1u
@@ -449,6 +492,20 @@ outlines:
     - -_keycaps_thumb15u
   pcb:
     - cutout
+  _bottom_outline_step_1:
+    - _raw
+    - +_thumbfan_glue
+    - +_controller_area
+    - -_left_circle
+    - -_right_circle
+  bottom_outline_without_holes:
+    - what: outline
+      name: _bottom_outline_step_1
+      fillet: 1
+  bottom_outline:
+    - bottom_outline_without_holes
+    - -_screw_holes
+    - -_controller_plate_holes
   _top_plate_step_1:
     - _raw
     - +_thumbfan_glue
@@ -473,6 +530,93 @@ outlines:
   top_outline_horizontal_scroll:
     - top_outline
     - -_scrollwheel_cutout_horizontal
+
+  # 3d case
+  _3d_case_base_raw:
+    - what: outline
+      name: bottom_outline
+      expand: 4
+      fillet: 1
+  _3d_case_wall_inner:
+    - what: outline
+      name: base_outline
+      expand: 1
+      fillet: 1
+  _screw_holes_counter_sunk:
+    $extends: outlines._screw_holes
+    main:
+      radius: 2
+  _3d_case_holes_heat_set:
+    $extends: outlines._screw_holes
+    main:
+      radius: 1.55
+  _3d_case_controller_holes_heat_set:
+    $extends: outlines._controller_plate_holes
+    left:
+      radius: 1.55
+    right:
+      radius: 1.55
+  _3d_case_spacer_outer:
+    - what: circle
+      radius: 2.125
+      where:
+        ref: matrix_inner_bottom
+        shift: [-20, -20]
+  _3d_case_spacer_inner:
+    - what: circle
+      radius: 1.125
+      where:
+        ref: matrix_inner_bottom
+        shift: [-20, -20]
+  _3d_case_pcb_risers_outer:
+    $extends: outlines._screw_holes
+    main:
+      radius: 2.125
+  _3d_case_pcb_controllerrisers_outer:
+    $extends: outlines._controller_plate_holes
+    left:
+      radius: 2.125
+    right:
+      radius: 2.125
+  3d_case_keycaps:
+    - what: rectangle
+      where: [switch1u, switch125u, switch125u_thumb]
+      size: 14
+      bound: false
+  3d_case_port_promicro:
+    - what: rectangle
+      size: [10, 60]
+      where: [mcu]
+  3d_case_port_trrs:
+    - what: rectangle
+      size: [6, 100]
+      where: [trrs]
+  3d_case_port_onoff_switch:
+    - what: rectangle
+      size: [8, 30]
+      where:
+        ref: matrix_index_top
+        shift: [0, 14.1]
+        rotate: 180
+  3d_case_port_reset_switch:
+    - what: circle
+      where: [reset]
+      radius: 1
+  3d_case_switch_cutouts:
+    - what: rectangle
+      where: [switch1u, switch125u, switch125u_thumb]
+      size: 14.3
+      bound: false
+  # switch_plate: [_plate_fillet, -_plate_oled_cover_cutout, -_switch_cutouts, -_screw_holes]
+  # bottom_plate: [pcb_fillet, -_screw_holes]
+  3d_case_base: [_3d_case_base_raw, -_3d_case_holes_heat_set, -_3d_case_controller_holes_heat_set]
+  3d_case_wall: [_3d_case_base_raw, -_3d_case_wall_inner]
+  3d_case_plate_upper: [base_outline, -3d_case_switch_cutouts, -_screw_holes_counter_sunk]
+  3d_case_plate_lower: [base_outline, -3d_case_switch_cutouts, -_screw_holes]
+  3d_case_pcb_risers: [_3d_case_pcb_risers_outer, +_3d_case_pcb_controllerrisers_outer, +_tenting_puck_outer, -tenting_puck, -_screw_holes, -_controller_plate_holes]
+  3d_case_spacer: [_3d_case_spacer_outer, -_3d_case_spacer_inner]
+
+
 
 pcbs:
   porcupine_top_plate_vertical_scroll:
@@ -549,6 +693,9 @@ pcbs:
       controller:
         outline: controller_plate_with_holes
         layer: Cmts.User
+      tenting_puck:
+        outline: tenting_puck
+        layer: Cmts.User
     footprints:
       choc_hotswap:
         what: choc
@@ -599,7 +746,7 @@ pcbs:
           rotate: 270
       niceview:
         what: niceview
-        where: [mcu_mcu]
+        where: [mcu]
         adjust:
           shift: [0, -1.1ky]
           rotate: 90
@@ -825,10 +972,8 @@ pcbs:
           side: B
       info_l:
         what: text
-        where: [reset_reset]
+        where: [reset]
         adjust:
-          # ref:
-          #   - thumbfan_near_thumb
           rotate: 90
           shift: [0.15kx, -2.5ky]
         params:
@@ -837,10 +982,8 @@ pcbs:
           justify: left
       info_r:
         what: text
-        where: [reset_reset]
+        where: [reset]
         adjust:
-        #   ref:
-        #     - thumbfan_near_thumb
           rotate: 90
           shift: [0.15kx, -1.3ky]
         params:
@@ -849,9 +992,7 @@ pcbs:
           justify: left mirror
       tenting_puck:
         what: tentingpuck
-        adjust:
-          ref.aggregate.parts: [matrix_middle_home, matrix_index_home]
-          shift: [0, -0.35ky]
+        where: [tenting_puck]
         params:
           reverseSilks: false
       side_l:
