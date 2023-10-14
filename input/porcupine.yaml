@@ -1,6 +1,7 @@
 meta:
-  version: "v2.0.1"
+  version: &kb_ver "v2.0.1"
   author: "Anarion"
+  name: &kb_name "porcupine"
 units:
   U: 19.05 # 19.05mm MX spacing
   u: 19 # 19mm MX spacing
@@ -970,25 +971,45 @@ pcbs:
           rotate: -30
         params:
           side: B
-      info_l:
+      info_l1:
         what: text
         where: [reset]
         adjust:
           rotate: 90
-          shift: [0.15kx, -2.5ky]
+          shift: [0.05kx, -1.5ky]
         params:
           layer: F.SilkS
-          text: "porcupine v2.0 by AnarioN"
+          text: *kb_name
           justify: left
-      info_r:
+      info_l2:
         what: text
         where: [reset]
         adjust:
           rotate: 90
-          shift: [0.15kx, -1.3ky]
+          shift: [0.15kx, -1.5ky]
+        params:
+          layer: F.SilkS
+          text: *kb_ver
+          justify: left
+      info_r1:
+        what: text
+        where: [reset]
+        adjust:
+          rotate: 90
+          shift: [0.05kx, -1.1ky]
         params:
           layer: B.SilkS
-          text: "porcupine v2.0 by AnarioN"
+          text: *kb_name
+          justify: left mirror
+      info_r2:
+        what: text
+        where: [reset]
+        adjust:
+          rotate: 90
+          shift: [0.15kx, -1.1ky]
+        params:
+          layer: B.SilkS
+          text: *kb_ver
           justify: left mirror
       tenting_puck:
         what: tentingpuck
