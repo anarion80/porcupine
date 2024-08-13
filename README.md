@@ -58,23 +58,21 @@ To build and use a Porcupine you will need:
 * 34-42 diodes (SMD or THT)
 * 34-42 keycaps
 * 2x reset switches (optional; B3U-1000P(M))
+* 4x 12x low profile female headers (optional; only if you want the microcontroller socketed)
+* 48x Mill Max low profile socket pins (optional; socketed microcontroller; if you are using tht diodes you can use the legs of those diodes)
 * Some little rubber feet/bumpers
 * 2x power (On/Off) switches (optional; MSK 12C02)
-* JST PH battery connector (optional; S2B-PH-K)
-* Li-Po 110mAh battery (optional; 301230)
+* JST PH battery connector (wireless build; S2B-PH-K)
+* Li-Po 110mAh battery (wireless build; 301230)
 * 1x TRRS (not TRS!) cable (wired build only)
 * 2x TRRS Jack [PJ-320A] (wired build only)
-* 1 USB Cable (depends on your micro-controller choice)
+* 1 USB Cable (wired build; depends on your micro-controller choice)
 
 ## :construction_worker: Build Guide
 
 Manually-routed PCBs for each variant are included in the `output` folder, so if they are fine for you, you can just take them directly, have them produced and then build.
 
-I don't have a dedicated build guide. Please refer to [@tzcl rae-dux build guide](https://www.tzcl.me/blog/rae-dux) or [Kyek's video](https://www.youtube.com/watch?v=fBPu7AyDtkM) -
-they should give you enough of info to build Porcupine as well. Just remember that Porcupine is reversible, so you need to solder the jumpers under MCU board and then place them facing up (to be clear: the side with MCU visible) on both sides :exclamation:
-
-* If you're going for a wired version, the on/off switch is optional, but you need to solder the Jumper.
-* If you're going for a wireless version, you can skip soldering TRRS jacks.
+For step-by-step instructions on assembling the keyboard, see the [Porcupine build guide](build_guide.md).
 
 ## :keyboard: Firmware/keymaps
 
